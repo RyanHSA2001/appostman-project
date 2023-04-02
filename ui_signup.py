@@ -23,7 +23,7 @@ class Ui_Signup(object):
         if not cadastro.objectName():
             cadastro.setObjectName(u"cadastro")
         cadastro.resize(409, 483)
-        cadastro.setStyleSheet(u"background-color: rgb(161, 161, 161);")
+        cadastro.setStyleSheet(u"background-color: rgb(40, 40, 40);")
         self.frame = QFrame(cadastro)
         self.frame.setObjectName(u"frame")
         self.frame.setGeometry(QRect(70, 70, 271, 371))
@@ -31,7 +31,7 @@ class Ui_Signup(object):
         font.setFamilies([u"Candara"])
         font.setPointSize(10)
         self.frame.setFont(font)
-        self.frame.setStyleSheet(u"background-color: rgb(147, 147, 147);")
+        self.frame.setStyleSheet(u"background-color: rgb(49, 49, 49);")
         self.frame.setFrameShape(QFrame.StyledPanel)
         self.frame.setFrameShadow(QFrame.Raised)
         self.username_lineEdit = QLineEdit(self.frame)
@@ -75,7 +75,7 @@ class Ui_Signup(object):
         font2.setPointSize(12)
         self.btn_cadastrar.setFont(font2)
         self.btn_cadastrar.setStyleSheet(u"QPushButton{\n"
-"background-color: rgb(80, 105, 172);\n"
+"background-color: rgb(20, 39, 203);\n"
 "color: rgb(255, 255, 255);\n"
 "border-radius:5px\n"
 "\n"
@@ -90,18 +90,22 @@ class Ui_Signup(object):
         self.label_2.setObjectName(u"label_2")
         self.label_2.setGeometry(QRect(70, 40, 191, 21))
         self.label_2.setFont(font1)
+        self.label_2.setStyleSheet(u"color: rgb(255, 255, 255);")
         self.label_3 = QLabel(self.frame)
         self.label_3.setObjectName(u"label_3")
         self.label_3.setGeometry(QRect(110, 100, 71, 21))
         self.label_3.setFont(font1)
+        self.label_3.setStyleSheet(u"color: rgb(255, 255, 255);")
         self.label_4 = QLabel(self.frame)
         self.label_4.setObjectName(u"label_4")
         self.label_4.setGeometry(QRect(110, 160, 191, 21))
         self.label_4.setFont(font1)
+        self.label_4.setStyleSheet(u"color: rgb(255, 255, 255);")
         self.label_5 = QLabel(self.frame)
         self.label_5.setObjectName(u"label_5")
         self.label_5.setGeometry(QRect(30, 220, 211, 21))
         self.label_5.setFont(font1)
+        self.label_5.setStyleSheet(u"color: rgb(255, 255, 255);")
         self.label = QLabel(cadastro)
         self.label.setObjectName(u"label")
         self.label.setGeometry(QRect(140, 30, 131, 31))
@@ -109,12 +113,13 @@ class Ui_Signup(object):
         font3.setFamilies([u"Candara"])
         font3.setPointSize(20)
         self.label.setFont(font3)
+        self.label.setStyleSheet(u"color: rgb(255, 255, 255);")
         self.btn_return = QPushButton(cadastro)
         self.btn_return.setObjectName(u"btn_return")
         self.btn_return.setGeometry(QRect(10, 450, 75, 23))
         self.btn_return.setFont(font)
         self.btn_return.setStyleSheet(u"QPushButton{\n"
-"background-color: rgb(80, 105, 172);\n"
+"background-color: rgb(206, 0, 3);\n"
 "color: rgb(255, 255, 255);\n"
 "border-radius:5px\n"
 "\n"

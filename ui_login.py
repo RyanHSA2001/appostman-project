@@ -25,11 +25,11 @@ class Ui_Login(object):
         Form.resize(409, 483)
         Form.setMinimumSize(QSize(409, 483))
         Form.setMaximumSize(QSize(409, 483))
-        Form.setStyleSheet(u"background-color: rgb(161, 161, 161);")
+        Form.setStyleSheet(u"background-color: rgb(40, 40, 40);")
         self.frame = QFrame(Form)
         self.frame.setObjectName(u"frame")
         self.frame.setGeometry(QRect(70, 190, 271, 261))
-        self.frame.setStyleSheet(u"background-color: rgb(147, 147, 147);")
+        self.frame.setStyleSheet(u"background-color: rgb(49, 49, 49);")
         self.frame.setFrameShape(QFrame.StyledPanel)
         self.frame.setFrameShadow(QFrame.Raised)
         self.username_lineEdit = QLineEdit(self.frame)
@@ -61,7 +61,7 @@ class Ui_Login(object):
         self.btn_entre.setFont(font1)
         self.btn_entre.setCursor(QCursor(Qt.PointingHandCursor))
         self.btn_entre.setStyleSheet(u"QPushButton{\n"
-"background-color: rgb(80, 105, 172);\n"
+"background-color: rgb(206, 0, 3);\n"
 "color: rgb(255, 255, 255);\n"
 "border-radius:5px\n"
 "\n"
@@ -72,17 +72,20 @@ class Ui_Login(object):
 "background-color: rgb(255, 255, 255);\n"
 "	color: rgb(0, 0, 0);\n"
 "}")
+        self.btn_entre.setAutoDefault(True)
         self.label_3 = QLabel(self.frame)
         self.label_3.setObjectName(u"label_3")
         self.label_3.setGeometry(QRect(120, 150, 31, 21))
         self.label_3.setFont(font)
+        self.label_3.setStyleSheet(u"color: rgb(212, 170, 0);\n"
+"color: rgb(255, 255, 255);")
         self.btn_cadastre = QPushButton(self.frame)
         self.btn_cadastre.setObjectName(u"btn_cadastre")
         self.btn_cadastre.setGeometry(QRect(80, 180, 111, 31))
         self.btn_cadastre.setFont(font1)
         self.btn_cadastre.setCursor(QCursor(Qt.PointingHandCursor))
         self.btn_cadastre.setStyleSheet(u"QPushButton{\n"
-"background-color: rgb(80, 105, 172);\n"
+"background-color: rgb(20, 39, 203);\n"
 "color: rgb(255, 255, 255);\n"
 "border-radius:5px\n"
 "\n"
@@ -102,6 +105,7 @@ class Ui_Login(object):
         self.forget_password_pushButton.setFont(font2)
         self.forget_password_pushButton.setStyleSheet(u"QPushButton{\n"
 "background-color: rgba(0, 0, 0, 2);\n"
+"color: rgb(212, 170, 0);\n"
 "\n"
 "}\n"
 "\n"
@@ -113,7 +117,7 @@ class Ui_Login(object):
         self.label = QLabel(Form)
         self.label.setObjectName(u"label")
         self.label.setGeometry(QRect(150, 110, 111, 61))
-        self.label.setPixmap(QPixmap(u"resources/icon-login.png"))
+        self.label.setPixmap(QPixmap(u"resources/icon-login-red.png"))
         self.label.setScaledContents(True)
         self.label_2 = QLabel(Form)
         self.label_2.setObjectName(u"label_2")
@@ -129,6 +133,9 @@ class Ui_Login(object):
         QWidget.setTabOrder(self.btn_cadastre, self.forget_password_pushButton)
 
         self.retranslateUi(Form)
+
+        self.btn_entre.setDefault(False)
+
 
         QMetaObject.connectSlotsByName(Form)
     # setupUi

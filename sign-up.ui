@@ -14,7 +14,7 @@
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(161, 161, 161);</string>
+   <string notr="true">background-color: rgb(40, 40, 40);</string>
   </property>
   <widget class="QFrame" name="frame">
    <property name="geometry">
@@ -32,7 +32,7 @@
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(147, 147, 147);</string>
+    <string notr="true">background-color: rgb(49, 49, 49);</string>
    </property>
    <property name="frameShape">
     <enum>QFrame::StyledPanel</enum>
@@ -164,7 +164,7 @@ color: rgb(255, 255, 255);</string>
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton{
-background-color: rgb(80, 105, 172);
+background-color: rgb(20, 39, 203);
 color: rgb(255, 255, 255);
 border-radius:5px
 
@@ -195,6 +195,9 @@ background-color: rgb(255, 255, 255);
       <pointsize>14</pointsize>
      </font>
     </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 255, 255);</string>
+    </property>
     <property name="text">
      <string>Nome de usuário</string>
     </property>
@@ -213,6 +216,9 @@ background-color: rgb(255, 255, 255);
       <family>Candara</family>
       <pointsize>14</pointsize>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
      <string>E-mail</string>
@@ -233,6 +239,9 @@ background-color: rgb(255, 255, 255);
       <pointsize>14</pointsize>
      </font>
     </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 255, 255);</string>
+    </property>
     <property name="text">
      <string>Senha</string>
     </property>
@@ -251,6 +260,9 @@ background-color: rgb(255, 255, 255);
       <family>Candara</family>
       <pointsize>14</pointsize>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
      <string>Digite a senha novamente</string>
@@ -271,6 +283,9 @@ background-color: rgb(255, 255, 255);
      <family>Candara</family>
      <pointsize>20</pointsize>
     </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255, 255, 255);</string>
    </property>
    <property name="text">
     <string>CADASTRO</string>
@@ -293,7 +308,7 @@ background-color: rgb(255, 255, 255);
    </property>
    <property name="styleSheet">
     <string notr="true">QPushButton{
-background-color: rgb(80, 105, 172);
+background-color: rgb(206, 0, 3);
 color: rgb(255, 255, 255);
 border-radius:5px
 

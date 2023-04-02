@@ -6,11 +6,9 @@ from database import DataBase
 
 import sys
 
-
 class Login(QWidget, Ui_Login):
     def __init__(self) -> None:
         super(Login, self).__init__()
-        self.tries = 0
         self.setupUi(self)
         self.setWindowTitle("Appostman Login")
 
@@ -36,18 +34,13 @@ class Login(QWidget, Ui_Login):
             self.w.show()
             self.close()
         else:
-            if self.tries < 3: # caso dados incorretos, inicia contagem de tentativas !!!AINDA NÃO FUNCIONANDO!!!
-                msg = QMessageBox()
-                msg.setIcon(QMessageBox.Warning)
-                msg.setWindowTitle("Erro")
-                msg.setText(f'Login ou senha inválidos. Após três tentativas sua conta será bloqueada.\n\n'
-                            f'Tentativa: {self.tries + 1}/3')
-                msg.exec()
-                self.tries += 1
-            if self.tries == 3:
-                # bloquear o usuário posteriormente no banco de dados
-                self.users.close_connection()
-                sys.exit(0)
+            msg = QMessageBox()
+            msg.setIcon(QMessageBox.Warning)
+            msg.setWindowTitle("Erro")
+            msg.setText(f'Login ou senha inválidos.')
+            msg.exec()
+
+
 
 
 class SignUp(QWidget, Ui_Signup):
