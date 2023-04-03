@@ -1,7 +1,11 @@
 from PySide6.QtWidgets import QApplication, QMainWindow, QWidget, QMessageBox
+
 from ui_login import Ui_Login
 from ui_main import Ui_MainWindow
 from ui_signup import Ui_Signup
+from ui_verificationCode import Ui_VerificationCode
+
+
 from database import DataBase
 
 import sys
@@ -39,8 +43,6 @@ class Login(QWidget, Ui_Login):
             msg.setWindowTitle("Erro")
             msg.setText(f'Login ou senha inválidos.')
             msg.exec()
-
-
 
 
 class SignUp(QWidget, Ui_Signup):
@@ -98,6 +100,20 @@ class SignUp(QWidget, Ui_Signup):
         self.w.show()
         self.close()
 
+class VerificationCode(QWidget, Ui_VerificationCode):
+    def __init__(self) -> None:
+        super(VerificationCode, self).__init__()
+        self.setupUi(self)
+        self.setWindowTitle("Verificação de e-mail")
+
+        # eventos tela de verificação de e-mail
+        self.code_lineEdit.textChanged.connect(self.text_changed)
+
+    def text_changed(self): # verifica se o caractere digitado é maisculo, caso não seja, converte para maiúsculo
+        if self.code_lineEdit.text().isupper():
+            return
+        self.code_lineEdit.setText(self.code_lineEdit.text().upper())
+
 
 class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self) -> None:
@@ -108,7 +124,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    window = Login()
+    # window = Login()
+    # window.show()
+    window = VerificationCode()
     window.show()
-
     app.exec()
