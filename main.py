@@ -8,7 +8,10 @@ from ui_verificationCode import Ui_VerificationCode
 
 from database import DataBase
 
+from smtp import send_verify_code
+
 import sys
+
 
 class Login(QWidget, Ui_Login):
     def __init__(self) -> None:
@@ -37,6 +40,7 @@ class Login(QWidget, Ui_Login):
             self.w = MainWindow()
             self.w.show()
             self.close()
+
         else:
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Warning)
@@ -90,10 +94,16 @@ class SignUp(QWidget, Ui_Signup):
         msg.setText("Cadastro realizado com sucesso!")
         msg.exec()
 
+        code = send_verify_code(self.username_lineEdit.text(), self.email_lineEdit.text())
+
         self.username_lineEdit.setText("")
         self.password_lineEdit.setText("")
         self.password_repeat_lineEdit.setText("")
         self.email_lineEdit.setText("")
+
+        self.verify_w = VerificationCode(code)
+
+
 
     def open_login(self): # abre tela de login
         self.w = Login()
@@ -101,18 +111,39 @@ class SignUp(QWidget, Ui_Signup):
         self.close()
 
 class VerificationCode(QWidget, Ui_VerificationCode):
-    def __init__(self) -> None:
+    def __init__(self, verification_code) -> None:
         super(VerificationCode, self).__init__()
+        self.verification_code = verification_code
         self.setupUi(self)
         self.setWindowTitle("Verificação de e-mail")
 
         # eventos tela de verificação de e-mail
         self.code_lineEdit.textChanged.connect(self.text_changed)
+        # self.btn_verify.clicked.connect(self.send_code)
 
     def text_changed(self): # verifica se o caractere digitado é maisculo, caso não seja, converte para maiúsculo
         if self.code_lineEdit.text().isupper():
             return
         self.code_lineEdit.setText(self.code_lineEdit.text().upper())
+
+    def verify(self):
+        if self.code_lineEdit.text() == self.verification_code:
+            msg = QMessageBox()
+            msg.setIcon(QMessageBox.Information)
+            msg.setWindowTitle("Sucesso")
+            msg.setText("Cadastro realizado com sucesso!")
+            msg.exec()
+
+        else:
+            msg = QMessageBox()
+            msg.setIcon(QMessageBox.Information)
+            msg.setWindowTitle("Erro")
+            msg.setText("Código de verificação inválido")
+            msg.exec()
+
+
+
+
 
 
 class MainWindow(QMainWindow, Ui_MainWindow):
@@ -124,8 +155,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    # window = Login()
-    # window.show()
-    window = VerificationCode()
+    window = Login()
     window.show()
+    # window = VerificationCode()
+    # window.show()
     app.exec()

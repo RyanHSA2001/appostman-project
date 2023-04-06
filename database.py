@@ -38,7 +38,8 @@ class DataBase():
             cursor.execute("""
 
                             
-                            DROP TABLE users;
+                            DELETE FROM users
+                            WHERE id <> 0;
                             
 
                         """)
@@ -83,5 +84,5 @@ class DataBase():
 if __name__ == "__main__":
     db = DataBase()
     db.connect()
-    # db.create_table_users()
+    db.alter_table_users()
     db.close_connection()
