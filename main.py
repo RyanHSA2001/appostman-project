@@ -32,7 +32,7 @@ class Login(QWidget, Ui_Login):
     def login_auth(self): # valida os dados digitados no banco de dados. Se existente, realiza o login
         self.users = DataBase()
         self.users.connect()
-        authenticated = self.users.auth(self.username_lineEdit.text().upper(), self.password_lineEdit.text())
+        authenticated = self.users.already_exists(self.username_lineEdit.text().upper(), self.password_lineEdit.text())
 
         print(authenticated)
 
@@ -56,11 +56,11 @@ class SignUp(QWidget, Ui_Signup):
         self.setWindowTitle("Cadastro")
 
         # eventos tela de cadastro
-        self.btn_cadastrar.clicked.connect(self.insert_user)
-        self.password_repeat_lineEdit.returnPressed.connect(self.insert_user)
+        self.btn_cadastrar.clicked.connect(self.collect_user_data)
+        self.password_repeat_lineEdit.returnPressed.connect(self.collect_user_data)
         self.btn_return.clicked.connect(self.open_login)
 
-    def insert_user(self): # insere usuários no banco de dados
+    def collect_user_data(self): # insere usuários no banco de dados
         if self.password_lineEdit.text() != self.password_repeat_lineEdit.text():
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Warning)
@@ -76,32 +76,26 @@ class SignUp(QWidget, Ui_Signup):
         db = DataBase()
         db.connect()
 
-        insertion = db.insert_user(user, email, password)
-        if insertion == 'already_exists':
-            msg = QMessageBox()
-            msg.setIcon(QMessageBox.Warning)
-            msg.setWindowTitle("Erro")
-            msg.setText("Email ou usuário já cadastrado")
-            msg.exec()
-            db.close_connection()
-            return None
+        if db.already_exists(user, password, email):
+                msg = QMessageBox()
+                msg.setIcon(QMessageBox.Warning)
+                msg.setWindowTitle("Erro")
+                msg.setText("Email ou usuário já cadastrado")
+                msg.exec()
+                db.close_connection()
+                return None
 
         db.close_connection()
 
-        msg = QMessageBox()
-        msg.setIcon(QMessageBox.Information)
-        msg.setWindowTitle("Sucesso")
-        msg.setText("Cadastro realizado com sucesso!")
-        msg.exec()
+        verification_code = send_verify_code(self.username_lineEdit.text(), self.email_lineEdit.text())
 
-        code = send_verify_code(self.username_lineEdit.text(), self.email_lineEdit.text())
+        self.verify_window = VerificationCode(verification_code, user, email, password)
+        self.verify_window.show()
 
         self.username_lineEdit.setText("")
         self.password_lineEdit.setText("")
         self.password_repeat_lineEdit.setText("")
         self.email_lineEdit.setText("")
-
-        self.verify_w = VerificationCode(code)
 
 
 
@@ -111,15 +105,20 @@ class SignUp(QWidget, Ui_Signup):
         self.close()
 
 class VerificationCode(QWidget, Ui_VerificationCode):
-    def __init__(self, verification_code) -> None:
+    def __init__(self, verification_code, user, email, password) -> None:
         super(VerificationCode, self).__init__()
         self.verification_code = verification_code
+        self.user = user
+        self.email = email
+        self.password = password
+
         self.setupUi(self)
         self.setWindowTitle("Verificação de e-mail")
 
         # eventos tela de verificação de e-mail
         self.code_lineEdit.textChanged.connect(self.text_changed)
-        # self.btn_verify.clicked.connect(self.send_code)
+        self.btn_verify.clicked.connect(self.verify)
+        self.code_lineEdit.returnPressed.connect(self.verify)
 
     def text_changed(self): # verifica se o caractere digitado é maisculo, caso não seja, converte para maiúsculo
         if self.code_lineEdit.text().isupper():
@@ -128,22 +127,27 @@ class VerificationCode(QWidget, Ui_VerificationCode):
 
     def verify(self):
         if self.code_lineEdit.text() == self.verification_code:
+            db = DataBase()
+            db.connect()
+
+            db.insert_user(self.user, self.email, self.password)
+
+            db.close_connection()
+
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Information)
             msg.setWindowTitle("Sucesso")
             msg.setText("Cadastro realizado com sucesso!")
             msg.exec()
 
+            self.close()
+
         else:
             msg = QMessageBox()
-            msg.setIcon(QMessageBox.Information)
+            self.icon = msg.setIcon(QMessageBox.Information)
             msg.setWindowTitle("Erro")
             msg.setText("Código de verificação inválido")
             msg.exec()
-
-
-
-
 
 
 class MainWindow(QMainWindow, Ui_MainWindow):

@@ -36,34 +36,31 @@ class DataBase():
         try:
             cursor = self.connection.cursor()
             cursor.execute("""
-
                             
                             DELETE FROM users
                             WHERE id <> 0;
                             
-
                         """)
 
         except AttributeError:
             print("Faça a conexão")
 
-    def auth(self, user, password):
+    def already_exists(self, user, password, email=''):
         try:
             cursor = self.connection.cursor()
-            cursor.execute("""
-            
-                SELECT * FROM users;
-                
-            """)
-
-            for line in cursor.fetchall():
-                if line[1].upper() == user.upper() and line[2] == password:
-                    return True
-                else:
-                    continue
+            if email:
+                cursor.execute("""
+                    SELECT COUNT(*) FROM users WHERE user=? OR email=?
+                """, (user, email))
+            else:
+                cursor.execute("""
+                    SELECT COUNT(*) FROM users WHERE user=? OR email=? OR password=?
+                """, (user, email, password))
+            result = cursor.fetchone()
+            return result[0] > 0
+        except sqlite3.Error as error:
+            print("Error while checking user exists: ", error)
             return False
-        except:
-            ...
 
     def insert_user(self, user, email, password):
 
@@ -77,8 +74,11 @@ class DataBase():
             self.connection.commit()
         except AttributeError:
             print("Faça a conexão")
+
         except sqlite3.IntegrityError:
-            return "already_exists"
+            print(email)
+
+
 
 
 if __name__ == "__main__":
