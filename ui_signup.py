@@ -24,8 +24,6 @@ class Ui_Signup(object):
             cadastro.setObjectName(u"cadastro")
         cadastro.resize(409, 483)
         cadastro.setStyleSheet(u"background-color: rgb(40, 40, 40);")
-        cadastro.setMinimumSize(QSize(409, 483))
-        cadastro.setMaximumSize(QSize(409, 483))
         self.frame = QFrame(cadastro)
         self.frame.setObjectName(u"frame")
         self.frame.setGeometry(QRect(70, 70, 271, 371))
@@ -45,6 +43,7 @@ class Ui_Signup(object):
         self.username_lineEdit.setFont(font1)
         self.username_lineEdit.setStyleSheet(u"border-color: rgb(255, 255, 255);\n"
 "color: rgb(255, 255, 255);")
+        self.username_lineEdit.setMaxLength(20)
         self.username_lineEdit.setAlignment(Qt.AlignCenter)
         self.email_lineEdit = QLineEdit(self.frame)
         self.email_lineEdit.setObjectName(u"email_lineEdit")
@@ -52,6 +51,7 @@ class Ui_Signup(object):
         self.email_lineEdit.setFont(font1)
         self.email_lineEdit.setStyleSheet(u"border-color: rgb(255, 255, 255);\n"
 "color: rgb(255, 255, 255);")
+        self.email_lineEdit.setMaxLength(50)
         self.email_lineEdit.setAlignment(Qt.AlignCenter)
         self.password_lineEdit = QLineEdit(self.frame)
         self.password_lineEdit.setObjectName(u"password_lineEdit")
@@ -59,6 +59,7 @@ class Ui_Signup(object):
         self.password_lineEdit.setFont(font1)
         self.password_lineEdit.setStyleSheet(u"border-color: rgb(255, 255, 255);\n"
 "color: rgb(255, 255, 255);")
+        self.password_lineEdit.setMaxLength(20)
         self.password_lineEdit.setEchoMode(QLineEdit.Password)
         self.password_lineEdit.setAlignment(Qt.AlignCenter)
         self.password_repeat_lineEdit = QLineEdit(self.frame)
@@ -67,6 +68,7 @@ class Ui_Signup(object):
         self.password_repeat_lineEdit.setFont(font1)
         self.password_repeat_lineEdit.setStyleSheet(u"border-color: rgb(255, 255, 255);\n"
 "color: rgb(255, 255, 255);")
+        self.password_repeat_lineEdit.setMaxLength(20)
         self.password_repeat_lineEdit.setEchoMode(QLineEdit.Password)
         self.password_repeat_lineEdit.setAlignment(Qt.AlignCenter)
         self.btn_cadastrar = QPushButton(self.frame)

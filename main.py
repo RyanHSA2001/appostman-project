@@ -12,6 +12,8 @@ from smtp import send_verify_code
 
 import sys
 
+import re
+
 
 class Login(QWidget, Ui_Login):
     def __init__(self) -> None:
@@ -60,7 +62,39 @@ class SignUp(QWidget, Ui_Signup):
         self.password_repeat_lineEdit.returnPressed.connect(self.collect_user_data)
         self.btn_return.clicked.connect(self.open_login)
 
+
+    def validar_email(self, email):
+        # Define o padrão de expressão regular para verificar o formato do e-mail
+        standard = r'^[\w]+[\.\w-]*@[\w-]+\.[a-zA-Z]{2,}$'
+
+        # Verifica se o e-mail corresponde ao padrão
+        if re.match(standard, email):
+            return True
+        else:
+            self.false = False
+            return self.false
+
+
     def collect_user_data(self): # insere usuários no banco de dados
+
+        if not self.validar_email(self.email_lineEdit.text()):
+            msg = QMessageBox()
+            msg.setIcon(QMessageBox.Warning)
+            msg.setWindowTitle("Erro")
+            msg.setText("E-mail inválido")
+            msg.exec()
+            return None
+
+
+        if not self.username_lineEdit.text() or not self.email_lineEdit.text() or not self.password_lineEdit.text():
+            msg = QMessageBox()
+            msg.setIcon(QMessageBox.Warning)
+            msg.setWindowTitle("Erro")
+            msg.setText("Todos os campos são obrigatórios")
+            msg.exec()
+            return None
+
+
         if self.password_lineEdit.text() != self.password_repeat_lineEdit.text():
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Warning)
@@ -72,6 +106,7 @@ class SignUp(QWidget, Ui_Signup):
         user = self.username_lineEdit.text()
         password = self.password_lineEdit.text()
         email = self.email_lineEdit.text()
+
 
         db = DataBase()
         db.connect()
