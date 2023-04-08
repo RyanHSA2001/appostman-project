@@ -23,6 +23,8 @@ class Ui_Signup(object):
         if not cadastro.objectName():
             cadastro.setObjectName(u"cadastro")
         cadastro.resize(409, 483)
+        cadastro.setMinimumSize(QSize(409, 483))
+        cadastro.setMaximumSize(QSize(409, 483))
         cadastro.setStyleSheet(u"background-color: rgb(40, 40, 40);")
         self.frame = QFrame(cadastro)
         self.frame.setObjectName(u"frame")

@@ -4,6 +4,7 @@ from ui_login import Ui_Login
 from ui_main import Ui_MainWindow
 from ui_signup import Ui_Signup
 from ui_verificationCode import Ui_VerificationCode
+from ui_forgetPassword import Ui_forgetpassword
 
 
 from database import DataBase
@@ -25,6 +26,7 @@ class Login(QWidget, Ui_Login):
         self.btn_entre.clicked.connect(self.login_auth)
         self.password_lineEdit.returnPressed.connect(self.login_auth)
         self.btn_cadastre.clicked.connect(self.open_signup)
+        self.forget_password_pushButton.clicked.connect(self.forget_password)
 
     def open_signup(self): # abre a tela de cadastro
         self.w = SignUp()
@@ -49,6 +51,11 @@ class Login(QWidget, Ui_Login):
             msg.setWindowTitle("Erro")
             msg.setText(f'Login ou senha inválidos.')
             msg.exec()
+
+    def forget_password(self):
+        self.forget_w = ForgetPassword()
+        self.forget_w.show()
+
 
 
 class SignUp(QWidget, Ui_Signup):
@@ -138,6 +145,13 @@ class SignUp(QWidget, Ui_Signup):
         self.w = Login()
         self.w.show()
         self.close()
+
+class ForgetPassword(QWidget, Ui_forgetpassword):
+    def __init__(self) -> None:
+        super(ForgetPassword, self).__init__()
+
+        self.setupUi(self)
+        self.setWindowTitle("Redefinição de senha")
 
 class VerificationCode(QWidget, Ui_VerificationCode):
     def __init__(self, verification_code, user, email, password) -> None:
