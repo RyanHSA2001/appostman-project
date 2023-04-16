@@ -32,18 +32,22 @@ class DataBase():
         except AttributeError:
             print("Faça a conexão")
 
-    def alter_table_users(self):
+
+    def update_password(self, user, new_password):
         try:
             cursor = self.connection.cursor()
             cursor.execute("""
-                            
-                            DELETE FROM users
-                            WHERE id <> 0;
-                            
-                        """)
+                UPDATE users SET password = ? WHERE user = ?
+            """, (new_password, user))
 
-        except AttributeError:
-            print("Faça a conexão")
+            self.connection.commit()
+
+            cursor.close()
+
+            return True
+        except sqlite3.Error as error:
+            print("Error while updating password: ", error)
+            return False
 
     def already_exists(self, user, password, email=''):
         try:
@@ -61,6 +65,24 @@ class DataBase():
         except sqlite3.Error as error:
             print("Error while checking user exists: ", error)
             return False
+
+    def search_email(self, email):
+        try:
+            cursor = self.connection.cursor()
+
+            cursor.execute("""
+                        SELECT * FROM users WHERE email=?
+                    """, (email,))
+
+            result = cursor.fetchone()
+
+            cursor.close()
+
+            return result
+        except sqlite3.Error as error:
+            print("Error while checking email exists: ", error)
+            return False
+
 
     def insert_user(self, user, email, password):
 

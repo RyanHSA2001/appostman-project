@@ -1,26 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>cadastro</class>
- <widget class="QWidget" name="cadastro">
+ <class>signup</class>
+ <widget class="QWidget" name="signup">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>409</width>
-    <height>483</height>
+    <width>459</width>
+    <height>420</height>
    </rect>
   </property>
-  <property name="minimumSize">
-   <size>
-    <width>409</width>
-    <height>483</height>
-   </size>
-  </property>
-  <property name="maximumSize">
-   <size>
-    <width>409</width>
-    <height>483</height>
-   </size>
+  <property name="focusPolicy">
+   <enum>Qt::StrongFocus</enum>
   </property>
   <property name="windowTitle">
    <string>Form</string>
@@ -31,10 +22,10 @@
   <widget class="QFrame" name="frame">
    <property name="geometry">
     <rect>
-     <x>70</x>
+     <x>30</x>
      <y>70</y>
-     <width>271</width>
-     <height>371</height>
+     <width>401</width>
+     <height>281</height>
     </rect>
    </property>
    <property name="font">
@@ -55,9 +46,9 @@
    <widget class="QLineEdit" name="username_lineEdit">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>60</y>
-      <width>211</width>
+      <x>40</x>
+      <y>30</y>
+      <width>321</width>
       <height>31</height>
      </rect>
     </property>
@@ -66,6 +57,9 @@
       <family>Candara</family>
       <pointsize>14</pointsize>
      </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::ClickFocus</enum>
     </property>
     <property name="styleSheet">
      <string notr="true">border-color: rgb(255, 255, 255);
@@ -80,13 +74,16 @@ color: rgb(255, 255, 255);</string>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
     </property>
+    <property name="placeholderText">
+     <string>NOME DE USUÁRIO</string>
+    </property>
    </widget>
    <widget class="QLineEdit" name="email_lineEdit">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>120</y>
-      <width>211</width>
+      <x>40</x>
+      <y>80</y>
+      <width>321</width>
       <height>31</height>
      </rect>
     </property>
@@ -95,6 +92,9 @@ color: rgb(255, 255, 255);</string>
       <family>Candara</family>
       <pointsize>14</pointsize>
      </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::ClickFocus</enum>
     </property>
     <property name="styleSheet">
      <string notr="true">border-color: rgb(255, 255, 255);
@@ -109,13 +109,16 @@ color: rgb(255, 255, 255);</string>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
     </property>
+    <property name="placeholderText">
+     <string>E-MAIL</string>
+    </property>
    </widget>
    <widget class="QLineEdit" name="password_lineEdit">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>180</y>
-      <width>211</width>
+      <x>40</x>
+      <y>130</y>
+      <width>321</width>
       <height>31</height>
      </rect>
     </property>
@@ -124,6 +127,9 @@ color: rgb(255, 255, 255);</string>
       <family>Candara</family>
       <pointsize>14</pointsize>
      </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::ClickFocus</enum>
     </property>
     <property name="styleSheet">
      <string notr="true">border-color: rgb(255, 255, 255);
@@ -141,13 +147,16 @@ color: rgb(255, 255, 255);</string>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
     </property>
+    <property name="placeholderText">
+     <string>SENHA</string>
+    </property>
    </widget>
    <widget class="QLineEdit" name="password_repeat_lineEdit">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>240</y>
-      <width>211</width>
+      <x>40</x>
+      <y>180</y>
+      <width>321</width>
       <height>31</height>
      </rect>
     </property>
@@ -156,6 +165,9 @@ color: rgb(255, 255, 255);</string>
       <family>Candara</family>
       <pointsize>14</pointsize>
      </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::ClickFocus</enum>
     </property>
     <property name="styleSheet">
      <string notr="true">border-color: rgb(255, 255, 255);
@@ -170,13 +182,16 @@ color: rgb(255, 255, 255);</string>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
     </property>
+    <property name="placeholderText">
+     <string>DIGITE A SENHA NOVAMENTE</string>
+    </property>
    </widget>
    <widget class="QPushButton" name="btn_cadastrar">
     <property name="geometry">
      <rect>
-      <x>80</x>
-      <y>300</y>
-      <width>111</width>
+      <x>140</x>
+      <y>230</y>
+      <width>121</width>
       <height>31</height>
      </rect>
     </property>
@@ -185,6 +200,9 @@ color: rgb(255, 255, 255);</string>
       <family>Candara</family>
       <pointsize>12</pointsize>
      </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::ClickFocus</enum>
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton{
@@ -204,100 +222,12 @@ background-color: rgb(255, 255, 255);
      <string>CADASTRAR</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_2">
-    <property name="geometry">
-     <rect>
-      <x>70</x>
-      <y>40</y>
-      <width>191</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Candara</family>
-      <pointsize>14</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 255);</string>
-    </property>
-    <property name="text">
-     <string>Nome de usuário</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_3">
-    <property name="geometry">
-     <rect>
-      <x>110</x>
-      <y>100</y>
-      <width>71</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Candara</family>
-      <pointsize>14</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 255);</string>
-    </property>
-    <property name="text">
-     <string>E-mail</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_4">
-    <property name="geometry">
-     <rect>
-      <x>110</x>
-      <y>160</y>
-      <width>191</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Candara</family>
-      <pointsize>14</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 255);</string>
-    </property>
-    <property name="text">
-     <string>Senha</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_5">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>220</y>
-      <width>211</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Candara</family>
-      <pointsize>14</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 255);</string>
-    </property>
-    <property name="text">
-     <string>Digite a senha novamente</string>
-    </property>
-   </widget>
   </widget>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>140</x>
-     <y>30</y>
+     <x>170</x>
+     <y>20</y>
      <width>131</width>
      <height>31</height>
     </rect>
@@ -318,10 +248,10 @@ background-color: rgb(255, 255, 255);
   <widget class="QPushButton" name="btn_return">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>450</y>
-     <width>75</width>
-     <height>23</height>
+     <x>20</x>
+     <y>370</y>
+     <width>81</width>
+     <height>31</height>
     </rect>
    </property>
    <property name="font">
@@ -329,6 +259,9 @@ background-color: rgb(255, 255, 255);
      <family>Candara</family>
      <pointsize>10</pointsize>
     </font>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::ClickFocus</enum>
    </property>
    <property name="styleSheet">
     <string notr="true">QPushButton{

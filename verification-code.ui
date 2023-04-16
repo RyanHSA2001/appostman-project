@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>246</height>
+    <width>459</width>
+    <height>235</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,10 +19,10 @@
   <widget class="QFrame" name="frame">
    <property name="geometry">
     <rect>
-     <x>50</x>
+     <x>30</x>
      <y>60</y>
-     <width>301</width>
-     <height>171</height>
+     <width>401</width>
+     <height>151</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -34,34 +34,12 @@
    <property name="frameShadow">
     <enum>QFrame::Raised</enum>
    </property>
-   <widget class="QLabel" name="label_2">
-    <property name="geometry">
-     <rect>
-      <x>50</x>
-      <y>10</y>
-      <width>211</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Candara</family>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 255);</string>
-    </property>
-    <property name="text">
-     <string>Digite o código de verificação</string>
-    </property>
-   </widget>
    <widget class="QLineEdit" name="code_lineEdit">
     <property name="geometry">
      <rect>
-      <x>70</x>
-      <y>50</y>
-      <width>161</width>
+      <x>40</x>
+      <y>20</y>
+      <width>321</width>
       <height>31</height>
      </rect>
     </property>
@@ -70,6 +48,9 @@
       <family>Candara</family>
       <pointsize>14</pointsize>
      </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::ClickFocus</enum>
     </property>
     <property name="styleSheet">
      <string notr="true">color: rgb(255, 255, 255);</string>
@@ -83,15 +64,27 @@
     <property name="alignment">
      <set>Qt::AlignCenter</set>
     </property>
+    <property name="placeholderText">
+     <string>CÓDIGO DE VERIFICAÇÃO</string>
+    </property>
    </widget>
    <widget class="QPushButton" name="btn_resend">
     <property name="geometry">
      <rect>
-      <x>50</x>
-      <y>140</y>
-      <width>201</width>
+      <x>70</x>
+      <y>120</y>
+      <width>261</width>
       <height>23</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Candara</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::ClickFocus</enum>
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton{
@@ -113,11 +106,20 @@ QPushButton:hover
    <widget class="QPushButton" name="btn_verify">
     <property name="geometry">
      <rect>
-      <x>100</x>
-      <y>100</y>
+      <x>150</x>
+      <y>70</y>
       <width>101</width>
       <height>31</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Candara</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::ClickFocus</enum>
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton{
@@ -134,7 +136,7 @@ background-color: rgb(255, 255, 255);
 }</string>
     </property>
     <property name="text">
-     <string>Verificar</string>
+     <string>VERIFICAR</string>
     </property>
    </widget>
   </widget>
@@ -143,21 +145,21 @@ background-color: rgb(255, 255, 255);
     <rect>
      <x>30</x>
      <y>20</y>
-     <width>341</width>
+     <width>421</width>
      <height>21</height>
     </rect>
    </property>
    <property name="font">
     <font>
      <family>Candara</family>
-     <pointsize>12</pointsize>
+     <pointsize>14</pointsize>
     </font>
    </property>
    <property name="styleSheet">
     <string notr="true">color: rgb(255, 255, 255);</string>
    </property>
    <property name="text">
-    <string>Um código de verificação foi enviado ao seu e-mail</string>
+    <string>Um código de verificação foi enviado ao seu e-mail!</string>
    </property>
   </widget>
  </widget>

@@ -18,40 +18,38 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
 from PySide6.QtWidgets import (QApplication, QFrame, QLabel, QLineEdit,
     QPushButton, QSizePolicy, QWidget)
 
-class Ui_VerificationCode(object):
+class Ui_verificationCode(object):
     def setupUi(self, verificationCode):
         if not verificationCode.objectName():
             verificationCode.setObjectName(u"verificationCode")
-        verificationCode.resize(400, 246)
+        verificationCode.resize(459, 235)
         verificationCode.setStyleSheet(u"background-color: rgb(40, 40, 40);")
         self.frame = QFrame(verificationCode)
         self.frame.setObjectName(u"frame")
-        self.frame.setGeometry(QRect(50, 60, 301, 171))
+        self.frame.setGeometry(QRect(30, 60, 401, 151))
         self.frame.setStyleSheet(u"background-color: rgb(49, 49, 49);")
         self.frame.setFrameShape(QFrame.StyledPanel)
         self.frame.setFrameShadow(QFrame.Raised)
-        self.label_2 = QLabel(self.frame)
-        self.label_2.setObjectName(u"label_2")
-        self.label_2.setGeometry(QRect(50, 10, 211, 21))
-        font = QFont()
-        font.setFamilies([u"Candara"])
-        font.setPointSize(12)
-        self.label_2.setFont(font)
-        self.label_2.setStyleSheet(u"color: rgb(255, 255, 255);")
         self.code_lineEdit = QLineEdit(self.frame)
         self.code_lineEdit.setObjectName(u"code_lineEdit")
-        self.code_lineEdit.setGeometry(QRect(70, 50, 161, 31))
-        font1 = QFont()
-        font1.setFamilies([u"Candara"])
-        font1.setPointSize(14)
-        self.code_lineEdit.setFont(font1)
+        self.code_lineEdit.setGeometry(QRect(40, 20, 321, 31))
+        font = QFont()
+        font.setFamilies([u"Candara"])
+        font.setPointSize(14)
+        self.code_lineEdit.setFont(font)
+        self.code_lineEdit.setFocusPolicy(Qt.ClickFocus)
         self.code_lineEdit.setStyleSheet(u"color: rgb(255, 255, 255);")
         self.code_lineEdit.setInputMethodHints(Qt.ImhNone)
         self.code_lineEdit.setMaxLength(10)
         self.code_lineEdit.setAlignment(Qt.AlignCenter)
         self.btn_resend = QPushButton(self.frame)
         self.btn_resend.setObjectName(u"btn_resend")
-        self.btn_resend.setGeometry(QRect(50, 140, 201, 23))
+        self.btn_resend.setGeometry(QRect(70, 120, 261, 23))
+        font1 = QFont()
+        font1.setFamilies([u"Candara"])
+        font1.setPointSize(12)
+        self.btn_resend.setFont(font1)
+        self.btn_resend.setFocusPolicy(Qt.ClickFocus)
         self.btn_resend.setStyleSheet(u"QPushButton{\n"
 "background-color: rgba(0, 0, 0, 2);\n"
 "color: rgb(212, 170, 0);\n"
@@ -65,7 +63,9 @@ class Ui_VerificationCode(object):
 "}")
         self.btn_verify = QPushButton(self.frame)
         self.btn_verify.setObjectName(u"btn_verify")
-        self.btn_verify.setGeometry(QRect(100, 100, 101, 31))
+        self.btn_verify.setGeometry(QRect(150, 70, 101, 31))
+        self.btn_verify.setFont(font1)
+        self.btn_verify.setFocusPolicy(Qt.ClickFocus)
         self.btn_verify.setStyleSheet(u"QPushButton{\n"
 "background-color: rgb(20, 39, 203);\n"
 "color: rgb(255, 255, 255);\n"
@@ -80,7 +80,7 @@ class Ui_VerificationCode(object):
 "}")
         self.label = QLabel(verificationCode)
         self.label.setObjectName(u"label")
-        self.label.setGeometry(QRect(30, 20, 341, 21))
+        self.label.setGeometry(QRect(30, 20, 421, 21))
         self.label.setFont(font)
         self.label.setStyleSheet(u"color: rgb(255, 255, 255);")
 
@@ -91,9 +91,9 @@ class Ui_VerificationCode(object):
 
     def retranslateUi(self, verificationCode):
         verificationCode.setWindowTitle(QCoreApplication.translate("verificationCode", u"Form", None))
-        self.label_2.setText(QCoreApplication.translate("verificationCode", u"Digite o c\u00f3digo de verifica\u00e7\u00e3o", None))
+        self.code_lineEdit.setPlaceholderText(QCoreApplication.translate("verificationCode", u"C\u00d3DIGO DE VERIFICA\u00c7\u00c3O", None))
         self.btn_resend.setText(QCoreApplication.translate("verificationCode", u"N\u00e3o recebeu o c\u00f3digo de verifica\u00e7\u00e3o?", None))
-        self.btn_verify.setText(QCoreApplication.translate("verificationCode", u"Verificar", None))
-        self.label.setText(QCoreApplication.translate("verificationCode", u"Um c\u00f3digo de verifica\u00e7\u00e3o foi enviado ao seu e-mail", None))
+        self.btn_verify.setText(QCoreApplication.translate("verificationCode", u"VERIFICAR", None))
+        self.label.setText(QCoreApplication.translate("verificationCode", u"Um c\u00f3digo de verifica\u00e7\u00e3o foi enviado ao seu e-mail!", None))
     # retranslateUi
 
