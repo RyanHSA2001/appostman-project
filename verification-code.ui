@@ -25,6 +25,9 @@
      <height>151</height>
     </rect>
    </property>
+   <property name="focusPolicy">
+    <enum>Qt::StrongFocus</enum>
+   </property>
    <property name="styleSheet">
     <string notr="true">background-color: rgb(49, 49, 49);</string>
    </property>
@@ -50,7 +53,7 @@
      </font>
     </property>
     <property name="focusPolicy">
-     <enum>Qt::ClickFocus</enum>
+     <enum>Qt::StrongFocus</enum>
     </property>
     <property name="styleSheet">
      <string notr="true">color: rgb(255, 255, 255);</string>
@@ -83,8 +86,11 @@
       <pointsize>12</pointsize>
      </font>
     </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
     <property name="focusPolicy">
-     <enum>Qt::ClickFocus</enum>
+     <enum>Qt::StrongFocus</enum>
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton{
@@ -118,8 +124,11 @@ QPushButton:hover
       <pointsize>12</pointsize>
      </font>
     </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
     <property name="focusPolicy">
-     <enum>Qt::ClickFocus</enum>
+     <enum>Qt::StrongFocus</enum>
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton{
@@ -163,6 +172,12 @@ background-color: rgb(255, 255, 255);
    </property>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>frame</tabstop>
+  <tabstop>code_lineEdit</tabstop>
+  <tabstop>btn_verify</tabstop>
+  <tabstop>btn_resend</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

@@ -23,7 +23,7 @@ class Ui_signup(object):
         if not signup.objectName():
             signup.setObjectName(u"signup")
         signup.resize(459, 420)
-        signup.setFocusPolicy(Qt.StrongFocus)
+        signup.setFocusPolicy(Qt.NoFocus)
         signup.setStyleSheet(u"background-color: rgb(40, 40, 40);")
         self.frame = QFrame(signup)
         self.frame.setObjectName(u"frame")
@@ -32,6 +32,7 @@ class Ui_signup(object):
         font.setFamilies([u"Candara"])
         font.setPointSize(10)
         self.frame.setFont(font)
+        self.frame.setFocusPolicy(Qt.StrongFocus)
         self.frame.setStyleSheet(u"background-color: rgb(49, 49, 49);")
         self.frame.setFrameShape(QFrame.StyledPanel)
         self.frame.setFrameShadow(QFrame.Raised)
@@ -42,7 +43,7 @@ class Ui_signup(object):
         font1.setFamilies([u"Candara"])
         font1.setPointSize(14)
         self.username_lineEdit.setFont(font1)
-        self.username_lineEdit.setFocusPolicy(Qt.ClickFocus)
+        self.username_lineEdit.setFocusPolicy(Qt.StrongFocus)
         self.username_lineEdit.setStyleSheet(u"border-color: rgb(255, 255, 255);\n"
 "color: rgb(255, 255, 255);")
         self.username_lineEdit.setMaxLength(20)
@@ -51,7 +52,7 @@ class Ui_signup(object):
         self.email_lineEdit.setObjectName(u"email_lineEdit")
         self.email_lineEdit.setGeometry(QRect(40, 80, 321, 31))
         self.email_lineEdit.setFont(font1)
-        self.email_lineEdit.setFocusPolicy(Qt.ClickFocus)
+        self.email_lineEdit.setFocusPolicy(Qt.StrongFocus)
         self.email_lineEdit.setStyleSheet(u"border-color: rgb(255, 255, 255);\n"
 "color: rgb(255, 255, 255);")
         self.email_lineEdit.setMaxLength(50)
@@ -60,7 +61,7 @@ class Ui_signup(object):
         self.password_lineEdit.setObjectName(u"password_lineEdit")
         self.password_lineEdit.setGeometry(QRect(40, 130, 321, 31))
         self.password_lineEdit.setFont(font1)
-        self.password_lineEdit.setFocusPolicy(Qt.ClickFocus)
+        self.password_lineEdit.setFocusPolicy(Qt.StrongFocus)
         self.password_lineEdit.setStyleSheet(u"border-color: rgb(255, 255, 255);\n"
 "color: rgb(255, 255, 255);")
         self.password_lineEdit.setMaxLength(20)
@@ -70,7 +71,7 @@ class Ui_signup(object):
         self.password_repeat_lineEdit.setObjectName(u"password_repeat_lineEdit")
         self.password_repeat_lineEdit.setGeometry(QRect(40, 180, 321, 31))
         self.password_repeat_lineEdit.setFont(font1)
-        self.password_repeat_lineEdit.setFocusPolicy(Qt.ClickFocus)
+        self.password_repeat_lineEdit.setFocusPolicy(Qt.StrongFocus)
         self.password_repeat_lineEdit.setStyleSheet(u"border-color: rgb(255, 255, 255);\n"
 "color: rgb(255, 255, 255);")
         self.password_repeat_lineEdit.setMaxLength(20)
@@ -83,7 +84,8 @@ class Ui_signup(object):
         font2.setFamilies([u"Candara"])
         font2.setPointSize(12)
         self.btn_cadastrar.setFont(font2)
-        self.btn_cadastrar.setFocusPolicy(Qt.ClickFocus)
+        self.btn_cadastrar.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btn_cadastrar.setFocusPolicy(Qt.StrongFocus)
         self.btn_cadastrar.setStyleSheet(u"QPushButton{\n"
 "background-color: rgb(20, 39, 203);\n"
 "color: rgb(255, 255, 255);\n"
@@ -108,7 +110,8 @@ class Ui_signup(object):
         self.btn_return.setObjectName(u"btn_return")
         self.btn_return.setGeometry(QRect(20, 370, 81, 31))
         self.btn_return.setFont(font)
-        self.btn_return.setFocusPolicy(Qt.ClickFocus)
+        self.btn_return.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btn_return.setFocusPolicy(Qt.StrongFocus)
         self.btn_return.setStyleSheet(u"QPushButton{\n"
 "background-color: rgb(206, 0, 3);\n"
 "color: rgb(255, 255, 255);\n"
@@ -121,6 +124,12 @@ class Ui_signup(object):
 "background-color: rgb(255, 255, 255);\n"
 "	color: rgb(0, 0, 0);\n"
 "}")
+        QWidget.setTabOrder(self.frame, self.username_lineEdit)
+        QWidget.setTabOrder(self.username_lineEdit, self.email_lineEdit)
+        QWidget.setTabOrder(self.email_lineEdit, self.password_lineEdit)
+        QWidget.setTabOrder(self.password_lineEdit, self.password_repeat_lineEdit)
+        QWidget.setTabOrder(self.password_repeat_lineEdit, self.btn_cadastrar)
+        QWidget.setTabOrder(self.btn_cadastrar, self.btn_return)
 
         self.retranslateUi(signup)
 

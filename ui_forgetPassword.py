@@ -23,11 +23,12 @@ class Ui_forgetpassword(object):
         if not forgetpassword.objectName():
             forgetpassword.setObjectName(u"forgetpassword")
         forgetpassword.resize(459, 332)
-        forgetpassword.setFocusPolicy(Qt.StrongFocus)
+        forgetpassword.setFocusPolicy(Qt.NoFocus)
         forgetpassword.setStyleSheet(u"background-color: rgb(40, 40, 40);")
         self.frame = QFrame(forgetpassword)
         self.frame.setObjectName(u"frame")
         self.frame.setGeometry(QRect(30, 70, 401, 231))
+        self.frame.setFocusPolicy(Qt.StrongFocus)
         self.frame.setStyleSheet(u"background-color: rgb(49, 49, 49);")
         self.frame.setFrameShape(QFrame.StyledPanel)
         self.frame.setFrameShadow(QFrame.Raised)
@@ -38,7 +39,7 @@ class Ui_forgetpassword(object):
         font.setFamilies([u"Candara"])
         font.setPointSize(14)
         self.password_lineEdit.setFont(font)
-        self.password_lineEdit.setFocusPolicy(Qt.ClickFocus)
+        self.password_lineEdit.setFocusPolicy(Qt.StrongFocus)
         self.password_lineEdit.setStyleSheet(u"color: rgb(255, 255, 255);")
         self.password_lineEdit.setMaxLength(20)
         self.password_lineEdit.setEchoMode(QLineEdit.Password)
@@ -47,7 +48,7 @@ class Ui_forgetpassword(object):
         self.repeat_password_lineEdit.setObjectName(u"repeat_password_lineEdit")
         self.repeat_password_lineEdit.setGeometry(QRect(40, 120, 321, 31))
         self.repeat_password_lineEdit.setFont(font)
-        self.repeat_password_lineEdit.setFocusPolicy(Qt.ClickFocus)
+        self.repeat_password_lineEdit.setFocusPolicy(Qt.StrongFocus)
         self.repeat_password_lineEdit.setStyleSheet(u"color: rgb(255, 255, 255);")
         self.repeat_password_lineEdit.setMaxLength(20)
         self.repeat_password_lineEdit.setEchoMode(QLineEdit.Password)
@@ -59,7 +60,8 @@ class Ui_forgetpassword(object):
         font1.setFamilies([u"Candara"])
         font1.setPointSize(12)
         self.btn_redefine.setFont(font1)
-        self.btn_redefine.setFocusPolicy(Qt.ClickFocus)
+        self.btn_redefine.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btn_redefine.setFocusPolicy(Qt.StrongFocus)
         self.btn_redefine.setStyleSheet(u"QPushButton{\n"
 "background-color: rgb(20, 39, 203);\n"
 "color: rgb(255, 255, 255);\n"
@@ -76,7 +78,7 @@ class Ui_forgetpassword(object):
         self.email_lineEdit.setObjectName(u"email_lineEdit")
         self.email_lineEdit.setGeometry(QRect(40, 20, 321, 31))
         self.email_lineEdit.setFont(font)
-        self.email_lineEdit.setFocusPolicy(Qt.ClickFocus)
+        self.email_lineEdit.setFocusPolicy(Qt.StrongFocus)
         self.email_lineEdit.setStyleSheet(u"color: rgb(255, 255, 255);")
         self.email_lineEdit.setMaxLength(50)
         self.email_lineEdit.setAlignment(Qt.AlignCenter)
@@ -88,6 +90,10 @@ class Ui_forgetpassword(object):
         font2.setPointSize(20)
         self.label.setFont(font2)
         self.label.setStyleSheet(u"color: rgb(255, 255, 255);")
+        QWidget.setTabOrder(self.frame, self.email_lineEdit)
+        QWidget.setTabOrder(self.email_lineEdit, self.password_lineEdit)
+        QWidget.setTabOrder(self.password_lineEdit, self.repeat_password_lineEdit)
+        QWidget.setTabOrder(self.repeat_password_lineEdit, self.btn_redefine)
 
         self.retranslateUi(forgetpassword)
 

@@ -23,7 +23,7 @@
    </size>
   </property>
   <property name="focusPolicy">
-   <enum>Qt::StrongFocus</enum>
+   <enum>Qt::NoFocus</enum>
   </property>
   <property name="windowTitle">
    <string>Form</string>
@@ -39,6 +39,9 @@
      <width>341</width>
      <height>301</height>
     </rect>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::StrongFocus</enum>
    </property>
    <property name="styleSheet">
     <string notr="true">background-color: rgb(49, 49, 49);</string>
@@ -65,7 +68,7 @@
      </font>
     </property>
     <property name="focusPolicy">
-     <enum>Qt::ClickFocus</enum>
+     <enum>Qt::StrongFocus</enum>
     </property>
     <property name="styleSheet">
      <string notr="true">border-color: rgb(255, 255, 255);
@@ -103,7 +106,7 @@ color: rgb(255, 255, 255);</string>
      <cursorShape>IBeamCursor</cursorShape>
     </property>
     <property name="focusPolicy">
-     <enum>Qt::ClickFocus</enum>
+     <enum>Qt::StrongFocus</enum>
     </property>
     <property name="styleSheet">
      <string notr="true">color: rgb(255, 255, 255);</string>
@@ -143,7 +146,7 @@ color: rgb(255, 255, 255);</string>
      <cursorShape>PointingHandCursor</cursorShape>
     </property>
     <property name="focusPolicy">
-     <enum>Qt::ClickFocus</enum>
+     <enum>Qt::StrongFocus</enum>
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton{
@@ -211,7 +214,7 @@ color: rgb(255, 255, 255);</string>
      <cursorShape>PointingHandCursor</cursorShape>
     </property>
     <property name="focusPolicy">
-     <enum>Qt::ClickFocus</enum>
+     <enum>Qt::StrongFocus</enum>
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton{
@@ -246,8 +249,11 @@ background-color: rgb(255, 255, 255);
       <pointsize>12</pointsize>
      </font>
     </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
     <property name="focusPolicy">
-     <enum>Qt::ClickFocus</enum>
+     <enum>Qt::StrongFocus</enum>
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton{

@@ -1,5 +1,7 @@
 from PySide6.QtWidgets import QApplication, QMainWindow, QWidget, QMessageBox
 
+from PySide6.QtCore import QPropertyAnimation, QEasingCurve
+
 from ui_login import Ui_login
 from ui_main import Ui_MainWindow
 from ui_signup import Ui_signup
@@ -287,10 +289,33 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.setupUi(self)
         self.setWindowTitle("Appostman")
 
+    # eventos tela principal
+
+        self.btn_toggle.clicked.connect(self.left_menu)
+
+    def left_menu(self):
+
+        width = self.left_container.width()
+
+        if width == 0:
+            newWidth = 250
+        else:
+            newWidth = 0
+
+        self.animation = QPropertyAnimation(self.left_container, b"maximumWidth")
+        self.animation.setDuration(300)
+        self.animation.setStartValue(width)
+        self.animation.setEndValue(newWidth)
+        self.animation.setEasingCurve(QEasingCurve.InOutQuart)
+        self.animation.start()
+
+
+
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     window = Login()
+    # window = MainWindow()
     window.show()
     # window = VerificationCode()
     # window.show()

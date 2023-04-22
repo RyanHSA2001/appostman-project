@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="focusPolicy">
-   <enum>Qt::StrongFocus</enum>
+   <enum>Qt::NoFocus</enum>
   </property>
   <property name="windowTitle">
    <string>Form</string>
@@ -33,6 +33,9 @@
      <family>Candara</family>
      <pointsize>10</pointsize>
     </font>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::StrongFocus</enum>
    </property>
    <property name="styleSheet">
     <string notr="true">background-color: rgb(49, 49, 49);</string>
@@ -59,7 +62,7 @@
      </font>
     </property>
     <property name="focusPolicy">
-     <enum>Qt::ClickFocus</enum>
+     <enum>Qt::StrongFocus</enum>
     </property>
     <property name="styleSheet">
      <string notr="true">border-color: rgb(255, 255, 255);
@@ -94,7 +97,7 @@ color: rgb(255, 255, 255);</string>
      </font>
     </property>
     <property name="focusPolicy">
-     <enum>Qt::ClickFocus</enum>
+     <enum>Qt::StrongFocus</enum>
     </property>
     <property name="styleSheet">
      <string notr="true">border-color: rgb(255, 255, 255);
@@ -129,7 +132,7 @@ color: rgb(255, 255, 255);</string>
      </font>
     </property>
     <property name="focusPolicy">
-     <enum>Qt::ClickFocus</enum>
+     <enum>Qt::StrongFocus</enum>
     </property>
     <property name="styleSheet">
      <string notr="true">border-color: rgb(255, 255, 255);
@@ -167,7 +170,7 @@ color: rgb(255, 255, 255);</string>
      </font>
     </property>
     <property name="focusPolicy">
-     <enum>Qt::ClickFocus</enum>
+     <enum>Qt::StrongFocus</enum>
     </property>
     <property name="styleSheet">
      <string notr="true">border-color: rgb(255, 255, 255);
@@ -201,8 +204,11 @@ color: rgb(255, 255, 255);</string>
       <pointsize>12</pointsize>
      </font>
     </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
     <property name="focusPolicy">
-     <enum>Qt::ClickFocus</enum>
+     <enum>Qt::StrongFocus</enum>
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton{
@@ -260,8 +266,11 @@ background-color: rgb(255, 255, 255);
      <pointsize>10</pointsize>
     </font>
    </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
    <property name="focusPolicy">
-    <enum>Qt::ClickFocus</enum>
+    <enum>Qt::StrongFocus</enum>
    </property>
    <property name="styleSheet">
     <string notr="true">QPushButton{
@@ -282,6 +291,15 @@ background-color: rgb(255, 255, 255);
    </property>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>frame</tabstop>
+  <tabstop>username_lineEdit</tabstop>
+  <tabstop>email_lineEdit</tabstop>
+  <tabstop>password_lineEdit</tabstop>
+  <tabstop>password_repeat_lineEdit</tabstop>
+  <tabstop>btn_cadastrar</tabstop>
+  <tabstop>btn_return</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

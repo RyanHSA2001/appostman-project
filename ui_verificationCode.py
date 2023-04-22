@@ -27,6 +27,7 @@ class Ui_verificationCode(object):
         self.frame = QFrame(verificationCode)
         self.frame.setObjectName(u"frame")
         self.frame.setGeometry(QRect(30, 60, 401, 151))
+        self.frame.setFocusPolicy(Qt.StrongFocus)
         self.frame.setStyleSheet(u"background-color: rgb(49, 49, 49);")
         self.frame.setFrameShape(QFrame.StyledPanel)
         self.frame.setFrameShadow(QFrame.Raised)
@@ -37,7 +38,7 @@ class Ui_verificationCode(object):
         font.setFamilies([u"Candara"])
         font.setPointSize(14)
         self.code_lineEdit.setFont(font)
-        self.code_lineEdit.setFocusPolicy(Qt.ClickFocus)
+        self.code_lineEdit.setFocusPolicy(Qt.StrongFocus)
         self.code_lineEdit.setStyleSheet(u"color: rgb(255, 255, 255);")
         self.code_lineEdit.setInputMethodHints(Qt.ImhNone)
         self.code_lineEdit.setMaxLength(10)
@@ -49,7 +50,8 @@ class Ui_verificationCode(object):
         font1.setFamilies([u"Candara"])
         font1.setPointSize(12)
         self.btn_resend.setFont(font1)
-        self.btn_resend.setFocusPolicy(Qt.ClickFocus)
+        self.btn_resend.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btn_resend.setFocusPolicy(Qt.StrongFocus)
         self.btn_resend.setStyleSheet(u"QPushButton{\n"
 "background-color: rgba(0, 0, 0, 2);\n"
 "color: rgb(212, 170, 0);\n"
@@ -65,7 +67,8 @@ class Ui_verificationCode(object):
         self.btn_verify.setObjectName(u"btn_verify")
         self.btn_verify.setGeometry(QRect(150, 70, 101, 31))
         self.btn_verify.setFont(font1)
-        self.btn_verify.setFocusPolicy(Qt.ClickFocus)
+        self.btn_verify.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btn_verify.setFocusPolicy(Qt.StrongFocus)
         self.btn_verify.setStyleSheet(u"QPushButton{\n"
 "background-color: rgb(20, 39, 203);\n"
 "color: rgb(255, 255, 255);\n"
@@ -83,6 +86,9 @@ class Ui_verificationCode(object):
         self.label.setGeometry(QRect(30, 20, 421, 21))
         self.label.setFont(font)
         self.label.setStyleSheet(u"color: rgb(255, 255, 255);")
+        QWidget.setTabOrder(self.frame, self.code_lineEdit)
+        QWidget.setTabOrder(self.code_lineEdit, self.btn_verify)
+        QWidget.setTabOrder(self.btn_verify, self.btn_resend)
 
         self.retranslateUi(verificationCode)
 

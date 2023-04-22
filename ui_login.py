@@ -25,11 +25,12 @@ class Ui_login(object):
         login.resize(459, 533)
         login.setMinimumSize(QSize(459, 533))
         login.setMaximumSize(QSize(459, 533))
-        login.setFocusPolicy(Qt.StrongFocus)
+        login.setFocusPolicy(Qt.NoFocus)
         login.setStyleSheet(u"background-color: rgb(40, 40, 40);")
         self.frame = QFrame(login)
         self.frame.setObjectName(u"frame")
         self.frame.setGeometry(QRect(60, 200, 341, 301))
+        self.frame.setFocusPolicy(Qt.StrongFocus)
         self.frame.setStyleSheet(u"background-color: rgb(49, 49, 49);")
         self.frame.setFrameShape(QFrame.StyledPanel)
         self.frame.setFrameShadow(QFrame.Raised)
@@ -40,7 +41,7 @@ class Ui_login(object):
         font.setFamilies([u"Candara"])
         font.setPointSize(14)
         self.username_lineEdit.setFont(font)
-        self.username_lineEdit.setFocusPolicy(Qt.ClickFocus)
+        self.username_lineEdit.setFocusPolicy(Qt.StrongFocus)
         self.username_lineEdit.setStyleSheet(u"border-color: rgb(255, 255, 255);\n"
 "color: rgb(255, 255, 255);")
         self.username_lineEdit.setMaxLength(20)
@@ -50,7 +51,7 @@ class Ui_login(object):
         self.password_lineEdit.setGeometry(QRect(40, 80, 261, 31))
         self.password_lineEdit.setFont(font)
         self.password_lineEdit.setCursor(QCursor(Qt.IBeamCursor))
-        self.password_lineEdit.setFocusPolicy(Qt.ClickFocus)
+        self.password_lineEdit.setFocusPolicy(Qt.StrongFocus)
         self.password_lineEdit.setStyleSheet(u"color: rgb(255, 255, 255);")
         self.password_lineEdit.setMaxLength(20)
         self.password_lineEdit.setEchoMode(QLineEdit.Password)
@@ -63,7 +64,7 @@ class Ui_login(object):
         font1.setPointSize(12)
         self.btn_entre.setFont(font1)
         self.btn_entre.setCursor(QCursor(Qt.PointingHandCursor))
-        self.btn_entre.setFocusPolicy(Qt.ClickFocus)
+        self.btn_entre.setFocusPolicy(Qt.StrongFocus)
         self.btn_entre.setStyleSheet(u"QPushButton{\n"
 "background-color: rgb(206, 0, 3);\n"
 "color: rgb(255, 255, 255);\n"
@@ -88,7 +89,7 @@ class Ui_login(object):
         self.btn_cadastre.setGeometry(QRect(110, 210, 121, 31))
         self.btn_cadastre.setFont(font1)
         self.btn_cadastre.setCursor(QCursor(Qt.PointingHandCursor))
-        self.btn_cadastre.setFocusPolicy(Qt.ClickFocus)
+        self.btn_cadastre.setFocusPolicy(Qt.StrongFocus)
         self.btn_cadastre.setStyleSheet(u"QPushButton{\n"
 "background-color: rgb(20, 39, 203);\n"
 "color: rgb(255, 255, 255);\n"
@@ -105,7 +106,8 @@ class Ui_login(object):
         self.forget_password_pushButton.setObjectName(u"forget_password_pushButton")
         self.forget_password_pushButton.setGeometry(QRect(100, 260, 141, 23))
         self.forget_password_pushButton.setFont(font1)
-        self.forget_password_pushButton.setFocusPolicy(Qt.ClickFocus)
+        self.forget_password_pushButton.setCursor(QCursor(Qt.PointingHandCursor))
+        self.forget_password_pushButton.setFocusPolicy(Qt.StrongFocus)
         self.forget_password_pushButton.setStyleSheet(u"QPushButton{\n"
 "background-color: rgba(0, 0, 0, 2);\n"
 "color: rgb(212, 170, 0);\n"
