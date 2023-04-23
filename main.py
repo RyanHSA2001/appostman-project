@@ -293,6 +293,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         self.btn_toggle.clicked.connect(self.left_menu)
 
+    # paginas
+        self.btn_home.clicked.connect(lambda: self.pages.setCurrentWidget(self.page_home))
+        self.btn_configurations.clicked.connect(lambda: self.pages.setCurrentWidget(self.page_configurations))
+        self.btn_recipients.clicked.connect(lambda: self.pages.setCurrentWidget(self.page_recipients))
+        self.btn_messages.clicked.connect(lambda: self.pages.setCurrentWidget(self.page_messages))
+        self.btn_help.clicked.connect(lambda: self.pages.setCurrentWidget(self.page_help))
+        self.btn_about.clicked.connect(lambda: self.pages.setCurrentWidget(self.page_about))
+
     def left_menu(self):
 
         width = self.left_container.width()
@@ -314,8 +322,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    window = Login()
-    # window = MainWindow()
+    # window = Login()
+    window = MainWindow()
     window.show()
     # window = VerificationCode()
     # window.show()

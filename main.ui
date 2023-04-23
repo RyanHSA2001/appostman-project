@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1075</width>
-    <height>742</height>
+    <width>1152</width>
+    <height>785</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -140,7 +140,7 @@ border none;
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_3">
           <property name="spacing">
-           <number>0</number>
+           <number>10</number>
           </property>
           <item>
            <widget class="Line" name="line_6">
@@ -150,11 +150,36 @@ border none;
            </widget>
           </item>
           <item>
+           <spacer name="verticalSpacer_5">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
            <widget class="QPushButton" name="btn_home">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
             <property name="minimumSize">
              <size>
-              <width>152</width>
+              <width>222</width>
               <height>50</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>60</height>
              </size>
             </property>
             <property name="font">
@@ -170,9 +195,9 @@ border none;
             </property>
             <property name="styleSheet">
              <string notr="true">QPushButton{
-background-color: rgb(0, 53, 161);
+background-color: rgba(0, 0, 0, 2);
 color: rgb(255, 255, 255);
-border-radius:2px
+border-radius:15px
 
 }
 
@@ -185,14 +210,49 @@ background-color: rgb(255, 255, 255);
             <property name="text">
              <string>Início</string>
             </property>
+            <property name="icon">
+             <iconset>
+              <normaloff>resources/appostman others icons/home.png</normaloff>resources/appostman others icons/home.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>33</width>
+              <height>33</height>
+             </size>
+            </property>
            </widget>
           </item>
           <item>
+           <spacer name="verticalSpacer">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
            <widget class="QPushButton" name="btn_configurations">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
             <property name="minimumSize">
              <size>
-              <width>152</width>
+              <width>222</width>
               <height>50</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>60</height>
              </size>
             </property>
             <property name="font">
@@ -208,9 +268,9 @@ background-color: rgb(255, 255, 255);
             </property>
             <property name="styleSheet">
              <string notr="true">QPushButton{
-background-color: rgb(0, 53, 161);
+background-color: rgba(0, 0, 0, 2);
 color: rgb(255, 255, 255);
-border-radius:2px
+border-radius:15px
 
 }
 
@@ -223,14 +283,49 @@ background-color: rgb(255, 255, 255);
             <property name="text">
              <string>Configurações</string>
             </property>
+            <property name="icon">
+             <iconset>
+              <normaloff>resources/appostman others icons/gear.png</normaloff>resources/appostman others icons/gear.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>33</width>
+              <height>33</height>
+             </size>
+            </property>
            </widget>
           </item>
           <item>
+           <spacer name="verticalSpacer_2">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
            <widget class="QPushButton" name="btn_recipients">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
             <property name="minimumSize">
              <size>
-              <width>152</width>
+              <width>222</width>
               <height>50</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>60</height>
              </size>
             </property>
             <property name="font">
@@ -246,9 +341,9 @@ background-color: rgb(255, 255, 255);
             </property>
             <property name="styleSheet">
              <string notr="true">QPushButton{
-background-color: rgb(0, 53, 161);
+background-color: rgba(0, 0, 0, 2);
 color: rgb(255, 255, 255);
-border-radius:2px
+border-radius:15px
 
 }
 
@@ -261,14 +356,49 @@ background-color: rgb(255, 255, 255);
             <property name="text">
              <string>Destinatários</string>
             </property>
+            <property name="icon">
+             <iconset>
+              <normaloff>resources/appostman others icons/people.png</normaloff>resources/appostman others icons/people.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>33</width>
+              <height>33</height>
+             </size>
+            </property>
            </widget>
           </item>
           <item>
+           <spacer name="verticalSpacer_3">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
            <widget class="QPushButton" name="btn_messages">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
             <property name="minimumSize">
              <size>
               <width>152</width>
               <height>50</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>60</height>
              </size>
             </property>
             <property name="font">
@@ -284,9 +414,9 @@ background-color: rgb(255, 255, 255);
             </property>
             <property name="styleSheet">
              <string notr="true">QPushButton{
-background-color: rgb(0, 53, 161);
+background-color: rgba(0, 0, 0, 2);
 color: rgb(255, 255, 255);
-border-radius:2px
+border-radius:15px
 
 }
 
@@ -299,14 +429,49 @@ background-color: rgb(255, 255, 255);
             <property name="text">
              <string>Mensagens</string>
             </property>
+            <property name="icon">
+             <iconset>
+              <normaloff>resources/appostman others icons/message.png</normaloff>resources/appostman others icons/message.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>33</width>
+              <height>33</height>
+             </size>
+            </property>
            </widget>
           </item>
           <item>
+           <spacer name="verticalSpacer_4">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
            <widget class="QPushButton" name="btn_help">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
             <property name="minimumSize">
              <size>
-              <width>152</width>
+              <width>222</width>
               <height>50</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>60</height>
              </size>
             </property>
             <property name="font">
@@ -322,9 +487,9 @@ background-color: rgb(255, 255, 255);
             </property>
             <property name="styleSheet">
              <string notr="true">QPushButton{
-background-color: rgb(0, 53, 161);
+background-color: rgba(0, 0, 0, 2);
 color: rgb(255, 255, 255);
-border-radius:2px
+border-radius:15px
 
 }
 
@@ -337,12 +502,107 @@ background-color: rgb(255, 255, 255);
             <property name="text">
              <string>Ajuda</string>
             </property>
+            <property name="icon">
+             <iconset>
+              <normaloff>resources/appostman others icons/help.png</normaloff>resources/appostman others icons/help.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>33</width>
+              <height>33</height>
+             </size>
+            </property>
            </widget>
+          </item>
+          <item>
+           <spacer name="verticalSpacer_6">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btn_about">
+            <property name="minimumSize">
+             <size>
+              <width>222</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>222</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Candara</family>
+              <pointsize>16</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton{
+background-color: rgba(0, 0, 0, 2);
+color: rgb(255, 255, 255);
+border-radius:15px
+
+}
+
+QPushButton:hover
+{
+background-color: rgb(255, 255, 255);
+	color: rgb(0, 0, 0);
+}</string>
+            </property>
+            <property name="text">
+             <string>Sobre</string>
+            </property>
+            <property name="icon">
+             <iconset>
+              <normaloff>resources/appostman others icons/info.png</normaloff>resources/appostman others icons/info.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>33</width>
+              <height>33</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="verticalSpacer_7">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
           </item>
           <item>
            <widget class="Line" name="line_5">
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item alignment="Qt::AlignBottom">
+           <widget class="QLabel" name="label_6">
+            <property name="styleSheet">
+             <string notr="true">color: rgb(98, 182, 255);</string>
+            </property>
+            <property name="text">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Versão 1.0/2023&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
            </widget>
           </item>
@@ -552,8 +812,8 @@ background-color: rgb(255, 255, 255);
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>1051</width>
-                   <height>597</height>
+                   <width>1128</width>
+                   <height>640</height>
                   </rect>
                  </property>
                  <property name="minimumSize">
@@ -594,7 +854,7 @@ background-color: rgb(255, 255, 255);
                      <string notr="true">color: rgb(255, 255, 255);</string>
                     </property>
                     <property name="text">
-                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;Tempo de funcionamento:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:20pt;&quot;&gt;Tempo de funcionamento: 0&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                     </property>
                    </widget>
                   </item>
@@ -619,7 +879,7 @@ background-color: rgb(255, 255, 255);
                      <string notr="true">color: rgb(255, 255, 255);</string>
                     </property>
                     <property name="text">
-                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;E-mails Enviados:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:20pt;&quot;&gt;E-mails Enviados: 0&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                     </property>
                    </widget>
                   </item>
@@ -641,7 +901,7 @@ background-color: rgb(255, 255, 255);
                      <string notr="true">color: rgb(255, 255, 255);</string>
                     </property>
                     <property name="text">
-                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;E-mails Respondidos:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:20pt;&quot;&gt;E-mails Respondidos: 0&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                     </property>
                    </widget>
                   </item>
@@ -663,7 +923,7 @@ background-color: rgb(255, 255, 255);
                      <string notr="true">color: rgb(255, 255, 255);</string>
                     </property>
                     <property name="text">
-                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;Erros no Envio:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:20pt;&quot;&gt;Erros no Envio: 0&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                     </property>
                    </widget>
                   </item>
@@ -685,7 +945,7 @@ background-color: rgb(255, 255, 255);
                      <string notr="true">color: rgb(255, 255, 255);</string>
                     </property>
                     <property name="text">
-                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;Destinatários Cadastrados:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:20pt;&quot;&gt;Destinatários Cadastrados: 0&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                     </property>
                    </widget>
                   </item>
@@ -695,10 +955,246 @@ background-color: rgb(255, 255, 255);
               </item>
              </layout>
             </widget>
-            <widget class="QWidget" name="page_configurations"/>
-            <widget class="QWidget" name="page_recipients"/>
-            <widget class="QWidget" name="page_messages"/>
-            <widget class="QWidget" name="page_help"/>
+            <widget class="QWidget" name="page_about">
+             <layout class="QVBoxLayout" name="verticalLayout_15" stretch="0">
+              <property name="spacing">
+               <number>0</number>
+              </property>
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+              <item>
+               <widget class="QScrollArea" name="scrollArea_6">
+                <property name="widgetResizable">
+                 <bool>true</bool>
+                </property>
+                <widget class="QWidget" name="scrollAreaWidgetContents_6">
+                 <property name="geometry">
+                  <rect>
+                   <x>0</x>
+                   <y>0</y>
+                   <width>878</width>
+                   <height>640</height>
+                  </rect>
+                 </property>
+                 <layout class="QVBoxLayout" name="verticalLayout_16">
+                  <item>
+                   <widget class="QLabel" name="label_7">
+                    <property name="styleSheet">
+                     <string notr="true">color: rgb(255, 255, 255);</string>
+                    </property>
+                    <property name="text">
+                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:24pt;&quot;&gt;Sobre&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="page_configurations">
+             <layout class="QVBoxLayout" name="verticalLayout_4">
+              <property name="spacing">
+               <number>0</number>
+              </property>
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+              <item>
+               <widget class="QScrollArea" name="scrollArea_2">
+                <property name="widgetResizable">
+                 <bool>true</bool>
+                </property>
+                <widget class="QWidget" name="scrollAreaWidgetContents">
+                 <property name="geometry">
+                  <rect>
+                   <x>0</x>
+                   <y>0</y>
+                   <width>878</width>
+                   <height>640</height>
+                  </rect>
+                 </property>
+                 <layout class="QVBoxLayout" name="verticalLayout_8">
+                  <item>
+                   <widget class="QLabel" name="label">
+                    <property name="styleSheet">
+                     <string notr="true">color: rgb(255, 255, 255);</string>
+                    </property>
+                    <property name="text">
+                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:24pt;&quot;&gt;Configurações&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="page_recipients">
+             <layout class="QVBoxLayout" name="verticalLayout_9">
+              <property name="spacing">
+               <number>0</number>
+              </property>
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+              <item>
+               <widget class="QScrollArea" name="scrollArea_3">
+                <property name="widgetResizable">
+                 <bool>true</bool>
+                </property>
+                <widget class="QWidget" name="scrollAreaWidgetContents_2">
+                 <property name="geometry">
+                  <rect>
+                   <x>0</x>
+                   <y>0</y>
+                   <width>878</width>
+                   <height>640</height>
+                  </rect>
+                 </property>
+                 <layout class="QVBoxLayout" name="verticalLayout_10">
+                  <item>
+                   <widget class="QLabel" name="label_2">
+                    <property name="styleSheet">
+                     <string notr="true">color: rgb(255, 255, 255);</string>
+                    </property>
+                    <property name="text">
+                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:24pt;&quot;&gt;Destinatários&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="page_messages">
+             <layout class="QVBoxLayout" name="verticalLayout_11">
+              <property name="spacing">
+               <number>0</number>
+              </property>
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+              <item>
+               <widget class="QScrollArea" name="scrollArea_4">
+                <property name="widgetResizable">
+                 <bool>true</bool>
+                </property>
+                <widget class="QWidget" name="scrollAreaWidgetContents_4">
+                 <property name="geometry">
+                  <rect>
+                   <x>0</x>
+                   <y>0</y>
+                   <width>878</width>
+                   <height>640</height>
+                  </rect>
+                 </property>
+                 <layout class="QVBoxLayout" name="verticalLayout_12">
+                  <item>
+                   <widget class="QLabel" name="label_4">
+                    <property name="styleSheet">
+                     <string notr="true">color: rgb(255, 255, 255);</string>
+                    </property>
+                    <property name="text">
+                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:24pt;&quot;&gt;Mensagens&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="page_help">
+             <layout class="QVBoxLayout" name="verticalLayout_13">
+              <property name="spacing">
+               <number>0</number>
+              </property>
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+              <item>
+               <widget class="QScrollArea" name="scrollArea_5">
+                <property name="widgetResizable">
+                 <bool>true</bool>
+                </property>
+                <widget class="QWidget" name="scrollAreaWidgetContents_5">
+                 <property name="geometry">
+                  <rect>
+                   <x>0</x>
+                   <y>0</y>
+                   <width>878</width>
+                   <height>640</height>
+                  </rect>
+                 </property>
+                 <layout class="QVBoxLayout" name="verticalLayout_14">
+                  <item>
+                   <widget class="QLabel" name="label_5">
+                    <property name="styleSheet">
+                     <string notr="true">color: rgb(255, 255, 255);</string>
+                    </property>
+                    <property name="text">
+                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:24pt;&quot;&gt;Ajuda&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </widget>
+              </item>
+             </layout>
+            </widget>
            </widget>
           </item>
          </layout>
@@ -735,6 +1231,21 @@ background-color: rgb(255, 255, 255);
    </layout>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>btn_home</tabstop>
+  <tabstop>btn_configurations</tabstop>
+  <tabstop>btn_recipients</tabstop>
+  <tabstop>btn_messages</tabstop>
+  <tabstop>btn_help</tabstop>
+  <tabstop>btn_about</tabstop>
+  <tabstop>btn_toggle</tabstop>
+  <tabstop>scrollArea_6</tabstop>
+  <tabstop>scrollArea_4</tabstop>
+  <tabstop>scrollArea_5</tabstop>
+  <tabstop>scrollArea_2</tabstop>
+  <tabstop>scrollArea_3</tabstop>
+  <tabstop>scrollArea</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
