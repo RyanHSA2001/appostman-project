@@ -23,6 +23,9 @@ class Ui_verificationCode(object):
         if not verificationCode.objectName():
             verificationCode.setObjectName(u"verificationCode")
         verificationCode.resize(459, 235)
+        icon = QIcon()
+        icon.addFile(u"resources/appostman others icons/appostman-logo.png", QSize(), QIcon.Normal, QIcon.Off)
+        verificationCode.setWindowIcon(icon)
         verificationCode.setStyleSheet(u"background-color: rgb(40, 40, 40);")
         self.frame = QFrame(verificationCode)
         self.frame.setObjectName(u"frame")

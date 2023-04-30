@@ -16,6 +16,10 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>resources/appostman others icons/appostman-logo.png</normaloff>resources/appostman others icons/appostman-logo.png</iconset>
+  </property>
   <property name="styleSheet">
    <string notr="true">background-color: rgb(40, 40, 40);</string>
   </property>

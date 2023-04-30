@@ -2,6 +2,8 @@ from PySide6.QtWidgets import QApplication, QMainWindow, QWidget, QMessageBox
 
 from PySide6.QtCore import QPropertyAnimation, QEasingCurve
 
+from PySide6.QtGui import QFont
+
 from ui_login import Ui_login
 from ui_main import Ui_MainWindow
 from ui_signup import Ui_signup
@@ -17,41 +19,75 @@ import sys
 import re
 
 
+
+def show_message_box(icon, title, message, parent=None, ok_and_cancel=False): # EXIBE UMA CAIXA DE MENSAGEM
+    msg_box = QMessageBox(parent)
+    msg_box.setIcon(icon)
+    msg_box.setWindowTitle(title)
+    msg_box.setText(message)
+
+    font = QFont("Candara", 14)
+
+    if ok_and_cancel:
+        msg_box.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
+
+    msg_box.setFont(font)
+    msg_box.setStyleSheet("""
+        QMessageBox {
+            background-color: rgb(49, 49, 49);
+            color: white;
+        }
+        QPushButton[class='QPushButton'] {
+            background-color: gray;
+            color: white;
+        }
+        QLabel {
+            background-color: rgb(49, 49, 49);
+            color: white;
+        }
+    """)
+    msg_box.exec()
+
+
+
+
+
 class Login(QWidget, Ui_login):
     def __init__(self) -> None:
         super(Login, self).__init__()
         self.setupUi(self)
         self.setWindowTitle("Appostman Login")
 
-        # eventos tela de login
-        self.btn_entre.clicked.connect(self.login_auth)
-        self.password_lineEdit.returnPressed.connect(self.login_auth)
-        self.btn_cadastre.clicked.connect(self.open_signup)
-        self.forget_password_pushButton.clicked.connect(self.forget_password)
+        # *--EVENTOS DA TELA DE LOGIN--*
+        self.btn_entre.clicked.connect(self.validate_login_data)
+        self.password_lineEdit.returnPressed.connect(self.validate_login_data)
 
-    def open_signup(self):  # abre a tela de cadastro
-        self.w = SignUp()
-        self.w.show()
+        self.btn_cadastre.clicked.connect(self.open_signup_window)
+
+        self.forget_password_pushButton.clicked.connect(self.open_forget_password_window)
+
+    def open_signup_window(self):  # ABRE A TELA DE CADASTRO
+        self.signup_window = SignUp()
+        self.signup_window.show()
         self.close()
 
-    def login_auth(self):  # valida os dados digitados no banco de dados. Se existente, realiza o login
+    def validate_login_data(self):
+        # VALIDA SE OS DADOS DIGITADOS ESTÃO NO BANCO DE DADOS. SE SIM, REALIZA O LOGIN. SE NÃO, EXIBE MENSAGEM DE ERRO.
         self.users = DataBase()
         self.users.connect()
         authenticated = self.users.already_exists(self.username_lineEdit.text().upper(), self.password_lineEdit.text())
 
+        # SE SIM
         if authenticated:
-            self.w = MainWindow()
-            self.w.show()
+            self.main_window = MainWindow()
+            self.main_window.show()
             self.close()
 
+        # SE NÃO
         else:
-            msg = QMessageBox()
-            msg.setIcon(QMessageBox.Warning)
-            msg.setWindowTitle("Erro")
-            msg.setText(f'Login ou senha inválidos.')
-            msg.exec()
+            show_message_box(QMessageBox.Warning, "Erro", "Login ou senha inválidos", self)
 
-    def forget_password(self):
+    def open_forget_password_window(self):
         self.forget_w = ForgetPassword()
         self.forget_w.show()
 
@@ -81,27 +117,17 @@ class SignUp(QWidget, Ui_signup):
     def collect_user_data(self):  # insere usuários no banco de dados
 
         if not self.username_lineEdit.text() or not self.email_lineEdit.text() or not self.password_lineEdit.text():
-            msg = QMessageBox()
-            msg.setIcon(QMessageBox.Warning)
-            msg.setWindowTitle("Erro")
-            msg.setText("Todos os campos são obrigatórios")
-            msg.exec()
+
+            show_message_box(QMessageBox.Warning, "Erro", "Todos os campos são obrigatórios", self)
             return None
 
         if not self.validar_email(self.email_lineEdit.text()):
-            msg = QMessageBox()
-            msg.setIcon(QMessageBox.Warning)
-            msg.setWindowTitle("Erro")
-            msg.setText("E-mail inválido")
-            msg.exec()
+            show_message_box(QMessageBox.Warning, "Erro", "E-mail inválido", self)
+
             return None
 
         if self.password_lineEdit.text() != self.password_repeat_lineEdit.text():
-            msg = QMessageBox()
-            msg.setIcon(QMessageBox.Warning)
-            msg.setWindowTitle("Erro")
-            msg.setText("As senhas digitadas são diferentes")
-            msg.exec()
+            show_message_box(QMessageBox.Warning, "Erro", "As senhas digitadas são diferentes", self)
             return None
 
         user = self.username_lineEdit.text()
@@ -112,11 +138,7 @@ class SignUp(QWidget, Ui_signup):
         db.connect()
 
         if db.already_exists(user, password, email):
-            msg = QMessageBox()
-            msg.setIcon(QMessageBox.Warning)
-            msg.setWindowTitle("Erro")
-            msg.setText("Email ou usuário já cadastrado")
-            msg.exec()
+            show_message_box(QMessageBox.Warning, "Erro", "E-mail ou usuário já cadastrado", self)
             db.close_connection()
             return None
 
@@ -165,27 +187,15 @@ class ForgetPassword(QWidget, Ui_forgetpassword):
         #  restrições para digitação do usuário ao pressionar o botão
 
         if not self.email_lineEdit.text() or not self.password_lineEdit.text():
-            msg = QMessageBox()
-            msg.setIcon(QMessageBox.Warning)
-            msg.setWindowTitle("Erro")
-            msg.setText("Todos os campos são obrigatórios")
-            msg.exec()
+            show_message_box(QMessageBox.Warning, "Erro", "Todos os campos são obrigatórios", self)
             return None
 
         if not self.validar_email(self.email_lineEdit.text()):
-            msg = QMessageBox()
-            msg.setIcon(QMessageBox.Warning)
-            msg.setWindowTitle("Erro")
-            msg.setText("E-mail inválido")
-            msg.exec()
+            show_message_box(QMessageBox.Warning, "Erro", "E-mail inválido", self)
             return None
 
         if self.password_lineEdit.text() != self.repeat_password_lineEdit.text():
-            msg = QMessageBox()
-            msg.setIcon(QMessageBox.Warning)
-            msg.setWindowTitle("Erro")
-            msg.setText("As senhas digitadas são diferentes")
-            msg.exec()
+            show_message_box(QMessageBox.Warning, "Erro", "As senhas digitadas são diferentes", self)
             return None
 
         db = DataBase()
@@ -202,11 +212,7 @@ class ForgetPassword(QWidget, Ui_forgetpassword):
             self.close()
 
         else:
-            msg = QMessageBox()
-            msg.setIcon(QMessageBox.Warning)
-            msg.setWindowTitle("Erro")
-            msg.setText("Esse e-mail não está cadastrado")
-            msg.exec()
+            show_message_box(QMessageBox.Warning, "Erro", "Esse e-mail não está cadastrado", self)
 
         db.close_connection()
 
@@ -242,20 +248,12 @@ class VerificationCode(QWidget, Ui_verificationCode):
                 db.update_password(self.user, self.password)
                 db.close_connection()
 
-                msg = QMessageBox()
-                msg.setIcon(QMessageBox.Information)
-                msg.setWindowTitle("Sucesso")
-                msg.setText("Redefinição de senha realizada com sucesso!")
-                msg.exec()
+                show_message_box(QMessageBox.Information, "Sucesso", "Redefinição de senha realizada com sucesso!", self)
 
                 self.close()
-            else:
-                msg = QMessageBox()
-                self.icon = msg.setIcon(QMessageBox.Information)
-                msg.setWindowTitle("Erro")
-                msg.setText("Código de verificação inválido")
-                msg.exec()
 
+            else:
+                show_message_box(QMessageBox.Warning, "Erro", "Código de verificação inválido", self)
 
 
         else:
@@ -267,20 +265,12 @@ class VerificationCode(QWidget, Ui_verificationCode):
 
                 db.close_connection()
 
-                msg = QMessageBox()
-                msg.setIcon(QMessageBox.Information)
-                msg.setWindowTitle("Sucesso")
-                msg.setText("Cadastro realizado com sucesso!")
-                msg.exec()
+                show_message_box(QMessageBox.Information, "Sucesso", "Cadastro realizado com sucesso!", self)
 
                 self.close()
 
             else:
-                msg = QMessageBox()
-                self.icon = msg.setIcon(QMessageBox.Information)
-                msg.setWindowTitle("Erro")
-                msg.setText("Código de verificação inválido")
-                msg.exec()
+                show_message_box(QMessageBox.Warning, "Erro", "Código de verificação inválido", self)
 
 
 class MainWindow(QMainWindow, Ui_MainWindow):
@@ -289,11 +279,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.setupUi(self)
         self.setWindowTitle("Appostman")
 
-    # eventos tela principal
+        # eventos tela principal
 
         self.btn_toggle.clicked.connect(self.left_menu)
 
-    # paginas
+        # paginas
         self.btn_home.clicked.connect(lambda: self.pages.setCurrentWidget(self.page_home))
         self.btn_configurations.clicked.connect(lambda: self.pages.setCurrentWidget(self.page_configurations))
         self.btn_recipients.clicked.connect(lambda: self.pages.setCurrentWidget(self.page_recipients))
@@ -322,8 +312,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    # window = Login()
-    window = MainWindow()
+    window = Login()
+    # window = MainWindow()
     window.show()
     # window = VerificationCode()
     # window.show()
