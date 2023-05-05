@@ -18,45 +18,58 @@ import sys
 
 import re
 
+class FunctionsInCommon():
+    def __init__(self) -> None:
+        pass
+
+    def show_message_box(self, icon, title, message, parent=None, ok_and_cancel=False): # EXIBE UMA CAIXA DE MENSAGEM
+        msg_box = QMessageBox(parent)
+        msg_box.setIcon(icon)
+        msg_box.setWindowTitle(title)
+        msg_box.setText(message)
+
+        font = QFont("Candara", 14)
+
+        if ok_and_cancel:
+            msg_box.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
+
+        msg_box.setFont(font)
+        msg_box.setStyleSheet("""
+            QMessageBox {
+                background-color: rgb(49, 49, 49);
+                color: white;
+            }
+            QPushButton[class='QPushButton'] {
+                background-color: gray;
+                color: white;
+            }
+            QLabel {
+                background-color: rgb(49, 49, 49);
+                color: white;
+            }
+        """)
+        msg_box.exec()
+
+    def validate_email(self, email):
+        # DEFINE UMA EXPRESSÃO REGULAR PARA VALIDAR O FORMATO DO E-MAIL
+        standard = r'^[\w]+[\.\w-]*@[\w-]+\.[a-zA-Z]{2,}$'
+
+        # VERIFICA SE O E-MAIL CORRESPONDE AO PADRÃO
+        if re.match(standard, email):
+            return True
+        else:
+            self.false = False
+            return self.false
 
 
-def show_message_box(icon, title, message, parent=None, ok_and_cancel=False): # EXIBE UMA CAIXA DE MENSAGEM
-    msg_box = QMessageBox(parent)
-    msg_box.setIcon(icon)
-    msg_box.setWindowTitle(title)
-    msg_box.setText(message)
-
-    font = QFont("Candara", 14)
-
-    if ok_and_cancel:
-        msg_box.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
-
-    msg_box.setFont(font)
-    msg_box.setStyleSheet("""
-        QMessageBox {
-            background-color: rgb(49, 49, 49);
-            color: white;
-        }
-        QPushButton[class='QPushButton'] {
-            background-color: gray;
-            color: white;
-        }
-        QLabel {
-            background-color: rgb(49, 49, 49);
-            color: white;
-        }
-    """)
-    msg_box.exec()
 
 
 
-
-
-class Login(QWidget, Ui_login):
+class Login(QWidget, Ui_login, FunctionsInCommon):
     def __init__(self) -> None:
         super(Login, self).__init__()
         self.setupUi(self)
-        self.setWindowTitle("Appostman Login")
+        self.setWindowTitle("Login")
 
         # *--EVENTOS DA TELA DE LOGIN--*
         self.btn_entre.clicked.connect(self.validate_login_data)
@@ -85,49 +98,39 @@ class Login(QWidget, Ui_login):
 
         # SE NÃO
         else:
-            show_message_box(QMessageBox.Warning, "Erro", "Login ou senha inválidos", self)
+            self.show_message_box(QMessageBox.Warning, "Erro", "Login ou senha inválidos", self)
 
     def open_forget_password_window(self):
         self.forget_w = ForgetPassword()
         self.forget_w.show()
 
 
-class SignUp(QWidget, Ui_signup):
+class SignUp(QWidget, Ui_signup, FunctionsInCommon):
     def __init__(self) -> None:
         super(SignUp, self).__init__()
         self.setupUi(self)
         self.setWindowTitle("Cadastro")
 
-        # eventos tela de cadastro
+        # *--EVENTOS DA TELA DE CADASTRO--*
         self.btn_cadastrar.clicked.connect(self.collect_user_data)
         self.password_repeat_lineEdit.returnPressed.connect(self.collect_user_data)
         self.btn_return.clicked.connect(self.open_login)
 
-    def validar_email(self, email):
-        # Define o padrão de expressão regular para verificar o formato do e-mail
-        standard = r'^[\w]+[\.\w-]*@[\w-]+\.[a-zA-Z]{2,}$'
-
-        # Verifica se o e-mail corresponde ao padrão
-        if re.match(standard, email):
-            return True
-        else:
-            self.false = False
-            return self.false
 
     def collect_user_data(self):  # insere usuários no banco de dados
 
         if not self.username_lineEdit.text() or not self.email_lineEdit.text() or not self.password_lineEdit.text():
 
-            show_message_box(QMessageBox.Warning, "Erro", "Todos os campos são obrigatórios", self)
+            self.show_message_box(QMessageBox.Warning, "Erro", "Todos os campos são obrigatórios", self)
             return None
 
-        if not self.validar_email(self.email_lineEdit.text()):
-            show_message_box(QMessageBox.Warning, "Erro", "E-mail inválido", self)
+        if not self.validate_email(self.email_lineEdit.text()):
+            self.show_message_box(QMessageBox.Warning, "Erro", "E-mail inválido", self)
 
             return None
 
         if self.password_lineEdit.text() != self.password_repeat_lineEdit.text():
-            show_message_box(QMessageBox.Warning, "Erro", "As senhas digitadas são diferentes", self)
+            self.show_message_box(QMessageBox.Warning, "Erro", "As senhas digitadas são diferentes", self)
             return None
 
         user = self.username_lineEdit.text()
@@ -138,7 +141,7 @@ class SignUp(QWidget, Ui_signup):
         db.connect()
 
         if db.already_exists(user, password, email):
-            show_message_box(QMessageBox.Warning, "Erro", "E-mail ou usuário já cadastrado", self)
+            self.show_message_box(QMessageBox.Warning, "Erro", "E-mail ou usuário já cadastrado", self)
             db.close_connection()
             return None
 
@@ -160,7 +163,7 @@ class SignUp(QWidget, Ui_signup):
         self.close()
 
 
-class ForgetPassword(QWidget, Ui_forgetpassword):
+class ForgetPassword(QWidget, Ui_forgetpassword, FunctionsInCommon):
     def __init__(self) -> None:
         super(ForgetPassword, self).__init__()
 
@@ -171,31 +174,21 @@ class ForgetPassword(QWidget, Ui_forgetpassword):
         self.btn_redefine.clicked.connect(self.redefine)
         self.repeat_password_lineEdit.returnPressed.connect(self.redefine)
 
-    def validar_email(self, email):
-        # Define o padrão de expressão regular para verificar o formato do e-mail
-        standard = r'^[\w]+[\.\w-]*@[\w-]+\.[a-zA-Z]{2,}$'
-
-        # Verifica se o e-mail corresponde ao padrão
-        if re.match(standard, email):
-            return True
-        else:
-            self.false = False
-            return self.false
 
     def redefine(self):
 
         #  restrições para digitação do usuário ao pressionar o botão
 
         if not self.email_lineEdit.text() or not self.password_lineEdit.text():
-            show_message_box(QMessageBox.Warning, "Erro", "Todos os campos são obrigatórios", self)
+            self.show_message_box(QMessageBox.Warning, "Erro", "Todos os campos são obrigatórios", self)
             return None
 
-        if not self.validar_email(self.email_lineEdit.text()):
-            show_message_box(QMessageBox.Warning, "Erro", "E-mail inválido", self)
+        if not self.validate_email(self.email_lineEdit.text()):
+            self.show_message_box(QMessageBox.Warning, "Erro", "E-mail inválido", self)
             return None
 
         if self.password_lineEdit.text() != self.repeat_password_lineEdit.text():
-            show_message_box(QMessageBox.Warning, "Erro", "As senhas digitadas são diferentes", self)
+            self.show_message_box(QMessageBox.Warning, "Erro", "As senhas digitadas são diferentes", self)
             return None
 
         db = DataBase()
@@ -212,12 +205,12 @@ class ForgetPassword(QWidget, Ui_forgetpassword):
             self.close()
 
         else:
-            show_message_box(QMessageBox.Warning, "Erro", "Esse e-mail não está cadastrado", self)
+            self.show_message_box(QMessageBox.Warning, "Erro", "Esse e-mail não está cadastrado", self)
 
         db.close_connection()
 
 
-class VerificationCode(QWidget, Ui_verificationCode):
+class VerificationCode(QWidget, Ui_verificationCode, FunctionsInCommon):
     def __init__(self, verification_code, user="", email="", password="", redefine_password=False) -> None:
         super(VerificationCode, self).__init__()
         self.verification_code = verification_code
@@ -248,12 +241,12 @@ class VerificationCode(QWidget, Ui_verificationCode):
                 db.update_password(self.user, self.password)
                 db.close_connection()
 
-                show_message_box(QMessageBox.Information, "Sucesso", "Redefinição de senha realizada com sucesso!", self)
+                self.show_message_box(QMessageBox.Information, "Sucesso", "Redefinição de senha realizada com sucesso!", self)
 
                 self.close()
 
             else:
-                show_message_box(QMessageBox.Warning, "Erro", "Código de verificação inválido", self)
+                self.show_message_box(QMessageBox.Warning, "Erro", "Código de verificação inválido", self)
 
 
         else:
@@ -265,15 +258,15 @@ class VerificationCode(QWidget, Ui_verificationCode):
 
                 db.close_connection()
 
-                show_message_box(QMessageBox.Information, "Sucesso", "Cadastro realizado com sucesso!", self)
+                self.show_message_box(QMessageBox.Information, "Sucesso", "Cadastro realizado com sucesso!", self)
 
                 self.close()
 
             else:
-                show_message_box(QMessageBox.Warning, "Erro", "Código de verificação inválido", self)
+                self.show_message_box(QMessageBox.Warning, "Erro", "Código de verificação inválido", self)
 
 
-class MainWindow(QMainWindow, Ui_MainWindow):
+class MainWindow(QMainWindow, Ui_MainWindow, FunctionsInCommon):
     def __init__(self) -> None:
         super(MainWindow, self).__init__()
         self.setupUi(self)
