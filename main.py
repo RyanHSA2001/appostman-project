@@ -18,11 +18,16 @@ import sys
 
 import re
 
+
 class FunctionsInCommon():
     def __init__(self) -> None:
         pass
 
-    def show_message_box(self, icon, title, message, parent=None, ok_and_cancel=False): # EXIBE UMA CAIXA DE MENSAGEM
+    def show_message_box(self, icon, title, message, parent=None, ok_and_cancel=False):
+        """
+        Exibe uma caixa de mensagem, definindo parâmetros de hierarquia, ícone, título e texto.
+        Por fim, define o estilo da caixa com comandos QSS
+        """
         msg_box = QMessageBox(parent)
         msg_box.setIcon(icon)
         msg_box.setWindowTitle(title)
@@ -51,18 +56,17 @@ class FunctionsInCommon():
         msg_box.exec()
 
     def validate_email(self, email):
-        # DEFINE UMA EXPRESSÃO REGULAR PARA VALIDAR O FORMATO DO E-MAIL
+        """
+        Define uma expressão regular para validar o formato do e-mail digitado pelo usuário,
+        e verifica se o e-mail corresponde a esse padrão estabelecido.
+        """
         standard = r'^[\w]+[\.\w-]*@[\w-]+\.[a-zA-Z]{2,}$'
 
-        # VERIFICA SE O E-MAIL CORRESPONDE AO PADRÃO
         if re.match(standard, email):
             return True
         else:
             self.false = False
             return self.false
-
-
-
 
 
 class Login(QWidget, Ui_login, FunctionsInCommon):
@@ -79,7 +83,8 @@ class Login(QWidget, Ui_login, FunctionsInCommon):
 
         self.forget_password_pushButton.clicked.connect(self.open_forget_password_window)
 
-    def open_signup_window(self):  # ABRE A TELA DE CADASTRO
+    def open_signup_window(self):
+        # ABRE A TELA DE CADASTRO
         self.signup_window = SignUp()
         self.signup_window.show()
         self.close()
@@ -116,11 +121,24 @@ class SignUp(QWidget, Ui_signup, FunctionsInCommon):
         self.password_repeat_lineEdit.returnPressed.connect(self.collect_user_data)
         self.btn_return.clicked.connect(self.open_login)
 
+    def collect_user_data(self):
+        """
+        Insere usuários no banco de dados.
+        Porém antes são realizadas uma série de validações a fim de tratar os dados fornecidos pelo usuário.
 
-    def collect_user_data(self):  # insere usuários no banco de dados
+        1° Valida se todos os campos estão preenchidos.
+        2° Valida se o e-mail é válido, de acordo com a função validate_email.
+        3° Valida se as senhas digitadas são iguais.
+
+        Após esse processo ele estabelece uma conexão com o banco de dados para realizar a 4° validação.
+
+        4º Valida se os dados já existem no banco de dados através da função db.already_exists
+
+        Se passar pelas validações ele envia o código de verificação para o e-mail fornecido
+        e abre a tela de verificação.
+        """
 
         if not self.username_lineEdit.text() or not self.email_lineEdit.text() or not self.password_lineEdit.text():
-
             self.show_message_box(QMessageBox.Warning, "Erro", "Todos os campos são obrigatórios", self)
             return None
 
@@ -157,7 +175,8 @@ class SignUp(QWidget, Ui_signup, FunctionsInCommon):
         self.password_repeat_lineEdit.setText("")
         self.email_lineEdit.setText("")
 
-    def open_login(self):  # abre tela de login
+    def open_login(self):
+        # ABRE A TELA DE LOGIN
         self.w = Login()
         self.w.show()
         self.close()
@@ -170,14 +189,26 @@ class ForgetPassword(QWidget, Ui_forgetpassword, FunctionsInCommon):
         self.setupUi(self)
         self.setWindowTitle("Redefinição de senha")
 
-        # eventos tela de redefinição de senha
-        self.btn_redefine.clicked.connect(self.redefine)
-        self.repeat_password_lineEdit.returnPressed.connect(self.redefine)
+        # *--EVENTOS DA TELA DE REDEFINIÇÃO DE SENHA--*
+        self.btn_redefine.clicked.connect(self.redefine_password)
+        self.repeat_password_lineEdit.returnPressed.connect(self.redefine_password)
 
+    def redefine_password(self):
+        """
+        Redefine a senha do usuário.
+        Porém antes são realizadas uma série de validações a fim de tratar os dados fornecidos pelo usuário.
 
-    def redefine(self):
+        1° Valida se todos os campos estão preenchidos.
+        2° Valida se o e-mail é válido, de acordo com a função validate_email.
+        3° Valida se as senhas digitadas são iguais.
 
-        #  restrições para digitação do usuário ao pressionar o botão
+        Após esse processo, é estabelecida uma conexão com o banco de dados para realizar a 4° validação.
+
+        4° Valida se o e-mail digitado existe no banco de dados através da função db.search_email.
+
+        Se passar pelas validações ele envia o código de verificação para o e-mail fornecido
+        e abre a tela de verificação.
+        """
 
         if not self.email_lineEdit.text() or not self.password_lineEdit.text():
             self.show_message_box(QMessageBox.Warning, "Erro", "Todos os campos são obrigatórios", self)
@@ -195,8 +226,8 @@ class ForgetPassword(QWidget, Ui_forgetpassword, FunctionsInCommon):
         db.connect()
 
         user_data = db.search_email(self.email_lineEdit.text())
-        if user_data:
 
+        if user_data:
             verification_code = send_verify_code(user_data[1], user_data[3])
 
             self.verify_window = VerificationCode(verification_code, password=self.password_lineEdit.text(),
@@ -222,18 +253,27 @@ class VerificationCode(QWidget, Ui_verificationCode, FunctionsInCommon):
         self.setupUi(self)
         self.setWindowTitle("Verificação de e-mail")
 
-        # eventos tela de verificação de e-mail
-        self.code_lineEdit.textChanged.connect(self.text_changed)
+        # *--EVENTOS DA TELA DO CÓDIGO DE VERIFICAÇÃO-*
+        self.code_lineEdit.textChanged.connect(self.to_upper)
         self.btn_verify.clicked.connect(self.verify)
         self.code_lineEdit.returnPressed.connect(self.verify)
 
-    def text_changed(self):  # verifica se o caractere digitado é maisculo, caso não seja, converte para maiúsculo
+    def to_upper(self):
+        # CONVERTE O CARACTERE DIGITADO PARA MAIÚSCULO
         if self.code_lineEdit.text().isupper():
             return
         self.code_lineEdit.setText(self.code_lineEdit.text().upper())
 
     def verify(self):
+        """
+        Valida o código de verificação enviado ao e-mail fornecido e realiza a devida operação.
 
+        A classe possúi o parâmetro "redefine_password", que quando True realiza a redefinição da senha através
+        da função db.update_password.
+
+        Quando o parâmetro "redefine_password" for False,
+        ele insere o usuário no banco de dados através da função db.insert_user.
+        """
         if self.redefine_password:
             if self.code_lineEdit.text() == self.verification_code:
                 db = DataBase()
@@ -241,7 +281,8 @@ class VerificationCode(QWidget, Ui_verificationCode, FunctionsInCommon):
                 db.update_password(self.user, self.password)
                 db.close_connection()
 
-                self.show_message_box(QMessageBox.Information, "Sucesso", "Redefinição de senha realizada com sucesso!", self)
+                self.show_message_box(QMessageBox.Information, "Sucesso", "Redefinição de senha realizada com sucesso!",
+                                      self)
 
                 self.close()
 
@@ -272,11 +313,10 @@ class MainWindow(QMainWindow, Ui_MainWindow, FunctionsInCommon):
         self.setupUi(self)
         self.setWindowTitle("Appostman")
 
-        # eventos tela principal
-
+        # *--EVENTOS DA TELA PRINCIPAL--*
         self.btn_toggle.clicked.connect(self.left_menu)
 
-        # paginas
+        # # *--PÁGINAS DA TELA PRINCIPAL--*
         self.btn_home.clicked.connect(lambda: self.pages.setCurrentWidget(self.page_home))
         self.btn_configurations.clicked.connect(lambda: self.pages.setCurrentWidget(self.page_configurations))
         self.btn_recipients.clicked.connect(lambda: self.pages.setCurrentWidget(self.page_recipients))
@@ -285,7 +325,7 @@ class MainWindow(QMainWindow, Ui_MainWindow, FunctionsInCommon):
         self.btn_about.clicked.connect(lambda: self.pages.setCurrentWidget(self.page_about))
 
     def left_menu(self):
-
+        #  ABRE O MENU LATERAL ESQUERDO DE FORMA ANIMADA
         width = self.left_container.width()
 
         if width == 0:
@@ -301,9 +341,8 @@ class MainWindow(QMainWindow, Ui_MainWindow, FunctionsInCommon):
         self.animation.start()
 
 
-
-
 if __name__ == '__main__':
+    # BLOCO DE CÓDIGO DESTINADO A TESTES, INICIA A TELA ESPECÍFICADA.
     app = QApplication(sys.argv)
     window = Login()
     # window = MainWindow()
