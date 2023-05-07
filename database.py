@@ -58,8 +58,8 @@ class DataBase():
                 """, (user, email))
             else:
                 cursor.execute("""
-                    SELECT COUNT(*) FROM users WHERE user=? OR email=? OR password=?
-                """, (user, email, password))
+                    SELECT COUNT(*) FROM users WHERE user=? AND password=?
+                """, (user, password))
             result = cursor.fetchone()
             return result[0] > 0
         except sqlite3.Error as error:

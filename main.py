@@ -1,4 +1,4 @@
-from PySide6.QtWidgets import QApplication, QMainWindow, QWidget, QMessageBox
+from PySide6.QtWidgets import QApplication, QMainWindow, QWidget, QMessageBox, QPushButton
 
 from PySide6.QtCore import QPropertyAnimation, QEasingCurve
 
@@ -91,9 +91,9 @@ class Login(QWidget, Ui_login, FunctionsInCommon):
 
     def validate_login_data(self):
         # VALIDA SE OS DADOS DIGITADOS ESTÃO NO BANCO DE DADOS. SE SIM, REALIZA O LOGIN. SE NÃO, EXIBE MENSAGEM DE ERRO.
-        self.users = DataBase()
-        self.users.connect()
-        authenticated = self.users.already_exists(self.username_lineEdit.text().upper(), self.password_lineEdit.text())
+        db = DataBase()
+        db.connect()
+        authenticated = db.already_exists(self.username_lineEdit.text().upper(), self.password_lineEdit.text())
 
         # SE SIM
         if authenticated:
@@ -104,6 +104,8 @@ class Login(QWidget, Ui_login, FunctionsInCommon):
         # SE NÃO
         else:
             self.show_message_box(QMessageBox.Warning, "Erro", "Login ou senha inválidos", self)
+
+        db.close_connection()
 
     def open_forget_password_window(self):
         self.forget_w = ForgetPassword()
@@ -165,7 +167,7 @@ class SignUp(QWidget, Ui_signup, FunctionsInCommon):
 
         db.close_connection()
 
-        verification_code = send_verify_code(self.username_lineEdit.text(), self.email_lineEdit.text())
+        verification_code = send_verify_code(user, email)
 
         self.verify_window = VerificationCode(verification_code, user, email, password)
         self.verify_window.show()
@@ -257,12 +259,17 @@ class VerificationCode(QWidget, Ui_verificationCode, FunctionsInCommon):
         self.code_lineEdit.textChanged.connect(self.to_upper)
         self.btn_verify.clicked.connect(self.verify)
         self.code_lineEdit.returnPressed.connect(self.verify)
+        self.btn_resend.clicked.connect(self.resend_verify_code)
 
     def to_upper(self):
         # CONVERTE O CARACTERE DIGITADO PARA MAIÚSCULO
         if self.code_lineEdit.text().isupper():
             return
         self.code_lineEdit.setText(self.code_lineEdit.text().upper())
+
+    def resend_verify_code(self):
+        # REENVIA O CÓDIGO DE VERIFICAÇÃO
+        self.verification_code = send_verify_code(self.user, self.email)
 
     def verify(self):
         """
@@ -295,7 +302,7 @@ class VerificationCode(QWidget, Ui_verificationCode, FunctionsInCommon):
                 db = DataBase()
                 db.connect()
 
-                db.insert_user(self.user, self.email, self.password)
+                db.insert_user(self.user.upper(), self.email, self.password)
 
                 db.close_connection()
 
