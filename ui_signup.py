@@ -150,6 +150,6 @@ class Ui_signup(object):
         self.password_repeat_lineEdit.setPlaceholderText(QCoreApplication.translate("signup", u"DIGITE A SENHA NOVAMENTE", None))
         self.btn_cadastrar.setText(QCoreApplication.translate("signup", u"CADASTRAR", None))
         self.label.setText(QCoreApplication.translate("signup", u"CADASTRO", None))
-        self.btn_return.setText(QCoreApplication.translate("signup", u"Voltar", None))
+        self.btn_return.setText(QCoreApplication.translate("signup", u"VOLTAR", None))
     # retranslateUi
 

@@ -1,4 +1,4 @@
-from PySide6.QtWidgets import QApplication, QMainWindow, QWidget, QMessageBox, QPushButton
+from PySide6.QtWidgets import QApplication, QMainWindow, QWidget, QMessageBox, QFileDialog
 
 from PySide6.QtCore import QPropertyAnimation, QEasingCurve
 
@@ -15,9 +15,9 @@ from database import DataBase
 from smtp import send_verify_code
 
 import sys
-
 import re
-
+import file_handling
+import styles
 
 class FunctionsInCommon():
     def __init__(self) -> None:
@@ -39,20 +39,7 @@ class FunctionsInCommon():
             msg_box.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
 
         msg_box.setFont(font)
-        msg_box.setStyleSheet("""
-            QMessageBox {
-                background-color: rgb(49, 49, 49);
-                color: white;
-            }
-            QPushButton[class='QPushButton'] {
-                background-color: gray;
-                color: white;
-            }
-            QLabel {
-                background-color: rgb(49, 49, 49);
-                color: white;
-            }
-        """)
+        msg_box.setStyleSheet(styles.dark_messagebox_stylesheet)
         msg_box.exec()
 
     def validate_email(self, email):
@@ -319,9 +306,14 @@ class MainWindow(QMainWindow, Ui_MainWindow, FunctionsInCommon):
         super(MainWindow, self).__init__()
         self.setupUi(self)
         self.setWindowTitle("Appostman")
+        self.recipients_filename = ''
 
         # *--EVENTOS DA TELA PRINCIPAL--*
         self.btn_toggle.clicked.connect(self.left_menu)
+
+        # *--EVENTOS PÁGINA DESTINATÁRIOS--*
+        self.btn_search.clicked.connect(self.open_file_dialog)
+        self.btn_validate.clicked.connect(self.validate_and_get_contacts)
 
         # # *--PÁGINAS DA TELA PRINCIPAL--*
         self.btn_home.clicked.connect(lambda: self.pages.setCurrentWidget(self.page_home))
@@ -330,6 +322,30 @@ class MainWindow(QMainWindow, Ui_MainWindow, FunctionsInCommon):
         self.btn_messages.clicked.connect(lambda: self.pages.setCurrentWidget(self.page_messages))
         self.btn_help.clicked.connect(lambda: self.pages.setCurrentWidget(self.page_help))
         self.btn_about.clicked.connect(lambda: self.pages.setCurrentWidget(self.page_about))
+
+    # *--*---*FUNÇÕES PÁGINA DESTINATÁRIOS*---*--*
+    def open_file_dialog(self):
+        # ABRE O EXPLORADOR DE ARQUIVOS
+        file_name = QFileDialog.getOpenFileName(self, "Selecione o Arquivo",
+                                                "", "Valores Separados por Vírgula (*.csv)")
+        self.label_file_name.setText(file_name[0])
+
+        self.recipients_filename = file_name[0]
+
+        self.btn_validate.setEnabled(True)
+        self.btn_validate.setStyleSheet(styles.light_blue_button_stylesheet)
+
+    def validate_and_get_contacts(self):
+        # EXTRAÍ O NOMES E EMAILS ATRAVÉS DA FUNÇÃO get_contacts DO MÓDULO file_handling
+        names, emails = file_handling.get_contacts(self.recipients_filename)
+
+        print(names, emails)
+
+        self.btn_signup_recipients.setStyleSheet(styles.green_button_stylesheet)
+        self.btn_signup_recipients.setEnabled(True)
+
+
+
 
     def left_menu(self):
         #  ABRE O MENU LATERAL ESQUERDO DE FORMA ANIMADA

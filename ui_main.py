@@ -24,7 +24,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1120, 710)
+        MainWindow.resize(1162, 737)
         icon = QIcon()
         icon.addFile(u"resources/appostman others icons/appostman-logo.png", QSize(), QIcon.Normal, QIcon.Off)
         MainWindow.setWindowIcon(icon)
@@ -414,7 +414,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents_3 = QWidget()
         self.scrollAreaWidgetContents_3.setObjectName(u"scrollAreaWidgetContents_3")
-        self.scrollAreaWidgetContents_3.setGeometry(QRect(0, 0, 1179, 712))
+        self.scrollAreaWidgetContents_3.setGeometry(QRect(0, 0, 1156, 610))
         self.scrollAreaWidgetContents_3.setMinimumSize(QSize(0, 0))
         font5 = QFont()
         font5.setKerning(True)
@@ -504,7 +504,7 @@ class Ui_MainWindow(object):
         self.scrollArea_6.setWidgetResizable(True)
         self.scrollAreaWidgetContents_6 = QWidget()
         self.scrollAreaWidgetContents_6.setObjectName(u"scrollAreaWidgetContents_6")
-        self.scrollAreaWidgetContents_6.setGeometry(QRect(0, 0, 1179, 712))
+        self.scrollAreaWidgetContents_6.setGeometry(QRect(0, 0, 1156, 610))
         self.verticalLayout_16 = QVBoxLayout(self.scrollAreaWidgetContents_6)
         self.verticalLayout_16.setObjectName(u"verticalLayout_16")
         self.label_7 = QLabel(self.scrollAreaWidgetContents_6)
@@ -696,7 +696,7 @@ class Ui_MainWindow(object):
         self.scrollArea_2.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 1097, 795))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 1139, 795))
         self.verticalLayout_8 = QVBoxLayout(self.scrollAreaWidgetContents)
         self.verticalLayout_8.setSpacing(10)
         self.verticalLayout_8.setObjectName(u"verticalLayout_8")
@@ -842,6 +842,171 @@ class Ui_MainWindow(object):
         self.pages.addWidget(self.page_configurations)
         self.page_recipients = QWidget()
         self.page_recipients.setObjectName(u"page_recipients")
+        self.page_recipients.setStyleSheet(u"QScrollBar:vertical {\n"
+"    border: none;\n"
+"    background-color: rgb(48, 48, 48);\n"
+"    width: 14px;\n"
+"    margin: 15px 0 15px 0;\n"
+"    border-radius: 0px;\n"
+"}\n"
+"\n"
+"/* HANDLE BAR VERTICAL */\n"
+"QScrollBar::handle:vertical {    \n"
+"    background-color: rgb(20, 20, 20);\n"
+"    min-height: 30px;\n"
+"    border-radius: 0px;\n"
+"}\n"
+"QScrollBar::handle:vertical:hover {    \n"
+"    background-color: rgb(170, 170, 170);\n"
+"}\n"
+"QScrollBar::handle:vertical:pressed {    \n"
+"    background-color: rgb(20, 20, 20);\n"
+"}\n"
+"\n"
+"/* BTN TOP - SCROLLBAR */\n"
+"QScrollBar::sub-line:vertical {\n"
+"    border: none;\n"
+"    background-color: rgb(59, 59, 90);\n"
+"    height: 15px;\n"
+"    border-top-left-radius: 7px;\n"
+"    border-top-right-radius: 7px;\n"
+"    subcontrol-position: top;\n"
+"    subcontrol-origin: margin;\n"
+"}\n"
+"QScrollBar::sub-line:vertical:hover {    \n"
+"    background-color: rgb(49, 49, 49);\n"
+"}\n"
+"QScrollBar::sub-line:vertical:pressed {    \n"
+"    background-color: rgb(185,"
+                        " 0, 92);\n"
+"}\n"
+"\n"
+"/* BTN BOTTOM - SCROLLBAR */\n"
+"QScrollBar::add-line:vertical {\n"
+"    border: none;\n"
+"    background-color: rgb(132, 132, 132);\n"
+"    height: 15px;\n"
+"    border-bottom-left-radius: 0px;\n"
+"    border-bottom-right-radius: 0px;\n"
+"    subcontrol-position: bottom;\n"
+"    subcontrol-origin: margin;\n"
+"}\n"
+"QScrollBar::add-line:vertical:hover {    \n"
+"    background-color: rgb(255, 0, 127);\n"
+"}\n"
+"QScrollBar::add-line:vertical:pressed {    \n"
+"    background-color: rgb(185, 0, 92);\n"
+"}\n"
+"\n"
+"/* ARROW - SCROLLBAR */\n"
+"QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {\n"
+"    border: none;\n"
+"    \n"
+"	\n"
+"	background-color: rgb(84, 84, 84);\n"
+"    height: 15px;\n"
+"    border-top-left-radius: 0px;\n"
+"    border-top-right-radius: 0px;\n"
+"    border-bottom-left-radius: 0px;\n"
+"    border-bottom-right-radius: 0px;\n"
+"    subcontrol-position: top;\n"
+"    subcontrol-origin: margin;\n"
+"}\n"
+"QScrollBar::up-arrow:vertical:hover, QScrollBar::down-arro"
+                        "w:vertical:hover {    \n"
+"    \n"
+"	background-color: rgb(170, 170, 170);\n"
+"}\n"
+"QScrollBar::up-arrow:vertical:pressed, QScrollBar::down-arrow:vertical:pressed {    \n"
+"    background-color: rgb(132, 132, 132);\n"
+"}\n"
+"\n"
+"QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {\n"
+"    background: none;\n"
+"}\n"
+"\n"
+"\n"
+"\n"
+"QScrollBar:horizontal {\n"
+"    border: none;\n"
+"    background-color: rgb(48, 48, 48);\n"
+"    height: 14px;\n"
+"    margin: 0 15px 0 15px;\n"
+"    border-radius: 0px;\n"
+"}\n"
+"\n"
+"/* HANDLE BAR HORIZONTAL */\n"
+"QScrollBar::handle:horizontal {    \n"
+"    background-color: rgb(20, 20, 20);\n"
+"    min-width: 30px;\n"
+"    border-radius: 0px;\n"
+"}\n"
+"QScrollBar::handle:horizontal:hover {    \n"
+"    background-color: rgb(170, 170, 170);\n"
+"}\n"
+"QScrollBar::handle:horizontal:pressed {    \n"
+"    background-color: rgb(20, 20, 20);\n"
+"}\n"
+"\n"
+"/* BTN LEFT - SCROLLBAR */\n"
+"QScrollBar::sub-line:horizontal {\n"
+"    border: none;\n"
+"    background-color: rgb(59, "
+                        "59, 90);\n"
+"    width: 15px;\n"
+"    border-top-left-radius: 7px;\n"
+"    border-bottom-left-radius: 7px;\n"
+"    subcontrol-position: left;\n"
+"    subcontrol-origin: margin;\n"
+"}\n"
+"QScrollBar::sub-line:horizontal:hover {    \n"
+"    background-color: rgb(49, 49, 49);\n"
+"}\n"
+"QScrollBar::sub-line:horizontal:pressed {    \n"
+"    background-color: rgb(185, 0, 92);\n"
+"}\n"
+"\n"
+"/* BTN RIGHT - SCROLLBAR */\n"
+"QScrollBar::add-line:horizontal {\n"
+"    border: none;\n"
+"    background-color: rgb(132, 132, 132);\n"
+"    width: 15px;\n"
+"    border-top-right-radius: 0px;\n"
+"    border-bottom-right-radius: 0px;\n"
+"    subcontrol-position: right;\n"
+"    subcontrol-origin: margin;\n"
+"}\n"
+"QScrollBar::add-line:horizontal:hover {    \n"
+"    background-color: rgb(255, 0, 127);\n"
+"}\n"
+"QScrollBar::add-line:horizontal:pressed {    \n"
+"    background-color: rgb(185, 0, 92);\n"
+"}\n"
+"\n"
+"/* ARROW - SCROLLBAR */\n"
+"QScrollBar::left-arrow:horizontal, QScrollBar::right-arrow:horizontal {\n"
+"    border: none"
+                        ";\n"
+"    \n"
+"    background-color: rgb(84, 84, 84);\n"
+"    width: 15px;\n"
+"    border-top-left-radius: 0px;\n"
+"    border-bottom-left-radius: 0px;\n"
+"    border-top-right-radius: 0px;\n"
+"    border-bottom-right-radius: 0px;\n"
+"    subcontrol-position: left;\n"
+"    subcontrol-origin: margin;\n"
+"}\n"
+"QScrollBar::left-arrow:horizontal:hover, QScrollBar::right-arrow:horizontal:hover {    \n"
+"    background-color: rgb(170, 170, 170);\n"
+"}\n"
+"QScrollBar::left-arrow:horizontal:pressed, QScrollBar::right-arrow:horizontal:pressed {    \n"
+"    background-color: rgb(132, 132, 132);\n"
+"}\n"
+"\n"
+"QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {\n"
+"    background: none;\n"
+"}")
         self.verticalLayout_9 = QVBoxLayout(self.page_recipients)
         self.verticalLayout_9.setSpacing(0)
         self.verticalLayout_9.setObjectName(u"verticalLayout_9")
@@ -852,7 +1017,7 @@ class Ui_MainWindow(object):
         self.scrollArea_3.setWidgetResizable(True)
         self.scrollAreaWidgetContents_2 = QWidget()
         self.scrollAreaWidgetContents_2.setObjectName(u"scrollAreaWidgetContents_2")
-        self.scrollAreaWidgetContents_2.setGeometry(QRect(0, 0, 1114, 583))
+        self.scrollAreaWidgetContents_2.setGeometry(QRect(0, 0, 1156, 610))
         self.verticalLayout_10 = QVBoxLayout(self.scrollAreaWidgetContents_2)
         self.verticalLayout_10.setSpacing(10)
         self.verticalLayout_10.setObjectName(u"verticalLayout_10")
@@ -888,16 +1053,17 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_10.addWidget(self.label_11)
 
-        self.pushButton_2 = QPushButton(self.scrollAreaWidgetContents_2)
-        self.pushButton_2.setObjectName(u"pushButton_2")
-        sizePolicy3.setHeightForWidth(self.pushButton_2.sizePolicy().hasHeightForWidth())
-        self.pushButton_2.setSizePolicy(sizePolicy3)
-        self.pushButton_2.setMinimumSize(QSize(180, 35))
+        self.btn_search = QPushButton(self.scrollAreaWidgetContents_2)
+        self.btn_search.setObjectName(u"btn_search")
+        sizePolicy3.setHeightForWidth(self.btn_search.sizePolicy().hasHeightForWidth())
+        self.btn_search.setSizePolicy(sizePolicy3)
+        self.btn_search.setMinimumSize(QSize(180, 35))
         font7 = QFont()
         font7.setFamilies([u"Candara"])
         font7.setPointSize(18)
-        self.pushButton_2.setFont(font7)
-        self.pushButton_2.setStyleSheet(u"QPushButton{\n"
+        self.btn_search.setFont(font7)
+        self.btn_search.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btn_search.setStyleSheet(u"QPushButton{\n"
 "background-color: rgb(20, 39, 203);\n"
 "color: rgb(255, 255, 255);\n"
 "border-radius:5px\n"
@@ -911,21 +1077,84 @@ class Ui_MainWindow(object):
 "}")
         icon8 = QIcon()
         icon8.addFile(u"resources/appostman others icons/directory.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.pushButton_2.setIcon(icon8)
-        self.pushButton_2.setIconSize(QSize(25, 25))
+        self.btn_search.setIcon(icon8)
+        self.btn_search.setIconSize(QSize(25, 25))
 
-        self.verticalLayout_10.addWidget(self.pushButton_2, 0, Qt.AlignHCenter)
+        self.verticalLayout_10.addWidget(self.btn_search, 0, Qt.AlignHCenter)
 
-        self.label_13 = QLabel(self.scrollAreaWidgetContents_2)
-        self.label_13.setObjectName(u"label_13")
-        self.label_13.setMaximumSize(QSize(16777215, 50))
-        font8 = QFont()
-        font8.setFamilies([u"Candara"])
-        font8.setPointSize(20)
-        self.label_13.setFont(font8)
-        self.label_13.setStyleSheet(u"color: rgb(255, 255, 255);")
+        self.label_file_name = QLabel(self.scrollAreaWidgetContents_2)
+        self.label_file_name.setObjectName(u"label_file_name")
+        self.label_file_name.setMaximumSize(QSize(16777215, 50))
+        self.label_file_name.setFont(font7)
+        self.label_file_name.setStyleSheet(u"color: rgb(255, 255, 255);")
+        self.label_file_name.setAlignment(Qt.AlignCenter)
+        self.label_file_name.setWordWrap(True)
 
-        self.verticalLayout_10.addWidget(self.label_13)
+        self.verticalLayout_10.addWidget(self.label_file_name)
+
+        self.frame_3 = QFrame(self.scrollAreaWidgetContents_2)
+        self.frame_3.setObjectName(u"frame_3")
+        self.frame_3.setMaximumSize(QSize(16777215, 60))
+        self.frame_3.setFrameShape(QFrame.StyledPanel)
+        self.frame_3.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_5 = QHBoxLayout(self.frame_3)
+        self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
+        self.horizontalSpacer_4 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_5.addItem(self.horizontalSpacer_4)
+
+        self.btn_validate = QPushButton(self.frame_3)
+        self.btn_validate.setObjectName(u"btn_validate")
+        self.btn_validate.setEnabled(False)
+        sizePolicy3.setHeightForWidth(self.btn_validate.sizePolicy().hasHeightForWidth())
+        self.btn_validate.setSizePolicy(sizePolicy3)
+        self.btn_validate.setMinimumSize(QSize(180, 35))
+        self.btn_validate.setFont(font7)
+        self.btn_validate.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btn_validate.setStyleSheet(u"QPushButton{\n"
+"background-color: rgb(116, 116, 116);\n"
+"color: rgb(255, 255, 255);\n"
+"border-radius:5px\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:hover\n"
+"{\n"
+"background-color: rgb(255, 255, 255);\n"
+"	color: rgb(0, 0, 0);\n"
+"}")
+
+        self.horizontalLayout_5.addWidget(self.btn_validate)
+
+        self.btn_signup_recipients = QPushButton(self.frame_3)
+        self.btn_signup_recipients.setObjectName(u"btn_signup_recipients")
+        self.btn_signup_recipients.setEnabled(False)
+        sizePolicy3.setHeightForWidth(self.btn_signup_recipients.sizePolicy().hasHeightForWidth())
+        self.btn_signup_recipients.setSizePolicy(sizePolicy3)
+        self.btn_signup_recipients.setMinimumSize(QSize(180, 35))
+        self.btn_signup_recipients.setFont(font7)
+        self.btn_signup_recipients.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btn_signup_recipients.setStyleSheet(u"QPushButton{\n"
+"background-color: rgb(116, 116, 116);\n"
+"color: rgb(255, 255, 255);\n"
+"border-radius:5px\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:hover\n"
+"{\n"
+"background-color: rgb(255, 255, 255);\n"
+"	color: rgb(0, 0, 0);\n"
+"}")
+
+        self.horizontalLayout_5.addWidget(self.btn_signup_recipients, 0, Qt.AlignHCenter)
+
+        self.horizontalSpacer_5 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_5.addItem(self.horizontalSpacer_5)
+
+
+        self.verticalLayout_10.addWidget(self.frame_3)
 
         self.line_12 = QFrame(self.scrollAreaWidgetContents_2)
         self.line_12.setObjectName(u"line_12")
@@ -937,6 +1166,12 @@ class Ui_MainWindow(object):
 
         self.label_12 = QLabel(self.scrollAreaWidgetContents_2)
         self.label_12.setObjectName(u"label_12")
+        self.label_12.setMaximumSize(QSize(16777215, 160))
+        font8 = QFont()
+        font8.setFamilies([u"Candara"])
+        font8.setPointSize(20)
+        self.label_12.setFont(font8)
+        self.label_12.setStyleSheet(u"color: rgb(255, 255, 255);")
 
         self.verticalLayout_10.addWidget(self.label_12)
 
@@ -957,7 +1192,7 @@ class Ui_MainWindow(object):
         self.scrollArea_4.setWidgetResizable(True)
         self.scrollAreaWidgetContents_4 = QWidget()
         self.scrollAreaWidgetContents_4.setObjectName(u"scrollAreaWidgetContents_4")
-        self.scrollAreaWidgetContents_4.setGeometry(QRect(0, 0, 1179, 712))
+        self.scrollAreaWidgetContents_4.setGeometry(QRect(0, 0, 176, 57))
         self.verticalLayout_12 = QVBoxLayout(self.scrollAreaWidgetContents_4)
         self.verticalLayout_12.setObjectName(u"verticalLayout_12")
         self.label_4 = QLabel(self.scrollAreaWidgetContents_4)
@@ -983,7 +1218,7 @@ class Ui_MainWindow(object):
         self.scrollArea_5.setWidgetResizable(True)
         self.scrollAreaWidgetContents_5 = QWidget()
         self.scrollAreaWidgetContents_5.setObjectName(u"scrollAreaWidgetContents_5")
-        self.scrollAreaWidgetContents_5.setGeometry(QRect(0, 0, 1179, 712))
+        self.scrollAreaWidgetContents_5.setGeometry(QRect(0, 0, 99, 57))
         self.verticalLayout_14 = QVBoxLayout(self.scrollAreaWidgetContents_5)
         self.verticalLayout_14.setObjectName(u"verticalLayout_14")
         self.label_5 = QLabel(self.scrollAreaWidgetContents_5)
@@ -1074,9 +1309,11 @@ class Ui_MainWindow(object):
         self.label_10.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:20pt;\">\u2022 Temas</span></p><p><br/></p><p><span style=\" font-size:16pt;\">Dispon\u00edvel em breve...</span></p></body></html>", None))
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:24pt;\">Destinat\u00e1rios</span></p></body></html>", None))
         self.label_11.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:20pt;\">\u2022 Cadastrar destinat\u00e1rios</span></p><p><br/><span style=\" font-size:16pt; font-weight:600; color:#00a8f3;\">Para realizar o cadastro de destinat\u00e1rios fa\u00e7a a importa\u00e7\u00e3o de um arquivo .csv</span><br/></p><p><br/></p></body></html>", None))
-        self.pushButton_2.setText(QCoreApplication.translate("MainWindow", u"Procurar", None))
-        self.label_13.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:18pt;\">Caminho do arquivo - V\u00e1lido</span></p></body></html>", None))
-        self.label_12.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
+        self.btn_search.setText(QCoreApplication.translate("MainWindow", u"Procurar", None))
+        self.label_file_name.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\">Selecione um arquivo</p></body></html>", None))
+        self.btn_validate.setText(QCoreApplication.translate("MainWindow", u"Validar", None))
+        self.btn_signup_recipients.setText(QCoreApplication.translate("MainWindow", u"Cadastrar", None))
+        self.label_12.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>\u2022 Destinat\u00e1rios cadastrados<span style=\" font-size:8pt;\"><br/></span></p><p><span style=\" font-size:16pt;\">Dispon\u00edvel em breve...</span></p></body></html>", None))
         self.label_4.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:24pt;\">Mensagens</span></p></body></html>", None))
         self.label_5.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:24pt;\">Ajuda</span></p></body></html>", None))
         self.label_botton.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt;\">Para solucionar d\u00favidas: suporte@appostman.com.br</span></p></body></html>", None))

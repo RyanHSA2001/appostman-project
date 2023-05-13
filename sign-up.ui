@@ -291,7 +291,7 @@ background-color: rgb(255, 255, 255);
 }</string>
    </property>
    <property name="text">
-    <string>Voltar</string>
+    <string>VOLTAR</string>
    </property>
   </widget>
  </widget>

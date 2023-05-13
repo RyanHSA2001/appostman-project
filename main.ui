@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1120</width>
-    <height>710</height>
+    <width>1162</width>
+    <height>737</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -869,8 +869,8 @@ background-color: rgb(255, 255, 255);
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>1179</width>
-                   <height>712</height>
+                   <width>1156</width>
+                   <height>610</height>
                   </rect>
                  </property>
                  <property name="minimumSize">
@@ -1042,8 +1042,8 @@ background-color: rgb(255, 255, 255);
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>1179</width>
-                   <height>712</height>
+                   <width>1156</width>
+                   <height>610</height>
                   </rect>
                  </property>
                  <layout class="QVBoxLayout" name="verticalLayout_16">
@@ -1257,7 +1257,7 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>1097</width>
+                   <width>1139</width>
                    <height>795</height>
                   </rect>
                  </property>
@@ -1581,6 +1581,169 @@ background-color: rgb(255, 255, 255);
              </layout>
             </widget>
             <widget class="QWidget" name="page_recipients">
+             <property name="styleSheet">
+              <string notr="true">QScrollBar:vertical {
+    border: none;
+    background-color: rgb(48, 48, 48);
+    width: 14px;
+    margin: 15px 0 15px 0;
+    border-radius: 0px;
+}
+
+/* HANDLE BAR VERTICAL */
+QScrollBar::handle:vertical {    
+    background-color: rgb(20, 20, 20);
+    min-height: 30px;
+    border-radius: 0px;
+}
+QScrollBar::handle:vertical:hover {    
+    background-color: rgb(170, 170, 170);
+}
+QScrollBar::handle:vertical:pressed {    
+    background-color: rgb(20, 20, 20);
+}
+
+/* BTN TOP - SCROLLBAR */
+QScrollBar::sub-line:vertical {
+    border: none;
+    background-color: rgb(59, 59, 90);
+    height: 15px;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+    subcontrol-position: top;
+    subcontrol-origin: margin;
+}
+QScrollBar::sub-line:vertical:hover {    
+    background-color: rgb(49, 49, 49);
+}
+QScrollBar::sub-line:vertical:pressed {    
+    background-color: rgb(185, 0, 92);
+}
+
+/* BTN BOTTOM - SCROLLBAR */
+QScrollBar::add-line:vertical {
+    border: none;
+    background-color: rgb(132, 132, 132);
+    height: 15px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    subcontrol-position: bottom;
+    subcontrol-origin: margin;
+}
+QScrollBar::add-line:vertical:hover {    
+    background-color: rgb(255, 0, 127);
+}
+QScrollBar::add-line:vertical:pressed {    
+    background-color: rgb(185, 0, 92);
+}
+
+/* ARROW - SCROLLBAR */
+QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {
+    border: none;
+    
+	
+	background-color: rgb(84, 84, 84);
+    height: 15px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    subcontrol-position: top;
+    subcontrol-origin: margin;
+}
+QScrollBar::up-arrow:vertical:hover, QScrollBar::down-arrow:vertical:hover {    
+    
+	background-color: rgb(170, 170, 170);
+}
+QScrollBar::up-arrow:vertical:pressed, QScrollBar::down-arrow:vertical:pressed {    
+    background-color: rgb(132, 132, 132);
+}
+
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+    background: none;
+}
+
+
+
+QScrollBar:horizontal {
+    border: none;
+    background-color: rgb(48, 48, 48);
+    height: 14px;
+    margin: 0 15px 0 15px;
+    border-radius: 0px;
+}
+
+/* HANDLE BAR HORIZONTAL */
+QScrollBar::handle:horizontal {    
+    background-color: rgb(20, 20, 20);
+    min-width: 30px;
+    border-radius: 0px;
+}
+QScrollBar::handle:horizontal:hover {    
+    background-color: rgb(170, 170, 170);
+}
+QScrollBar::handle:horizontal:pressed {    
+    background-color: rgb(20, 20, 20);
+}
+
+/* BTN LEFT - SCROLLBAR */
+QScrollBar::sub-line:horizontal {
+    border: none;
+    background-color: rgb(59, 59, 90);
+    width: 15px;
+    border-top-left-radius: 7px;
+    border-bottom-left-radius: 7px;
+    subcontrol-position: left;
+    subcontrol-origin: margin;
+}
+QScrollBar::sub-line:horizontal:hover {    
+    background-color: rgb(49, 49, 49);
+}
+QScrollBar::sub-line:horizontal:pressed {    
+    background-color: rgb(185, 0, 92);
+}
+
+/* BTN RIGHT - SCROLLBAR */
+QScrollBar::add-line:horizontal {
+    border: none;
+    background-color: rgb(132, 132, 132);
+    width: 15px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    subcontrol-position: right;
+    subcontrol-origin: margin;
+}
+QScrollBar::add-line:horizontal:hover {    
+    background-color: rgb(255, 0, 127);
+}
+QScrollBar::add-line:horizontal:pressed {    
+    background-color: rgb(185, 0, 92);
+}
+
+/* ARROW - SCROLLBAR */
+QScrollBar::left-arrow:horizontal, QScrollBar::right-arrow:horizontal {
+    border: none;
+    
+    background-color: rgb(84, 84, 84);
+    width: 15px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    subcontrol-position: left;
+    subcontrol-origin: margin;
+}
+QScrollBar::left-arrow:horizontal:hover, QScrollBar::right-arrow:horizontal:hover {    
+    background-color: rgb(170, 170, 170);
+}
+QScrollBar::left-arrow:horizontal:pressed, QScrollBar::right-arrow:horizontal:pressed {    
+    background-color: rgb(132, 132, 132);
+}
+
+QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
+    background: none;
+}</string>
+             </property>
              <layout class="QVBoxLayout" name="verticalLayout_9">
               <property name="spacing">
                <number>0</number>
@@ -1610,8 +1773,8 @@ background-color: rgb(255, 255, 255);
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>1114</width>
-                   <height>583</height>
+                   <width>1156</width>
+                   <height>610</height>
                   </rect>
                  </property>
                  <layout class="QVBoxLayout" name="verticalLayout_10">
@@ -1721,6 +1884,9 @@ background-color: rgb(255, 255, 255);
                       <pointsize>18</pointsize>
                      </font>
                     </property>
+                    <property name="cursor">
+                     <cursorShape>PointingHandCursor</cursorShape>
+                    </property>
                     <property name="styleSheet">
                      <string notr="true">QPushButton{
 background-color: rgb(20, 39, 203);
@@ -1751,7 +1917,7 @@ background-color: rgb(255, 255, 255);
                    </widget>
                   </item>
                   <item>
-                   <widget class="QLabel" name="label_13">
+                   <widget class="QLabel" name="label_file_name">
                     <property name="maximumSize">
                      <size>
                       <width>16777215</width>
@@ -1761,15 +1927,155 @@ background-color: rgb(255, 255, 255);
                     <property name="font">
                      <font>
                       <family>Candara</family>
-                      <pointsize>20</pointsize>
+                      <pointsize>18</pointsize>
                      </font>
                     </property>
                     <property name="styleSheet">
                      <string notr="true">color: rgb(255, 255, 255);</string>
                     </property>
                     <property name="text">
-                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;Caminho do arquivo - Válido&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Selecione um arquivo&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                     </property>
+                    <property name="alignment">
+                     <set>Qt::AlignCenter</set>
+                    </property>
+                    <property name="wordWrap">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QFrame" name="frame_3">
+                    <property name="maximumSize">
+                     <size>
+                      <width>16777215</width>
+                      <height>60</height>
+                     </size>
+                    </property>
+                    <property name="frameShape">
+                     <enum>QFrame::StyledPanel</enum>
+                    </property>
+                    <property name="frameShadow">
+                     <enum>QFrame::Raised</enum>
+                    </property>
+                    <layout class="QHBoxLayout" name="horizontalLayout_5">
+                     <item>
+                      <spacer name="horizontalSpacer_4">
+                       <property name="orientation">
+                        <enum>Qt::Horizontal</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>40</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="btn_validate">
+                       <property name="enabled">
+                        <bool>false</bool>
+                       </property>
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                       <property name="minimumSize">
+                        <size>
+                         <width>180</width>
+                         <height>35</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <family>Candara</family>
+                         <pointsize>18</pointsize>
+                        </font>
+                       </property>
+                       <property name="cursor">
+                        <cursorShape>PointingHandCursor</cursorShape>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">QPushButton{
+background-color: rgb(116, 116, 116);
+color: rgb(255, 255, 255);
+border-radius:5px
+
+}
+
+QPushButton:hover
+{
+background-color: rgb(255, 255, 255);
+	color: rgb(0, 0, 0);
+}</string>
+                       </property>
+                       <property name="text">
+                        <string>Validar</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item alignment="Qt::AlignHCenter">
+                      <widget class="QPushButton" name="btn_signup_recipients">
+                       <property name="enabled">
+                        <bool>false</bool>
+                       </property>
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                       <property name="minimumSize">
+                        <size>
+                         <width>180</width>
+                         <height>35</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <family>Candara</family>
+                         <pointsize>18</pointsize>
+                        </font>
+                       </property>
+                       <property name="cursor">
+                        <cursorShape>PointingHandCursor</cursorShape>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">QPushButton{
+background-color: rgb(116, 116, 116);
+color: rgb(255, 255, 255);
+border-radius:5px
+
+}
+
+QPushButton:hover
+{
+background-color: rgb(255, 255, 255);
+	color: rgb(0, 0, 0);
+}</string>
+                       </property>
+                       <property name="text">
+                        <string>Cadastrar</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <spacer name="horizontalSpacer_5">
+                       <property name="orientation">
+                        <enum>Qt::Horizontal</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>40</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
+                    </layout>
                    </widget>
                   </item>
                   <item>
@@ -1787,8 +2093,23 @@ background-color: rgb(255, 255, 255);
                   </item>
                   <item>
                    <widget class="QLabel" name="label_12">
+                    <property name="maximumSize">
+                     <size>
+                      <width>16777215</width>
+                      <height>160</height>
+                     </size>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <family>Candara</family>
+                      <pointsize>20</pointsize>
+                     </font>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">color: rgb(255, 255, 255);</string>
+                    </property>
                     <property name="text">
-                     <string>TextLabel</string>
+                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;• Destinatários cadastrados&lt;span style=&quot; font-size:8pt;&quot;&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Disponível em breve...&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                     </property>
                    </widget>
                   </item>
@@ -1828,8 +2149,8 @@ background-color: rgb(255, 255, 255);
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>1179</width>
-                   <height>712</height>
+                   <width>176</width>
+                   <height>57</height>
                   </rect>
                  </property>
                  <layout class="QVBoxLayout" name="verticalLayout_12">
@@ -1879,8 +2200,8 @@ background-color: rgb(255, 255, 255);
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>1179</width>
-                   <height>712</height>
+                   <width>99</width>
+                   <height>57</height>
                   </rect>
                  </property>
                  <layout class="QVBoxLayout" name="verticalLayout_14">
