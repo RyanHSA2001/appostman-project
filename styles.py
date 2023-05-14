@@ -28,6 +28,21 @@ QPushButton:hover
 }
 """
 
+gray_button_stylesheet = """
+QPushButton{
+background-color: rgb(116, 116, 116);
+color: rgb(255, 255, 255);
+border-radius:5px
+
+}
+
+QPushButton:hover
+{
+background-color: rgb(255, 255, 255);
+	color: rgb(0, 0, 0);
+}
+"""
+
 dark_messagebox_stylesheet = """
 QMessageBox {
     background-color: rgb(49, 49, 49);

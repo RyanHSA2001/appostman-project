@@ -23,6 +23,16 @@ class FunctionsInCommon():
     def __init__(self) -> None:
         pass
 
+    def able_disable_buttons(self, button, able:bool,  stylesheet):
+        if able:
+            button.setEnabled(True)
+            button.setStyleSheet(stylesheet)
+        else:
+            button.setEnabled(False)
+            button.setStyleSheet(stylesheet)
+
+
+
     def show_message_box(self, icon, title, message, parent=None, ok_and_cancel=False):
         """
         Exibe uma caixa de mensagem, definindo parâmetros de hierarquia, ícone, título e texto.
@@ -46,6 +56,8 @@ class FunctionsInCommon():
         """
         Define uma expressão regular para validar o formato do e-mail digitado pelo usuário,
         e verifica se o e-mail corresponde a esse padrão estabelecido.
+
+        Se valido retorna True, caso contrátio retorna False.
         """
         standard = r'^[\w]+[\.\w-]*@[\w-]+\.[a-zA-Z]{2,}$'
 
@@ -325,27 +337,58 @@ class MainWindow(QMainWindow, Ui_MainWindow, FunctionsInCommon):
 
     # *--*---*FUNÇÕES PÁGINA DESTINATÁRIOS*---*--*
     def open_file_dialog(self):
-        # ABRE O EXPLORADOR DE ARQUIVOS
+        """
+        Abre o explorador de arquivos a fim de receber um arquivo .csv,
+        ao selecionar o arquivo a função passa o caminho deste arquivo
+        para o atributo recipients_filename da classe MainWindow, e também ativa o botão "Validar" (btn_validate).
+
+        Caso o usuário abra o explorador de arquivos e feche sem selecionar nada o botão "Validar" é desativado.
+        """
         file_name = QFileDialog.getOpenFileName(self, "Selecione o Arquivo",
                                                 "", "Valores Separados por Vírgula (*.csv)")
-        self.label_file_name.setText(file_name[0])
 
-        self.recipients_filename = file_name[0]
+        if file_name[0]:
+            self.label_file_name.setText(file_name[0])
 
-        self.btn_validate.setEnabled(True)
-        self.btn_validate.setStyleSheet(styles.light_blue_button_stylesheet)
+            self.able_disable_buttons(self.btn_validate, True, styles.light_blue_button_stylesheet)
+
+            self.recipients_filename = file_name[0]
+        else:
+            self.label_file_name.setText("Selecione um arquivo")
+            self.able_disable_buttons(self.btn_validate, False, styles.gray_button_stylesheet)
+
+        self.able_disable_buttons(self.btn_signup_recipients, False, styles.gray_button_stylesheet)
 
     def validate_and_get_contacts(self):
-        # EXTRAÍ O NOMES E EMAILS ATRAVÉS DA FUNÇÃO get_contacts DO MÓDULO file_handling
-        names, emails = file_handling.get_contacts(self.recipients_filename)
+        """
+        Extraí os nomes e e-mails através da função get_contacts do módulo file_handling.
 
-        print(names, emails)
+        Para realizar a validação é utilizado o Try - Except capturando a excessão ValueError, que significa que a
+        função get_contacts encontrou um email inválido no arquivo. Exibindo assim uma mensagem de erro ao usuário.
 
-        self.btn_signup_recipients.setStyleSheet(styles.green_button_stylesheet)
-        self.btn_signup_recipients.setEnabled(True)
+        Caso passe pela validação exibe a quatindade de contatos válidos para inserção no banco de dados, e por fim
+        ativa o botão "Cadastrar" (self.btn_signup_recipients)
 
+        *Antes de exibir a mensagem de sucesso, valida se a quantidade de nomes extraídos é igual a de e-mails
+        a fim de evitar problemas na inserção do banco de dados.
+        """
+        try:
+            names, emails = file_handling.get_contacts(self.recipients_filename)
 
+            if len(names) == len(emails):
+                success_message = f"Arquivo válido.\nForam encontrados {len(emails)} contatos válidos."
+                self.show_message_box(QMessageBox.Information, "Sucesso", success_message, self)
 
+            self.able_disable_buttons(self.btn_signup_recipients, True, styles.green_button_stylesheet)
+
+        except(IndexError):
+            self.show_message_box(QMessageBox.Warning, "Erro", "Arquivo inválido. "
+                                                               "Consulte o menu AJUDA "
+                                                               "para uma explicação do leiaute do arquivo.", self)
+        except(ValueError):
+            error = file_handling.get_contacts(self.recipients_filename)
+
+            self.show_message_box(QMessageBox.Warning, "Erro", error, self)
 
     def left_menu(self):
         #  ABRE O MENU LATERAL ESQUERDO DE FORMA ANIMADA
@@ -367,8 +410,8 @@ class MainWindow(QMainWindow, Ui_MainWindow, FunctionsInCommon):
 if __name__ == '__main__':
     # BLOCO DE CÓDIGO DESTINADO A TESTES, INICIA A TELA ESPECÍFICADA.
     app = QApplication(sys.argv)
-    window = Login()
-    # window = MainWindow()
+    # window = Login()
+    window = MainWindow()
     window.show()
     # window = VerificationCode()
     # window.show()
