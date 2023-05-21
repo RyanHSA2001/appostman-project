@@ -14,6 +14,21 @@ class DataBase():
         except:
             pass
 
+    def create_table_recipients(self):
+        try:
+            cursor = self.connection.cursor()
+            cursor.execute(
+                """
+                CREATE TABLE IF NOT EXISTS recipients(
+                id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+                name VARCHAR(20) NOT NULL,
+                email VARCHAR(100) NOT NULL UNIQUE
+                )
+                """)
+
+        except AttributeError:
+            print("Faça a conexão")
+
     def create_table_users(self):
         try:
             cursor = self.connection.cursor()
@@ -31,7 +46,6 @@ class DataBase():
 
         except AttributeError:
             print("Faça a conexão")
-
 
     def update_password(self, user, new_password):
         try:
@@ -83,9 +97,7 @@ class DataBase():
             print("Error while checking email exists: ", error)
             return False
 
-
     def insert_user(self, user, email, password):
-
         try:
             cursor = self.connection.cursor()
             cursor.execute("""
@@ -100,11 +112,22 @@ class DataBase():
         except sqlite3.IntegrityError:
             print(email)
 
-
-
+    def insert_recipient(self, name, email):
+        try:
+            cursor = self.connection.cursor()
+            cursor.execute("""
+            
+                INSERT OR REPLACE INTO recipients(name, email) VALUES(?, ?)
+                
+            """, (name, email))
+            self.connection.commit()
+        except AttributeError:
+            print("Faça a conexão")
 
 if __name__ == "__main__":
     db = DataBase()
     db.connect()
-    db.alter_table_users()
+    db.insert_recipient("Ryan", "ryan.booh@gmail.com")
+    # db.alter_table_users()
+    # db.create_table_recipients()
     db.close_connection()

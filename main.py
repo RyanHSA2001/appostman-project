@@ -19,11 +19,14 @@ import re
 import file_handling
 import styles
 
-class FunctionsInCommon():
+
+# noinspection PyUnresolvedReferences
+class FunctionsInCommon:
     def __init__(self) -> None:
         pass
 
-    def able_disable_buttons(self, button, able:bool,  stylesheet):
+    @staticmethod
+    def able_disable_buttons(button, able: bool, stylesheet):
         if able:
             button.setEnabled(True)
             button.setStyleSheet(stylesheet)
@@ -31,9 +34,8 @@ class FunctionsInCommon():
             button.setEnabled(False)
             button.setStyleSheet(stylesheet)
 
-
-
-    def show_message_box(self, icon, title, message, parent=None, ok_and_cancel=False):
+    @staticmethod
+    def show_message_box(icon, title, message, parent=None, ok_and_cancel=False):
         """
         Exibe uma caixa de mensagem, definindo parâmetros de hierarquia, ícone, título e texto.
         Por fim, define o estilo da caixa com comandos QSS
@@ -52,25 +54,30 @@ class FunctionsInCommon():
         msg_box.setStyleSheet(styles.dark_messagebox_stylesheet)
         msg_box.exec()
 
-    def validate_email(self, email):
+    @staticmethod
+    def validate_email(email):
         """
         Define uma expressão regular para validar o formato do e-mail digitado pelo usuário,
         e verifica se o e-mail corresponde a esse padrão estabelecido.
 
-        Se valido retorna True, caso contrátio retorna False.
+        Se valido retorna True, caso contrário retorna False.
         """
         standard = r'^[\w]+[\.\w-]*@[\w-]+\.[a-zA-Z]{2,}$'
 
         if re.match(standard, email):
             return True
         else:
-            self.false = False
-            return self.false
+            false = False
+            return false
 
 
+# noinspection PyUnresolvedReferences
 class Login(QWidget, Ui_login, FunctionsInCommon):
     def __init__(self) -> None:
         super(Login, self).__init__()
+        self.forget_w = ForgetPassword()
+        self.main_window = MainWindow()
+        self.signup_window = SignUp()
         self.setupUi(self)
         self.setWindowTitle("Login")
 
@@ -84,7 +91,6 @@ class Login(QWidget, Ui_login, FunctionsInCommon):
 
     def open_signup_window(self):
         # ABRE A TELA DE CADASTRO
-        self.signup_window = SignUp()
         self.signup_window.show()
         self.close()
 
@@ -96,7 +102,6 @@ class Login(QWidget, Ui_login, FunctionsInCommon):
 
         # SE SIM
         if authenticated:
-            self.main_window = MainWindow()
             self.main_window.show()
             self.close()
 
@@ -107,7 +112,6 @@ class Login(QWidget, Ui_login, FunctionsInCommon):
         db.close_connection()
 
     def open_forget_password_window(self):
-        self.forget_w = ForgetPassword()
         self.forget_w.show()
 
 
@@ -122,18 +126,19 @@ class SignUp(QWidget, Ui_signup, FunctionsInCommon):
         self.password_repeat_lineEdit.returnPressed.connect(self.collect_user_data)
         self.btn_return.clicked.connect(self.open_login)
 
+    # noinspection PyUnresolvedReferences
     def collect_user_data(self):
         """
         Insere usuários no banco de dados.
-        Porém antes são realizadas uma série de validações a fim de tratar os dados fornecidos pelo usuário.
+        Porém, antes são realizadas uma série de validações de modo a tratar os dados fornecidos pelo usuário.
 
         1° Valida se todos os campos estão preenchidos.
-        2° Valida se o e-mail é válido, de acordo com a função validate_email.
+        2° Valida se o e-mail é válido, conforme a função validate_email.
         3° Valida se as senhas digitadas são iguais.
 
-        Após esse processo ele estabelece uma conexão com o banco de dados para realizar a 4° validação.
+        Após esse processo ele estabelece uma conexão com o banco de dados para realizar a (4°) validação.
 
-        4º Valida se os dados já existem no banco de dados através da função db.already_exists
+        (4º) Valida se os dados já existem no banco de dados através da função db.already_exists
 
         Se passar pelas validações ele envia o código de verificação para o e-mail fornecido
         e abre a tela de verificação.
@@ -194,16 +199,17 @@ class ForgetPassword(QWidget, Ui_forgetpassword, FunctionsInCommon):
         self.btn_redefine.clicked.connect(self.redefine_password)
         self.repeat_password_lineEdit.returnPressed.connect(self.redefine_password)
 
+    # noinspection PyUnresolvedReferences
     def redefine_password(self):
         """
         Redefine a senha do usuário.
-        Porém antes são realizadas uma série de validações a fim de tratar os dados fornecidos pelo usuário.
+        Porém, antes são realizadas uma série de validações de modo a tratar os dados fornecidos pelo usuário.
 
         1° Valida se todos os campos estão preenchidos.
-        2° Valida se o e-mail é válido, de acordo com a função validate_email.
+        2° Valida se o e-mail é válido, conforme a função validate_email.
         3° Valida se as senhas digitadas são iguais.
 
-        Após esse processo, é estabelecida uma conexão com o banco de dados para realizar a 4° validação.
+        Após esse processo, é estabelecida uma conexão com o banco de dados para realizar a (4°) validação.
 
         4° Valida se o e-mail digitado existe no banco de dados através da função db.search_email.
 
@@ -212,6 +218,7 @@ class ForgetPassword(QWidget, Ui_forgetpassword, FunctionsInCommon):
         """
 
         if not self.email_lineEdit.text() or not self.password_lineEdit.text():
+            # noinspection PyUnresolvedReferences
             self.show_message_box(QMessageBox.Warning, "Erro", "Todos os campos são obrigatórios", self)
             return None
 
@@ -270,11 +277,12 @@ class VerificationCode(QWidget, Ui_verificationCode, FunctionsInCommon):
         # REENVIA O CÓDIGO DE VERIFICAÇÃO
         self.verification_code = send_verify_code(self.user, self.email)
 
+    # noinspection PyUnresolvedReferences
     def verify(self):
         """
         Valida o código de verificação enviado ao e-mail fornecido e realiza a devida operação.
 
-        A classe possúi o parâmetro "redefine_password", que quando True realiza a redefinição da senha através
+        A classe possui o parâmetro "redefine_password", que quando True realiza a redefinição da senha através
         da função db.update_password.
 
         Quando o parâmetro "redefine_password" for False,
@@ -294,7 +302,6 @@ class VerificationCode(QWidget, Ui_verificationCode, FunctionsInCommon):
 
             else:
                 self.show_message_box(QMessageBox.Warning, "Erro", "Código de verificação inválido", self)
-
 
         else:
             if self.code_lineEdit.text() == self.verification_code:
@@ -318,7 +325,10 @@ class MainWindow(QMainWindow, Ui_MainWindow, FunctionsInCommon):
         super(MainWindow, self).__init__()
         self.setupUi(self)
         self.setWindowTitle("Appostman")
+        # ATRIBUTOS DESTINATÁRIOS
         self.recipients_filename = ''
+        self.recipients_emails = []
+        self.recipients_names = []
 
         # *--EVENTOS DA TELA PRINCIPAL--*
         self.btn_toggle.clicked.connect(self.left_menu)
@@ -326,6 +336,7 @@ class MainWindow(QMainWindow, Ui_MainWindow, FunctionsInCommon):
         # *--EVENTOS PÁGINA DESTINATÁRIOS--*
         self.btn_search.clicked.connect(self.open_file_dialog)
         self.btn_validate.clicked.connect(self.validate_and_get_contacts)
+        self.btn_signup_recipients.clicked.connect(self.upload_recipients)
 
         # # *--PÁGINAS DA TELA PRINCIPAL--*
         self.btn_home.clicked.connect(lambda: self.pages.setCurrentWidget(self.page_home))
@@ -338,8 +349,8 @@ class MainWindow(QMainWindow, Ui_MainWindow, FunctionsInCommon):
     # *--*---*FUNÇÕES PÁGINA DESTINATÁRIOS*---*--*
     def open_file_dialog(self):
         """
-        Abre o explorador de arquivos a fim de receber um arquivo .csv,
-        ao selecionar o arquivo a função passa o caminho deste arquivo
+        Abre o explorador de arquivos de modo a receber um arquivo (.csv),
+        ao selecionar o mesmo, a função passa o caminho deste arquivo
         para o atributo recipients_filename da classe MainWindow, e também ativa o botão "Validar" (btn_validate).
 
         Caso o usuário abra o explorador de arquivos e feche sem selecionar nada o botão "Validar" é desativado.
@@ -350,7 +361,7 @@ class MainWindow(QMainWindow, Ui_MainWindow, FunctionsInCommon):
         if file_name[0]:
             self.label_file_name.setText(file_name[0])
 
-            self.able_disable_buttons(self.btn_validate, True, styles.light_blue_button_stylesheet)
+            self.able_disable_buttons(self.btn_validate, True, styles.green_button_stylesheet)
 
             self.recipients_filename = file_name[0]
         else:
@@ -359,18 +370,19 @@ class MainWindow(QMainWindow, Ui_MainWindow, FunctionsInCommon):
 
         self.able_disable_buttons(self.btn_signup_recipients, False, styles.gray_button_stylesheet)
 
+    # noinspection PyUnresolvedReferences
     def validate_and_get_contacts(self):
         """
         Extraí os nomes e e-mails através da função get_contacts do módulo file_handling.
 
-        Para realizar a validação é utilizado o Try - Except capturando a excessão ValueError, que significa que a
+        Para realizar a validação é utilizado o Try — Except capturando a excessão ValueError, que significa que a
         função get_contacts encontrou um email inválido no arquivo. Exibindo assim uma mensagem de erro ao usuário.
 
-        Caso passe pela validação exibe a quatindade de contatos válidos para inserção no banco de dados, e por fim
+        Caso passe pela validação exibe a quantidade de contatos válidos para inserção no banco de dados, e por fim
         ativa o botão "Cadastrar" (self.btn_signup_recipients)
 
         *Antes de exibir a mensagem de sucesso, valida se a quantidade de nomes extraídos é igual a de e-mails
-        a fim de evitar problemas na inserção do banco de dados.
+        de modo a evitar problemas na inserção do banco de dados.
         """
         try:
             names, emails = file_handling.get_contacts(self.recipients_filename)
@@ -379,16 +391,41 @@ class MainWindow(QMainWindow, Ui_MainWindow, FunctionsInCommon):
                 success_message = f"Arquivo válido.\nForam encontrados {len(emails)} contatos válidos."
                 self.show_message_box(QMessageBox.Information, "Sucesso", success_message, self)
 
-            self.able_disable_buttons(self.btn_signup_recipients, True, styles.green_button_stylesheet)
+                self.able_disable_buttons(self.btn_signup_recipients, True, styles.green_button_stylesheet)
 
-        except(IndexError):
+                self.recipients_names = names
+                self.recipients_emails = emails
+            else:
+                self.show_message_box(QMessageBox.Warning, "Erro", "Erro desconhecido na leitura do arquivo", self)
+
+
+        except(IndexError, UnicodeDecodeError):
             self.show_message_box(QMessageBox.Warning, "Erro", "Arquivo inválido. "
                                                                "Consulte o menu AJUDA "
                                                                "para uma explicação do leiaute do arquivo.", self)
-        except(ValueError):
+        except ValueError:
             error = file_handling.get_contacts(self.recipients_filename)
 
             self.show_message_box(QMessageBox.Warning, "Erro", error, self)
+
+    def upload_recipients(self):
+        """
+        Adiciona os destinatários ao banco de dados, ao terminar a inserção desativa os botões validar e cadastrar
+        """
+        db = DataBase()
+        db.connect()
+        for i, name in enumerate(self.recipients_names):
+            db.insert_recipient(name, self.recipients_emails[i])
+
+        self.show_message_box(QMessageBox.Information, "Sucesso", "Destinatários cadastrados com sucesso!", self)
+
+        self.label_file_name.setText("Selecione um arquivo")
+        self.able_disable_buttons(self.btn_validate, False, styles.gray_button_stylesheet)
+        self.able_disable_buttons(self.btn_signup_recipients, False, styles.gray_button_stylesheet)
+
+
+
+
 
     def left_menu(self):
         #  ABRE O MENU LATERAL ESQUERDO DE FORMA ANIMADA
@@ -408,7 +445,7 @@ class MainWindow(QMainWindow, Ui_MainWindow, FunctionsInCommon):
 
 
 if __name__ == '__main__':
-    # BLOCO DE CÓDIGO DESTINADO A TESTES, INICIA A TELA ESPECÍFICADA.
+    # BLOCO DE CÓDIGO DESTINADO A TESTES, INICIA A TELA ESPECIFICADA.
     app = QApplication(sys.argv)
     # window = Login()
     window = MainWindow()

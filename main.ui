@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1162</width>
-    <height>737</height>
+    <width>1193</width>
+    <height>759</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -869,8 +869,8 @@ background-color: rgb(255, 255, 255);
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>1156</width>
-                   <height>610</height>
+                   <width>1187</width>
+                   <height>632</height>
                   </rect>
                  </property>
                  <property name="minimumSize">
@@ -1042,8 +1042,8 @@ background-color: rgb(255, 255, 255);
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>1156</width>
-                   <height>610</height>
+                   <width>1187</width>
+                   <height>632</height>
                   </rect>
                  </property>
                  <layout class="QVBoxLayout" name="verticalLayout_16">
@@ -1257,7 +1257,7 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>1139</width>
+                   <width>1170</width>
                    <height>795</height>
                   </rect>
                  </property>
@@ -1773,8 +1773,8 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>1156</width>
-                   <height>610</height>
+                   <width>1187</width>
+                   <height>632</height>
                   </rect>
                  </property>
                  <layout class="QVBoxLayout" name="verticalLayout_10">
@@ -1805,6 +1805,8 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
                      <font>
                       <family>Candara</family>
                       <pointsize>26</pointsize>
+                      <weight>75</weight>
+                      <bold>true</bold>
                      </font>
                     </property>
                     <property name="styleSheet">
@@ -2092,26 +2094,54 @@ background-color: rgb(255, 255, 255);
                    </widget>
                   </item>
                   <item>
-                   <widget class="QLabel" name="label_12">
-                    <property name="maximumSize">
-                     <size>
-                      <width>16777215</width>
-                      <height>160</height>
-                     </size>
-                    </property>
-                    <property name="font">
-                     <font>
-                      <family>Candara</family>
-                      <pointsize>20</pointsize>
-                     </font>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">color: rgb(255, 255, 255);</string>
-                    </property>
-                    <property name="text">
-                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;• Destinatários cadastrados&lt;span style=&quot; font-size:8pt;&quot;&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Disponível em breve...&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                    </property>
-                   </widget>
+                   <layout class="QHBoxLayout" name="horizontalLayout_6">
+                    <item>
+                     <widget class="QPushButton" name="btn_show_recipients">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>1000</width>
+                        <height>80</height>
+                       </size>
+                      </property>
+                      <property name="font">
+                       <font>
+                        <family>Candara</family>
+                        <pointsize>26</pointsize>
+                        <weight>50</weight>
+                        <italic>true</italic>
+                        <bold>false</bold>
+                       </font>
+                      </property>
+                      <property name="cursor">
+                       <cursorShape>PointingHandCursor</cursorShape>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">QPushButton{
+background-color: rgb(0, 168, 243);
+color: rgb(0, 0, 0);
+border-radius:20px
+
+}
+
+QPushButton:hover
+{
+background-color: rgb(211, 211, 211);
+	
+	color: rgb(255, 255, 255);
+}</string>
+                      </property>
+                      <property name="text">
+                       <string>Destinatários cadastrados</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
                   </item>
                  </layout>
                 </widget>
@@ -2200,8 +2230,8 @@ background-color: rgb(255, 255, 255);
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>99</width>
-                   <height>57</height>
+                   <width>1187</width>
+                   <height>632</height>
                   </rect>
                  </property>
                  <layout class="QVBoxLayout" name="verticalLayout_14">

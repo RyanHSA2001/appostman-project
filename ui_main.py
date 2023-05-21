@@ -24,7 +24,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1162, 737)
+        MainWindow.resize(1193, 759)
         icon = QIcon()
         icon.addFile(u"resources/appostman others icons/appostman-logo.png", QSize(), QIcon.Normal, QIcon.Off)
         MainWindow.setWindowIcon(icon)
@@ -414,7 +414,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents_3 = QWidget()
         self.scrollAreaWidgetContents_3.setObjectName(u"scrollAreaWidgetContents_3")
-        self.scrollAreaWidgetContents_3.setGeometry(QRect(0, 0, 1156, 610))
+        self.scrollAreaWidgetContents_3.setGeometry(QRect(0, 0, 1187, 632))
         self.scrollAreaWidgetContents_3.setMinimumSize(QSize(0, 0))
         font5 = QFont()
         font5.setKerning(True)
@@ -504,7 +504,7 @@ class Ui_MainWindow(object):
         self.scrollArea_6.setWidgetResizable(True)
         self.scrollAreaWidgetContents_6 = QWidget()
         self.scrollAreaWidgetContents_6.setObjectName(u"scrollAreaWidgetContents_6")
-        self.scrollAreaWidgetContents_6.setGeometry(QRect(0, 0, 1156, 610))
+        self.scrollAreaWidgetContents_6.setGeometry(QRect(0, 0, 1187, 632))
         self.verticalLayout_16 = QVBoxLayout(self.scrollAreaWidgetContents_6)
         self.verticalLayout_16.setObjectName(u"verticalLayout_16")
         self.label_7 = QLabel(self.scrollAreaWidgetContents_6)
@@ -696,7 +696,7 @@ class Ui_MainWindow(object):
         self.scrollArea_2.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 1139, 795))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 1170, 795))
         self.verticalLayout_8 = QVBoxLayout(self.scrollAreaWidgetContents)
         self.verticalLayout_8.setSpacing(10)
         self.verticalLayout_8.setObjectName(u"verticalLayout_8")
@@ -1017,7 +1017,7 @@ class Ui_MainWindow(object):
         self.scrollArea_3.setWidgetResizable(True)
         self.scrollAreaWidgetContents_2 = QWidget()
         self.scrollAreaWidgetContents_2.setObjectName(u"scrollAreaWidgetContents_2")
-        self.scrollAreaWidgetContents_2.setGeometry(QRect(0, 0, 1156, 610))
+        self.scrollAreaWidgetContents_2.setGeometry(QRect(0, 0, 1187, 632))
         self.verticalLayout_10 = QVBoxLayout(self.scrollAreaWidgetContents_2)
         self.verticalLayout_10.setSpacing(10)
         self.verticalLayout_10.setObjectName(u"verticalLayout_10")
@@ -1028,6 +1028,7 @@ class Ui_MainWindow(object):
         font6 = QFont()
         font6.setFamilies([u"Candara"])
         font6.setPointSize(26)
+        font6.setBold(True)
         self.label_2.setFont(font6)
         self.label_2.setStyleSheet(u"color: rgb(255, 255, 255);")
 
@@ -1164,16 +1165,38 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_10.addWidget(self.line_12)
 
-        self.label_12 = QLabel(self.scrollAreaWidgetContents_2)
-        self.label_12.setObjectName(u"label_12")
-        self.label_12.setMaximumSize(QSize(16777215, 160))
+        self.horizontalLayout_6 = QHBoxLayout()
+        self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
+        self.btn_show_recipients = QPushButton(self.scrollAreaWidgetContents_2)
+        self.btn_show_recipients.setObjectName(u"btn_show_recipients")
+        sizePolicy3.setHeightForWidth(self.btn_show_recipients.sizePolicy().hasHeightForWidth())
+        self.btn_show_recipients.setSizePolicy(sizePolicy3)
+        self.btn_show_recipients.setMaximumSize(QSize(1000, 80))
         font8 = QFont()
         font8.setFamilies([u"Candara"])
-        font8.setPointSize(20)
-        self.label_12.setFont(font8)
-        self.label_12.setStyleSheet(u"color: rgb(255, 255, 255);")
+        font8.setPointSize(26)
+        font8.setBold(False)
+        font8.setItalic(True)
+        self.btn_show_recipients.setFont(font8)
+        self.btn_show_recipients.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btn_show_recipients.setStyleSheet(u"QPushButton{\n"
+"background-color: rgb(0, 168, 243);\n"
+"color: rgb(0, 0, 0);\n"
+"border-radius:20px\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:hover\n"
+"{\n"
+"background-color: rgb(211, 211, 211);\n"
+"	\n"
+"	color: rgb(255, 255, 255);\n"
+"}")
 
-        self.verticalLayout_10.addWidget(self.label_12)
+        self.horizontalLayout_6.addWidget(self.btn_show_recipients)
+
+
+        self.verticalLayout_10.addLayout(self.horizontalLayout_6)
 
         self.scrollArea_3.setWidget(self.scrollAreaWidgetContents_2)
 
@@ -1218,7 +1241,7 @@ class Ui_MainWindow(object):
         self.scrollArea_5.setWidgetResizable(True)
         self.scrollAreaWidgetContents_5 = QWidget()
         self.scrollAreaWidgetContents_5.setObjectName(u"scrollAreaWidgetContents_5")
-        self.scrollAreaWidgetContents_5.setGeometry(QRect(0, 0, 99, 57))
+        self.scrollAreaWidgetContents_5.setGeometry(QRect(0, 0, 1187, 632))
         self.verticalLayout_14 = QVBoxLayout(self.scrollAreaWidgetContents_5)
         self.verticalLayout_14.setObjectName(u"verticalLayout_14")
         self.label_5 = QLabel(self.scrollAreaWidgetContents_5)
@@ -1313,7 +1336,7 @@ class Ui_MainWindow(object):
         self.label_file_name.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\">Selecione um arquivo</p></body></html>", None))
         self.btn_validate.setText(QCoreApplication.translate("MainWindow", u"Validar", None))
         self.btn_signup_recipients.setText(QCoreApplication.translate("MainWindow", u"Cadastrar", None))
-        self.label_12.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>\u2022 Destinat\u00e1rios cadastrados<span style=\" font-size:8pt;\"><br/></span></p><p><span style=\" font-size:16pt;\">Dispon\u00edvel em breve...</span></p></body></html>", None))
+        self.btn_show_recipients.setText(QCoreApplication.translate("MainWindow", u"Destinat\u00e1rios cadastrados", None))
         self.label_4.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:24pt;\">Mensagens</span></p></body></html>", None))
         self.label_5.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:24pt;\">Ajuda</span></p></body></html>", None))
         self.label_botton.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt;\">Para solucionar d\u00favidas: suporte@appostman.com.br</span></p></body></html>", None))
