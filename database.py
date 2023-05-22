@@ -89,10 +89,9 @@ class DataBase():
                     """, (email,))
 
             result = cursor.fetchone()
-
             cursor.close()
-
             return result
+
         except sqlite3.Error as error:
             print("Error while checking email exists: ", error)
             return False
@@ -124,10 +123,30 @@ class DataBase():
         except AttributeError:
             print("Faça a conexão")
 
+    def show_recipients(self):
+        try:
+            cursor = self.connection.cursor()
+
+            cursor.execute("""
+            
+                    SELECT name, email FROM recipients
+            
+                """)
+
+            result = cursor.fetchall()
+            cursor.close()
+            return result
+
+        except sqlite3.Error as error:
+            print("Error while checking recipients: ", error)
+            return False
+
 if __name__ == "__main__":
     db = DataBase()
     db.connect()
-    db.insert_recipient("Ryan", "ryan.booh@gmail.com")
-    # db.alter_table_users()
-    # db.create_table_recipients()
+
+    result = db.show_recipients()
+
+    print(result)
+
     db.close_connection()

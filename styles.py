@@ -66,5 +66,18 @@ QMessageBox QLabel {
     background-color: rgb(49, 49, 49);
     color: white;
 }
-
 """
+
+horizontal_header_style = """
+
+::section { 
+
+background-color: rgb(20, 20, 20);
+color: white;
+font-weight: bold;
+font-family: Candara;
+font-size: 14pt;
+}
+"""
+
+
