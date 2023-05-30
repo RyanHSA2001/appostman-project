@@ -16,7 +16,7 @@ from ui_registeredRecipients import Ui_RegisteredRecipients
 
 from database import DataBase
 
-from smtp import send_verify_code
+from smtp import send_verify_code, auth_smtp
 
 import sys
 import re
@@ -364,13 +364,23 @@ class MainWindow(QMainWindow, Ui_MainWindow, FunctionsInCommon):
         self.btn_signup_recipients.clicked.connect(self.upload_recipients)
         self.btn_registered_recipients.clicked.connect(self.open_registered_recipients)
 
-        # # *--PÁGINAS DA TELA PRINCIPAL--*
+        # *--EVENTOS PÁGINA CONFIGURAÇÕES--*
+        self.btn_smtp.clicked.connect(self.validate_smtp)
+
+        # *--PÁGINAS DA TELA PRINCIPAL--*
         self.btn_home.clicked.connect(lambda: self.pages.setCurrentWidget(self.page_home))
         self.btn_configurations.clicked.connect(lambda: self.pages.setCurrentWidget(self.page_configurations))
         self.btn_recipients.clicked.connect(lambda: self.pages.setCurrentWidget(self.page_recipients))
         self.btn_messages.clicked.connect(lambda: self.pages.setCurrentWidget(self.page_messages))
         self.btn_help.clicked.connect(lambda: self.pages.setCurrentWidget(self.page_help))
         self.btn_about.clicked.connect(lambda: self.pages.setCurrentWidget(self.page_about))
+
+    # *--*---*FUNÇÕES PÁGINA CONFIGURAÇÕES*---*--*
+    def validate_smtp(self):
+        auth_smtp(self.lineEdit_servidor_smtp.text(),
+                  self.lineEdit_porta_smtp.text(),
+                  self.lineEdit_email_smtp.text(),
+                  self.lineEdit_senha_smtp.text())
 
     # *--*---*FUNÇÕES PÁGINA DESTINATÁRIOS*---*--*
     def open_file_dialog(self):
@@ -473,8 +483,8 @@ class MainWindow(QMainWindow, Ui_MainWindow, FunctionsInCommon):
 if __name__ == '__main__':
     # BLOCO DE CÓDIGO DESTINADO A TESTES, INICIA A TELA ESPECIFICADA.
     app = QApplication(sys.argv)
-    window = Login()
-    # window = MainWindow()
+    # window = Login()
+    window = MainWindow()
     window.show()
     # window = VerificationCode()
     # window.show()

@@ -1,3 +1,4 @@
+import socket
 from string import Template
 import smtplib
 
@@ -17,13 +18,31 @@ def read_template(filename):
     return Template(template_file_content)
 
 
-# set up the SMTP server
-def auth(smtp_server:str, port_:str, email_address:str, email_password:str):
-    s = smtplib.SMTP(host=smtp_server, port=port_)
-    s.starttls()
-    s.login(email_address, email_password)
+"""
+Trabalhando ainda nessa função.
 
-    return s
+Faltam capturar todas as exceções possíveis relacionadas a erros na conexão e arrumar a interface gráfica pra
+não deixar o usuário disparar essa função sem ter digitado nada, ou ter digitado dados incoerentes.
+"""
+def auth_smtp(smtp_server:str, port_:str, email_address:str, password:str):
+    try:
+        # cria a conexão SMTP
+        smtp_connection = smtplib.SMTP(smtp_server, port_)
+        # inicia a criptografia
+        smtp_connection.starttls()
+        # loga no servidor SMTP
+        smtp_connection.login(email_address, password)
+        # encerra a conexão
+        smtp_connection.quit()
+
+        # chegando até aqui os dados são válidos
+        return True
+
+    # caso dispare qualquer exceção, os dados são inválidos.
+    except socket.gaierror:
+        return False
+
+
 
 
 
@@ -61,7 +80,12 @@ def generate_code():
     return code
 
 def send_verify_code(username, email):
-    smtp = auth('smtp.gmail.com', '587', 'appostman.noreply@gmail.com', 'itsfjeqvrkiswqsj')
+
+    smtp = smtplib.SMTP(host='smtp.gmail.com', port=587)
+
+    smtp.starttls()
+
+    smtp.login('appostman.noreply@gmail.com', 'itsfjeqvrkiswqsj')
 
     msg = MIMEMultipart()  # Create a message
 
@@ -86,4 +110,4 @@ def send_verify_code(username, email):
 
 
 if __name__ == '__main__':
-    print(generate_code())
+    send_verify_code('teste', 'ryan.henrique.silva.antonio@gmail.com')

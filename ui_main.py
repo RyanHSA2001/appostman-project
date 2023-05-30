@@ -24,7 +24,9 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1059, 663)
+        MainWindow.resize(1046, 704)
+        MainWindow.setMinimumSize(QSize(838, 0))
+        MainWindow.setMaximumSize(QSize(1046, 704))
         icon = QIcon()
         icon.addFile(u"resources/appostman others icons/appostman-logo.png", QSize(), QIcon.Normal, QIcon.Off)
         MainWindow.setWindowIcon(icon)
@@ -409,12 +411,12 @@ class Ui_MainWindow(object):
         self.scrollArea = QScrollArea(self.page_home)
         self.scrollArea.setObjectName(u"scrollArea")
         self.scrollArea.setStyleSheet(u"")
-        self.scrollArea.setFrameShape(QFrame.Box)
+        self.scrollArea.setFrameShape(QFrame.NoFrame)
         self.scrollArea.setFrameShadow(QFrame.Sunken)
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents_3 = QWidget()
         self.scrollAreaWidgetContents_3.setObjectName(u"scrollAreaWidgetContents_3")
-        self.scrollAreaWidgetContents_3.setGeometry(QRect(0, 0, 1053, 536))
+        self.scrollAreaWidgetContents_3.setGeometry(QRect(0, 0, 1044, 581))
         self.scrollAreaWidgetContents_3.setMinimumSize(QSize(0, 0))
         font5 = QFont()
         font5.setKerning(True)
@@ -504,7 +506,7 @@ class Ui_MainWindow(object):
         self.scrollArea_6.setWidgetResizable(True)
         self.scrollAreaWidgetContents_6 = QWidget()
         self.scrollAreaWidgetContents_6.setObjectName(u"scrollAreaWidgetContents_6")
-        self.scrollAreaWidgetContents_6.setGeometry(QRect(0, 0, 1156, 615))
+        self.scrollAreaWidgetContents_6.setGeometry(QRect(0, 0, 1040, 577))
         self.verticalLayout_16 = QVBoxLayout(self.scrollAreaWidgetContents_6)
         self.verticalLayout_16.setObjectName(u"verticalLayout_16")
         self.label_7 = QLabel(self.scrollAreaWidgetContents_6)
@@ -696,7 +698,7 @@ class Ui_MainWindow(object):
         self.scrollArea_2.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 1139, 795))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 1023, 990))
         self.verticalLayout_8 = QVBoxLayout(self.scrollAreaWidgetContents)
         self.verticalLayout_8.setSpacing(10)
         self.verticalLayout_8.setObjectName(u"verticalLayout_8")
@@ -710,7 +712,7 @@ class Ui_MainWindow(object):
         self.label.setFont(font6)
         self.label.setStyleSheet(u"color: rgb(255, 255, 255);")
 
-        self.verticalLayout_8.addWidget(self.label)
+        self.verticalLayout_8.addWidget(self.label, 0, Qt.AlignHCenter)
 
         self.line_7 = QFrame(self.scrollAreaWidgetContents)
         self.line_7.setObjectName(u"line_7")
@@ -729,63 +731,93 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_8.addWidget(self.label_8)
 
-        self.lineEdit = QLineEdit(self.scrollAreaWidgetContents)
-        self.lineEdit.setObjectName(u"lineEdit")
-        sizePolicy3.setHeightForWidth(self.lineEdit.sizePolicy().hasHeightForWidth())
-        self.lineEdit.setSizePolicy(sizePolicy3)
-        self.lineEdit.setMinimumSize(QSize(300, 35))
-        self.lineEdit.setFont(font1)
-        self.lineEdit.setStyleSheet(u"border-color: rgb(255, 255, 255);\n"
+        self.frame_4 = QFrame(self.scrollAreaWidgetContents)
+        self.frame_4.setObjectName(u"frame_4")
+        self.frame_4.setMinimumSize(QSize(0, 35))
+        self.frame_4.setFrameShape(QFrame.StyledPanel)
+        self.frame_4.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_7 = QHBoxLayout(self.frame_4)
+        self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
+        self.horizontalLayout_7.setContentsMargins(-1, -1, -1, 0)
+        self.horizontalSpacer_6 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_7.addItem(self.horizontalSpacer_6)
+
+        self.lineEdit_servidor_smtp = QLineEdit(self.frame_4)
+        self.lineEdit_servidor_smtp.setObjectName(u"lineEdit_servidor_smtp")
+        self.lineEdit_servidor_smtp.setMinimumSize(QSize(300, 31))
+        self.lineEdit_servidor_smtp.setFont(font1)
+        self.lineEdit_servidor_smtp.setStyleSheet(u"border-color: rgb(255, 255, 255);\n"
 "color: rgb(255, 255, 255);")
-        self.lineEdit.setAlignment(Qt.AlignCenter)
+        self.lineEdit_servidor_smtp.setAlignment(Qt.AlignCenter)
 
-        self.verticalLayout_8.addWidget(self.lineEdit, 0, Qt.AlignHCenter)
+        self.horizontalLayout_7.addWidget(self.lineEdit_servidor_smtp)
 
-        self.lineEdit_2 = QLineEdit(self.scrollAreaWidgetContents)
-        self.lineEdit_2.setObjectName(u"lineEdit_2")
-        sizePolicy3.setHeightForWidth(self.lineEdit_2.sizePolicy().hasHeightForWidth())
-        self.lineEdit_2.setSizePolicy(sizePolicy3)
-        self.lineEdit_2.setMinimumSize(QSize(300, 35))
-        self.lineEdit_2.setFont(font1)
-        self.lineEdit_2.setStyleSheet(u"border-color: rgb(255, 255, 255);\n"
+        self.lineEdit_porta_smtp = QLineEdit(self.frame_4)
+        self.lineEdit_porta_smtp.setObjectName(u"lineEdit_porta_smtp")
+        self.lineEdit_porta_smtp.setMinimumSize(QSize(300, 31))
+        self.lineEdit_porta_smtp.setFont(font1)
+        self.lineEdit_porta_smtp.setStyleSheet(u"border-color: rgb(255, 255, 255);\n"
 "color: rgb(255, 255, 255);")
-        self.lineEdit_2.setAlignment(Qt.AlignCenter)
+        self.lineEdit_porta_smtp.setAlignment(Qt.AlignCenter)
 
-        self.verticalLayout_8.addWidget(self.lineEdit_2, 0, Qt.AlignHCenter)
+        self.horizontalLayout_7.addWidget(self.lineEdit_porta_smtp)
 
-        self.lineEdit_3 = QLineEdit(self.scrollAreaWidgetContents)
-        self.lineEdit_3.setObjectName(u"lineEdit_3")
-        sizePolicy3.setHeightForWidth(self.lineEdit_3.sizePolicy().hasHeightForWidth())
-        self.lineEdit_3.setSizePolicy(sizePolicy3)
-        self.lineEdit_3.setMinimumSize(QSize(300, 35))
-        self.lineEdit_3.setFont(font1)
-        self.lineEdit_3.setStyleSheet(u"border-color: rgb(255, 255, 255);\n"
+        self.horizontalSpacer_7 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_7.addItem(self.horizontalSpacer_7)
+
+
+        self.verticalLayout_8.addWidget(self.frame_4)
+
+        self.frame_5 = QFrame(self.scrollAreaWidgetContents)
+        self.frame_5.setObjectName(u"frame_5")
+        self.frame_5.setMinimumSize(QSize(0, 35))
+        self.frame_5.setFrameShape(QFrame.StyledPanel)
+        self.frame_5.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_8 = QHBoxLayout(self.frame_5)
+        self.horizontalLayout_8.setObjectName(u"horizontalLayout_8")
+        self.horizontalLayout_8.setContentsMargins(-1, 0, -1, -1)
+        self.horizontalSpacer_8 = QSpacerItem(171, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_8.addItem(self.horizontalSpacer_8)
+
+        self.lineEdit_email_smtp = QLineEdit(self.frame_5)
+        self.lineEdit_email_smtp.setObjectName(u"lineEdit_email_smtp")
+        self.lineEdit_email_smtp.setMinimumSize(QSize(300, 31))
+        self.lineEdit_email_smtp.setFont(font1)
+        self.lineEdit_email_smtp.setStyleSheet(u"border-color: rgb(255, 255, 255);\n"
 "color: rgb(255, 255, 255);")
-        self.lineEdit_3.setAlignment(Qt.AlignCenter)
+        self.lineEdit_email_smtp.setAlignment(Qt.AlignCenter)
 
-        self.verticalLayout_8.addWidget(self.lineEdit_3, 0, Qt.AlignHCenter)
+        self.horizontalLayout_8.addWidget(self.lineEdit_email_smtp)
 
-        self.lineEdit_4 = QLineEdit(self.scrollAreaWidgetContents)
-        self.lineEdit_4.setObjectName(u"lineEdit_4")
-        sizePolicy3.setHeightForWidth(self.lineEdit_4.sizePolicy().hasHeightForWidth())
-        self.lineEdit_4.setSizePolicy(sizePolicy3)
-        self.lineEdit_4.setMinimumSize(QSize(300, 35))
-        self.lineEdit_4.setFont(font1)
-        self.lineEdit_4.setStyleSheet(u"border-color: rgb(255, 255, 255);\n"
+        self.lineEdit_senha_smtp = QLineEdit(self.frame_5)
+        self.lineEdit_senha_smtp.setObjectName(u"lineEdit_senha_smtp")
+        self.lineEdit_senha_smtp.setMinimumSize(QSize(300, 31))
+        self.lineEdit_senha_smtp.setFont(font1)
+        self.lineEdit_senha_smtp.setStyleSheet(u"border-color: rgb(255, 255, 255);\n"
 "color: rgb(255, 255, 255);")
-        self.lineEdit_4.setEchoMode(QLineEdit.Password)
-        self.lineEdit_4.setAlignment(Qt.AlignCenter)
+        self.lineEdit_senha_smtp.setEchoMode(QLineEdit.Password)
+        self.lineEdit_senha_smtp.setAlignment(Qt.AlignCenter)
 
-        self.verticalLayout_8.addWidget(self.lineEdit_4, 0, Qt.AlignHCenter)
+        self.horizontalLayout_8.addWidget(self.lineEdit_senha_smtp)
 
-        self.pushButton = QPushButton(self.scrollAreaWidgetContents)
-        self.pushButton.setObjectName(u"pushButton")
-        sizePolicy3.setHeightForWidth(self.pushButton.sizePolicy().hasHeightForWidth())
-        self.pushButton.setSizePolicy(sizePolicy3)
-        self.pushButton.setMinimumSize(QSize(140, 35))
-        self.pushButton.setFont(font1)
-        self.pushButton.setCursor(QCursor(Qt.PointingHandCursor))
-        self.pushButton.setStyleSheet(u"QPushButton{\n"
+        self.horizontalSpacer_9 = QSpacerItem(171, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_8.addItem(self.horizontalSpacer_9)
+
+
+        self.verticalLayout_8.addWidget(self.frame_5)
+
+        self.btn_smtp = QPushButton(self.scrollAreaWidgetContents)
+        self.btn_smtp.setObjectName(u"btn_smtp")
+        sizePolicy3.setHeightForWidth(self.btn_smtp.sizePolicy().hasHeightForWidth())
+        self.btn_smtp.setSizePolicy(sizePolicy3)
+        self.btn_smtp.setMinimumSize(QSize(140, 35))
+        self.btn_smtp.setFont(font1)
+        self.btn_smtp.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btn_smtp.setStyleSheet(u"QPushButton{\n"
 "background-color: rgb(20, 39, 203);\n"
 "color: rgb(255, 255, 255);\n"
 "border-radius:5px\n"
@@ -798,7 +830,7 @@ class Ui_MainWindow(object):
 "	color: rgb(0, 0, 0);\n"
 "}")
 
-        self.verticalLayout_8.addWidget(self.pushButton, 0, Qt.AlignHCenter)
+        self.verticalLayout_8.addWidget(self.btn_smtp, 0, Qt.AlignHCenter)
 
         self.line_8 = QFrame(self.scrollAreaWidgetContents)
         self.line_8.setObjectName(u"line_8")
@@ -807,6 +839,121 @@ class Ui_MainWindow(object):
         self.line_8.setFrameShape(QFrame.HLine)
 
         self.verticalLayout_8.addWidget(self.line_8)
+
+        self.label_12 = QLabel(self.scrollAreaWidgetContents)
+        self.label_12.setObjectName(u"label_12")
+        self.label_12.setFont(font4)
+        self.label_12.setStyleSheet(u"color: rgb(255, 255, 255);")
+
+        self.verticalLayout_8.addWidget(self.label_12)
+
+        self.frame_6 = QFrame(self.scrollAreaWidgetContents)
+        self.frame_6.setObjectName(u"frame_6")
+        self.frame_6.setMinimumSize(QSize(0, 35))
+        self.frame_6.setFrameShape(QFrame.StyledPanel)
+        self.frame_6.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_9 = QHBoxLayout(self.frame_6)
+        self.horizontalLayout_9.setObjectName(u"horizontalLayout_9")
+        self.horizontalLayout_9.setContentsMargins(-1, -1, -1, 0)
+        self.horizontalSpacer_10 = QSpacerItem(171, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_9.addItem(self.horizontalSpacer_10)
+
+        self.lineEdit_servidor_imap = QLineEdit(self.frame_6)
+        self.lineEdit_servidor_imap.setObjectName(u"lineEdit_servidor_imap")
+        self.lineEdit_servidor_imap.setMinimumSize(QSize(300, 31))
+        self.lineEdit_servidor_imap.setFont(font1)
+        self.lineEdit_servidor_imap.setStyleSheet(u"border-color: rgb(255, 255, 255);\n"
+"color: rgb(255, 255, 255);")
+        self.lineEdit_servidor_imap.setAlignment(Qt.AlignCenter)
+
+        self.horizontalLayout_9.addWidget(self.lineEdit_servidor_imap)
+
+        self.lineEdit_porta_imap = QLineEdit(self.frame_6)
+        self.lineEdit_porta_imap.setObjectName(u"lineEdit_porta_imap")
+        self.lineEdit_porta_imap.setMinimumSize(QSize(300, 31))
+        self.lineEdit_porta_imap.setFont(font1)
+        self.lineEdit_porta_imap.setStyleSheet(u"border-color: rgb(255, 255, 255);\n"
+"color: rgb(255, 255, 255);")
+        self.lineEdit_porta_imap.setAlignment(Qt.AlignCenter)
+
+        self.horizontalLayout_9.addWidget(self.lineEdit_porta_imap)
+
+        self.horizontalSpacer_11 = QSpacerItem(171, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_9.addItem(self.horizontalSpacer_11)
+
+
+        self.verticalLayout_8.addWidget(self.frame_6)
+
+        self.frame_7 = QFrame(self.scrollAreaWidgetContents)
+        self.frame_7.setObjectName(u"frame_7")
+        self.frame_7.setMinimumSize(QSize(0, 35))
+        self.frame_7.setFrameShape(QFrame.StyledPanel)
+        self.frame_7.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_10 = QHBoxLayout(self.frame_7)
+        self.horizontalLayout_10.setObjectName(u"horizontalLayout_10")
+        self.horizontalLayout_10.setContentsMargins(-1, 0, -1, -1)
+        self.horizontalSpacer_12 = QSpacerItem(171, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_10.addItem(self.horizontalSpacer_12)
+
+        self.lineEdit_email_imap = QLineEdit(self.frame_7)
+        self.lineEdit_email_imap.setObjectName(u"lineEdit_email_imap")
+        self.lineEdit_email_imap.setMinimumSize(QSize(300, 31))
+        self.lineEdit_email_imap.setFont(font1)
+        self.lineEdit_email_imap.setStyleSheet(u"border-color: rgb(255, 255, 255);\n"
+"color: rgb(255, 255, 255);")
+        self.lineEdit_email_imap.setAlignment(Qt.AlignCenter)
+
+        self.horizontalLayout_10.addWidget(self.lineEdit_email_imap)
+
+        self.lineEdit_8 = QLineEdit(self.frame_7)
+        self.lineEdit_8.setObjectName(u"lineEdit_8")
+        self.lineEdit_8.setMinimumSize(QSize(300, 31))
+        self.lineEdit_8.setFont(font1)
+        self.lineEdit_8.setStyleSheet(u"border-color: rgb(255, 255, 255);\n"
+"color: rgb(255, 255, 255);")
+        self.lineEdit_8.setAlignment(Qt.AlignCenter)
+
+        self.horizontalLayout_10.addWidget(self.lineEdit_8)
+
+        self.horizontalSpacer_13 = QSpacerItem(171, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_10.addItem(self.horizontalSpacer_13)
+
+
+        self.verticalLayout_8.addWidget(self.frame_7)
+
+        self.btn_imap = QPushButton(self.scrollAreaWidgetContents)
+        self.btn_imap.setObjectName(u"btn_imap")
+        sizePolicy3.setHeightForWidth(self.btn_imap.sizePolicy().hasHeightForWidth())
+        self.btn_imap.setSizePolicy(sizePolicy3)
+        self.btn_imap.setMinimumSize(QSize(140, 35))
+        self.btn_imap.setFont(font1)
+        self.btn_imap.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btn_imap.setStyleSheet(u"QPushButton{\n"
+"background-color: rgb(20, 39, 203);\n"
+"color: rgb(255, 255, 255);\n"
+"border-radius:5px\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:hover\n"
+"{\n"
+"background-color: rgb(255, 255, 255);\n"
+"	color: rgb(0, 0, 0);\n"
+"}")
+
+        self.verticalLayout_8.addWidget(self.btn_imap, 0, Qt.AlignHCenter)
+
+        self.line_13 = QFrame(self.scrollAreaWidgetContents)
+        self.line_13.setObjectName(u"line_13")
+        self.line_13.setStyleSheet(u"color: rgb(177, 177, 177);")
+        self.line_13.setFrameShadow(QFrame.Plain)
+        self.line_13.setFrameShape(QFrame.HLine)
+
+        self.verticalLayout_8.addWidget(self.line_13)
 
         self.label_9 = QLabel(self.scrollAreaWidgetContents)
         self.label_9.setObjectName(u"label_9")
@@ -1020,7 +1167,7 @@ class Ui_MainWindow(object):
         self.scrollArea_3.setWidgetResizable(True)
         self.scrollAreaWidgetContents_2 = QWidget()
         self.scrollAreaWidgetContents_2.setObjectName(u"scrollAreaWidgetContents_2")
-        self.scrollAreaWidgetContents_2.setGeometry(QRect(0, 0, 1010, 580))
+        self.scrollAreaWidgetContents_2.setGeometry(QRect(0, 0, 1044, 581))
         self.verticalLayout_10 = QVBoxLayout(self.scrollAreaWidgetContents_2)
         self.verticalLayout_10.setSpacing(10)
         self.verticalLayout_10.setObjectName(u"verticalLayout_10")
@@ -1049,9 +1196,10 @@ class Ui_MainWindow(object):
         self.label_11.setObjectName(u"label_11")
         sizePolicy4.setHeightForWidth(self.label_11.sizePolicy().hasHeightForWidth())
         self.label_11.setSizePolicy(sizePolicy4)
-        self.label_11.setMinimumSize(QSize(289, 0))
+        self.label_11.setMinimumSize(QSize(0, 0))
         self.label_11.setFont(font4)
         self.label_11.setStyleSheet(u"color: rgb(255, 255, 255);")
+        self.label_11.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignTop)
         self.label_11.setWordWrap(True)
 
         self.verticalLayout_10.addWidget(self.label_11)
@@ -1191,8 +1339,6 @@ class Ui_MainWindow(object):
 "QPushButton:hover\n"
 "{\n"
 "background-color: rgb(211, 211, 211);\n"
-"	\n"
-"	color: rgb(255, 255, 255);\n"
 "}")
 
         self.horizontalLayout_6.addWidget(self.btn_registered_recipients)
@@ -1213,18 +1359,138 @@ class Ui_MainWindow(object):
         self.verticalLayout_11.setContentsMargins(0, 0, 0, 0)
         self.scrollArea_4 = QScrollArea(self.page_messages)
         self.scrollArea_4.setObjectName(u"scrollArea_4")
-        self.scrollArea_4.setFrameShape(QFrame.Box)
+        self.scrollArea_4.setFrameShape(QFrame.NoFrame)
         self.scrollArea_4.setWidgetResizable(True)
         self.scrollAreaWidgetContents_4 = QWidget()
         self.scrollAreaWidgetContents_4.setObjectName(u"scrollAreaWidgetContents_4")
-        self.scrollAreaWidgetContents_4.setGeometry(QRect(0, 0, 1006, 576))
+        self.scrollAreaWidgetContents_4.setGeometry(QRect(0, 0, 1044, 581))
         self.verticalLayout_12 = QVBoxLayout(self.scrollAreaWidgetContents_4)
+        self.verticalLayout_12.setSpacing(10)
         self.verticalLayout_12.setObjectName(u"verticalLayout_12")
+        self.verticalLayout_12.setContentsMargins(20, 10, 20, 10)
         self.label_4 = QLabel(self.scrollAreaWidgetContents_4)
         self.label_4.setObjectName(u"label_4")
+        self.label_4.setMaximumSize(QSize(16777215, 50))
+        self.label_4.setFont(font7)
         self.label_4.setStyleSheet(u"color: rgb(255, 255, 255);")
 
         self.verticalLayout_12.addWidget(self.label_4)
+
+        self.line_14 = QFrame(self.scrollAreaWidgetContents_4)
+        self.line_14.setObjectName(u"line_14")
+        self.line_14.setStyleSheet(u"color: rgb(177, 177, 177);")
+        self.line_14.setFrameShadow(QFrame.Plain)
+        self.line_14.setFrameShape(QFrame.HLine)
+
+        self.verticalLayout_12.addWidget(self.line_14)
+
+        self.label_13 = QLabel(self.scrollAreaWidgetContents_4)
+        self.label_13.setObjectName(u"label_13")
+        self.label_13.setFont(font4)
+        self.label_13.setStyleSheet(u"color: rgb(255, 255, 255);")
+        self.label_13.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignTop)
+        self.label_13.setWordWrap(True)
+
+        self.verticalLayout_12.addWidget(self.label_13)
+
+        self.pushButton = QPushButton(self.scrollAreaWidgetContents_4)
+        self.pushButton.setObjectName(u"pushButton")
+        sizePolicy3.setHeightForWidth(self.pushButton.sizePolicy().hasHeightForWidth())
+        self.pushButton.setSizePolicy(sizePolicy3)
+        self.pushButton.setMinimumSize(QSize(230, 40))
+        self.pushButton.setFont(font8)
+        self.pushButton.setStyleSheet(u"QPushButton{\n"
+"background-color: rgb(20, 39, 203);\n"
+"color: rgb(255, 255, 255);\n"
+"border-radius:5px\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:hover\n"
+"{\n"
+"background-color: rgb(255, 255, 255);\n"
+"	color: rgb(0, 0, 0);\n"
+"}")
+        self.pushButton.setIcon(icon8)
+        self.pushButton.setIconSize(QSize(25, 25))
+
+        self.verticalLayout_12.addWidget(self.pushButton, 0, Qt.AlignHCenter)
+
+        self.label_15 = QLabel(self.scrollAreaWidgetContents_4)
+        self.label_15.setObjectName(u"label_15")
+        self.label_15.setMaximumSize(QSize(16777215, 50))
+        self.label_15.setFont(font8)
+        self.label_15.setStyleSheet(u"color: rgb(255, 255, 255);")
+        self.label_15.setAlignment(Qt.AlignCenter)
+
+        self.verticalLayout_12.addWidget(self.label_15)
+
+        self.frame_8 = QFrame(self.scrollAreaWidgetContents_4)
+        self.frame_8.setObjectName(u"frame_8")
+        self.frame_8.setMaximumSize(QSize(16777215, 60))
+        self.frame_8.setFrameShape(QFrame.StyledPanel)
+        self.frame_8.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_11 = QHBoxLayout(self.frame_8)
+        self.horizontalLayout_11.setObjectName(u"horizontalLayout_11")
+        self.horizontalSpacer_14 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_11.addItem(self.horizontalSpacer_14)
+
+        self.pushButton_2 = QPushButton(self.frame_8)
+        self.pushButton_2.setObjectName(u"pushButton_2")
+        sizePolicy3.setHeightForWidth(self.pushButton_2.sizePolicy().hasHeightForWidth())
+        self.pushButton_2.setSizePolicy(sizePolicy3)
+        self.pushButton_2.setMinimumSize(QSize(230, 40))
+        self.pushButton_2.setFont(font8)
+        self.pushButton_2.setStyleSheet(u"QPushButton{\n"
+"background-color: rgb(116, 116, 116);\n"
+"color: rgb(255, 255, 255);\n"
+"border-radius:5px\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:hover\n"
+"{\n"
+"background-color: rgb(255, 255, 255);\n"
+"	color: rgb(0, 0, 0);\n"
+"}")
+
+        self.horizontalLayout_11.addWidget(self.pushButton_2)
+
+        self.pushButton_3 = QPushButton(self.frame_8)
+        self.pushButton_3.setObjectName(u"pushButton_3")
+        sizePolicy3.setHeightForWidth(self.pushButton_3.sizePolicy().hasHeightForWidth())
+        self.pushButton_3.setSizePolicy(sizePolicy3)
+        self.pushButton_3.setMinimumSize(QSize(230, 40))
+        self.pushButton_3.setFont(font8)
+        self.pushButton_3.setStyleSheet(u"QPushButton{\n"
+"background-color: rgb(116, 116, 116);\n"
+"color: rgb(255, 255, 255);\n"
+"border-radius:5px\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:hover\n"
+"{\n"
+"background-color: rgb(255, 255, 255);\n"
+"	color: rgb(0, 0, 0);\n"
+"}")
+
+        self.horizontalLayout_11.addWidget(self.pushButton_3)
+
+        self.horizontalSpacer_15 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_11.addItem(self.horizontalSpacer_15)
+
+
+        self.verticalLayout_12.addWidget(self.frame_8)
+
+        self.line_15 = QFrame(self.scrollAreaWidgetContents_4)
+        self.line_15.setObjectName(u"line_15")
+        self.line_15.setFrameShape(QFrame.HLine)
+        self.line_15.setFrameShadow(QFrame.Sunken)
+
+        self.verticalLayout_12.addWidget(self.line_15)
 
         self.scrollArea_4.setWidget(self.scrollAreaWidgetContents_4)
 
@@ -1243,7 +1509,7 @@ class Ui_MainWindow(object):
         self.scrollArea_5.setWidgetResizable(True)
         self.scrollAreaWidgetContents_5 = QWidget()
         self.scrollAreaWidgetContents_5.setObjectName(u"scrollAreaWidgetContents_5")
-        self.scrollAreaWidgetContents_5.setGeometry(QRect(0, 0, 1006, 576))
+        self.scrollAreaWidgetContents_5.setGeometry(QRect(0, 0, 1040, 577))
         self.verticalLayout_14 = QVBoxLayout(self.scrollAreaWidgetContents_5)
         self.verticalLayout_14.setObjectName(u"verticalLayout_14")
         self.label_5 = QLabel(self.scrollAreaWidgetContents_5)
@@ -1323,23 +1589,34 @@ class Ui_MainWindow(object):
         self.label_erros_no_envio.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:20pt;\">Erros no Envio: 0</span></p></body></html>", None))
         self.label_destinatarios_cadastrados.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:20pt;\">Destinat\u00e1rios Cadastrados: 0</span></p></body></html>", None))
         self.label_7.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:24pt;\">Sobre</span></p></body></html>", None))
-        self.label.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:24pt;\">Configura\u00e7\u00f5es</span></p></body></html>", None))
-        self.label_8.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:20pt;\">\u2022 Autentica\u00e7\u00e3o SMTP</span></p><p><br/></p><p><span style=\" font-size:16pt;\">Os envios do APPostman s\u00e3o realizados atrav\u00e9s do protocolo SMTP. Portanto \u00e9 necess\u00e1rio realizar valida\u00e7\u00e3o dos dados antes de automatizar seus envios.</span></p><p><span style=\" font-size:16pt; font-weight:600; color:#38c0ff;\">Preencha os dados de acordo com seu provedor de e-mail:</span></p><p><br/></p></body></html>", None))
-        self.lineEdit.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Servidor", None))
-        self.lineEdit_2.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Porta", None))
-        self.lineEdit_3.setPlaceholderText(QCoreApplication.translate("MainWindow", u"E-mail", None))
-        self.lineEdit_4.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Senha", None))
-        self.pushButton.setText(QCoreApplication.translate("MainWindow", u"Validar", None))
+        self.label.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:24pt;\">\u200e \u200e \u200e Configura\u00e7\u00f5es</span></p></body></html>", None))
+        self.label_8.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:20pt;\">\u2022 Autentica\u00e7\u00e3o SMTP</span><br/></p><p><span style=\" font-size:16pt;\">Os envios do APPostman s\u00e3o realizados atrav\u00e9s do protocolo SMTP. Portanto \u00e9 necess\u00e1rio realizar valida\u00e7\u00e3o dos dados antes de automatizar seus envios.</span></p><p><span style=\" font-size:16pt; font-weight:600; color:#38c0ff;\">Preencha os dados de acordo com seu provedor de e-mail:</span></p><p><br/></p></body></html>", None))
+        self.lineEdit_servidor_smtp.setPlaceholderText(QCoreApplication.translate("MainWindow", u"SERVIDOR", None))
+        self.lineEdit_porta_smtp.setPlaceholderText(QCoreApplication.translate("MainWindow", u"PORTA", None))
+        self.lineEdit_email_smtp.setPlaceholderText(QCoreApplication.translate("MainWindow", u"E-MAIL", None))
+        self.lineEdit_senha_smtp.setPlaceholderText(QCoreApplication.translate("MainWindow", u"SENHA", None))
+        self.btn_smtp.setText(QCoreApplication.translate("MainWindow", u"Validar", None))
+        self.label_12.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:20pt;\">\u2022 Autentica\u00e7\u00e3o IMAP</span><br/></p><p><span style=\" font-size:16pt;\">Para realizar a leitura de respostas em tempo real necessistamos da autentica\u00e7\u00e3o IMAP.</span></p><p><span style=\" font-size:16pt; font-weight:600; color:#38c0ff;\">Preencha os dados de acordo com seu provedor de e-mail:</span></p></body></html>", None))
+        self.lineEdit_servidor_imap.setPlaceholderText(QCoreApplication.translate("MainWindow", u"SERVIDOR", None))
+        self.lineEdit_porta_imap.setPlaceholderText(QCoreApplication.translate("MainWindow", u"PORTA", None))
+        self.lineEdit_email_imap.setPlaceholderText(QCoreApplication.translate("MainWindow", u"E-MAIL", None))
+        self.lineEdit_8.setPlaceholderText(QCoreApplication.translate("MainWindow", u"SENHA", None))
+        self.btn_imap.setText(QCoreApplication.translate("MainWindow", u"Validar", None))
         self.label_9.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:20pt;\">\u2022 Automatiza\u00e7\u00e3o dos envios</span></p><p><br/></p><p><span style=\" font-size:16pt;\">Dispon\u00edvel em breve...</span></p></body></html>", None))
         self.label_10.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:20pt;\">\u2022 Temas</span></p><p><br/></p><p><span style=\" font-size:16pt;\">Dispon\u00edvel em breve...</span></p></body></html>", None))
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:24pt;\">Destinat\u00e1rios</span></p></body></html>", None))
-        self.label_11.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:20pt;\">\u2022 Cadastrar destinat\u00e1rios</span></p><p><br/><span style=\" font-size:16pt; font-weight:600; color:#00a8f3;\">Para realizar o cadastro de destinat\u00e1rios fa\u00e7a a importa\u00e7\u00e3o de um arquivo (.csv), para orienta\u00e7\u00e3oes referente ao leiaute e formato do arquivo acesse o menu </span><span style=\" font-size:16pt; font-weight:600; color:#e1d015;\">AJUDA </span><span style=\" font-size:16pt; font-weight:600; color:#00a8f3;\">na barra lateral.</span><br/></p><p><br/></p></body></html>", None))
+        self.label_11.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:20pt;\">\u2022 Cadastrar destinat\u00e1rios</span></p><p><br/><span style=\" font-size:16pt; font-weight:600; color:#00a8f3;\">Para realizar o cadastro de destinat\u00e1rios fa\u00e7a a importa\u00e7\u00e3o de um arquivo (.csv), para orienta\u00e7\u00e3oes referente ao leiaute e formato do arquivo acesse o menu </span><span style=\" font-size:16pt; font-weight:600; color:#e1d015;\">AJUDA </span><span style=\" font-size:16pt; font-weight:600; color:#00a8f3;\">na barra lateral.</span></p></body></html>", None))
         self.btn_search.setText(QCoreApplication.translate("MainWindow", u"Procurar", None))
         self.label_file_name.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\">Selecione um arquivo</p></body></html>", None))
         self.btn_validate.setText(QCoreApplication.translate("MainWindow", u"Validar", None))
         self.btn_signup_recipients.setText(QCoreApplication.translate("MainWindow", u"Cadastrar", None))
         self.btn_registered_recipients.setText(QCoreApplication.translate("MainWindow", u"Destinat\u00e1rios cadastrados", None))
         self.label_4.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:24pt;\">Mensagens</span></p></body></html>", None))
+        self.label_13.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:20pt;\">\u2022 Cadastrar mensagem</span></p><p><br/><span style=\" font-size:16pt; font-weight:600; color:#00a8f3;\">Para realizar o cadastro de uma mensagem fa\u00e7a a importa\u00e7\u00e3o de um arquivo (.csv), para orienta\u00e7\u00e3oes referente ao leiaute e formato do arquivo acesse o menu </span><span style=\" font-size:16pt; font-weight:600; color:#e1d015;\">AJUDA </span><span style=\" font-size:16pt; font-weight:600; color:#00a8f3;\">na barra lateral.</span></p></body></html>", None))
+        self.pushButton.setText(QCoreApplication.translate("MainWindow", u"Procurar", None))
+        self.label_15.setText(QCoreApplication.translate("MainWindow", u"Selecione um arquivo", None))
+        self.pushButton_2.setText(QCoreApplication.translate("MainWindow", u"Validar", None))
+        self.pushButton_3.setText(QCoreApplication.translate("MainWindow", u"Cadastrar", None))
         self.label_5.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:24pt;\">Ajuda</span></p></body></html>", None))
         self.label_botton.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt;\">Para solucionar d\u00favidas: suporte@appostman.com.br</span></p></body></html>", None))
     # retranslateUi
