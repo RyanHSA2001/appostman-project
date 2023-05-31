@@ -366,6 +366,10 @@ class MainWindow(QMainWindow, Ui_MainWindow, FunctionsInCommon):
 
         # *--EVENTOS PÁGINA CONFIGURAÇÕES--*
         self.btn_smtp.clicked.connect(self.validate_smtp)
+        self.lineEdit_servidor_smtp.textChanged.connect(self.verify_lineedits)
+        self.lineEdit_email_smtp.textChanged.connect(self.verify_lineedits)
+        self.lineEdit_senha_smtp.textChanged.connect(self.verify_lineedits)
+        self.lineEdit_porta_smtp.textChanged.connect(self.verify_lineedits)
 
         # *--PÁGINAS DA TELA PRINCIPAL--*
         self.btn_home.clicked.connect(lambda: self.pages.setCurrentWidget(self.page_home))
@@ -377,10 +381,32 @@ class MainWindow(QMainWindow, Ui_MainWindow, FunctionsInCommon):
 
     # *--*---*FUNÇÕES PÁGINA CONFIGURAÇÕES*---*--*
     def validate_smtp(self):
-        auth_smtp(self.lineEdit_servidor_smtp.text(),
+        if auth_smtp(self.lineEdit_servidor_smtp.text(),
                   self.lineEdit_porta_smtp.text(),
                   self.lineEdit_email_smtp.text(),
-                  self.lineEdit_senha_smtp.text())
+                  self.lineEdit_senha_smtp.text()):
+            self.show_message_box(QMessageBox.Information, "Sucesso", 'Dados válidos', self)
+            return
+        self.show_message_box(QMessageBox.Warning, "Erro", "Dados inválidos", self)
+
+    def verify_lineedits(self):
+
+        print("ta rodando")
+
+        if self.lineEdit_servidor_smtp.text() != '' and \
+           self.lineEdit_porta_smtp.text() != '' and \
+           self.lineEdit_email_smtp.text() != '' and \
+           self.lineEdit_senha_smtp.text() != '':
+
+            self.able_disable_buttons(self.btn_smtp, True, styles.dark_blue_button)
+            return
+
+        self.able_disable_buttons(self.btn_smtp, False, styles.gray_button_stylesheet)
+
+
+
+
+
 
     # *--*---*FUNÇÕES PÁGINA DESTINATÁRIOS*---*--*
     def open_file_dialog(self):

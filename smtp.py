@@ -41,7 +41,8 @@ def auth_smtp(smtp_server:str, port_:str, email_address:str, password:str):
     # caso dispare qualquer exceção, os dados são inválidos.
     except socket.gaierror:
         return False
-
+    except smtplib.SMTPServerDisconnected:
+        return False
 
 
 

@@ -812,13 +812,14 @@ class Ui_MainWindow(object):
 
         self.btn_smtp = QPushButton(self.scrollAreaWidgetContents)
         self.btn_smtp.setObjectName(u"btn_smtp")
+        self.btn_smtp.setEnabled(False)
         sizePolicy3.setHeightForWidth(self.btn_smtp.sizePolicy().hasHeightForWidth())
         self.btn_smtp.setSizePolicy(sizePolicy3)
         self.btn_smtp.setMinimumSize(QSize(140, 35))
         self.btn_smtp.setFont(font1)
         self.btn_smtp.setCursor(QCursor(Qt.PointingHandCursor))
         self.btn_smtp.setStyleSheet(u"QPushButton{\n"
-"background-color: rgb(20, 39, 203);\n"
+"background-color: rgb(116, 116, 116);\n"
 "color: rgb(255, 255, 255);\n"
 "border-radius:5px\n"
 "\n"
@@ -1565,7 +1566,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.pages.setCurrentIndex(0)
+        self.pages.setCurrentIndex(2)
 
 
         QMetaObject.connectSlotsByName(MainWindow)

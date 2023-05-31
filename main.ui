@@ -843,7 +843,7 @@ background-color: rgb(255, 255, 255);
              <number>1</number>
             </property>
             <property name="currentIndex">
-             <number>0</number>
+             <number>2</number>
             </property>
             <widget class="QWidget" name="page_home">
              <layout class="QVBoxLayout" name="verticalLayout_6">
@@ -1549,6 +1549,9 @@ color: rgb(255, 255, 255);</string>
                   </item>
                   <item alignment="Qt::AlignHCenter">
                    <widget class="QPushButton" name="btn_smtp">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
                     <property name="sizePolicy">
                      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                       <horstretch>0</horstretch>
@@ -1572,7 +1575,7 @@ color: rgb(255, 255, 255);</string>
                     </property>
                     <property name="styleSheet">
                      <string notr="true">QPushButton{
-background-color: rgb(20, 39, 203);
+background-color: rgb(116, 116, 116);
 color: rgb(255, 255, 255);
 border-radius:5px
 

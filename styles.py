@@ -81,3 +81,18 @@ font-size: 14pt;
 """
 
 
+dark_blue_button = """
+QPushButton{
+background-color: rgb(20, 39, 203);
+color: rgb(255, 255, 255);
+border-radius:5px
+
+}
+
+QPushButton:hover
+{
+background-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);
+}
+"""
+
